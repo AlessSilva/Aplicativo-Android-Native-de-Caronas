@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    final int rqCadastCaronaP1 = 300;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.AddCarona:
                 Toast.makeText(this, "Adicionar Carona", Toast.LENGTH_SHORT).show();
+
+                Intent i = new Intent(this,CadastCaronaActivity.class);
+                startActivityForResult(i, rqCadastCaronaP1);
+
                 break;
             case R.id.HistoricoCaronas:
                 Toast.makeText(this, "Históricos de Caronas", Toast.LENGTH_SHORT).show();
