@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/AddCarona"
         android:title="Adicionar Carona"
@@ -22,8 +21,8 @@
         android:title="Meus Amigos"
         app:showAsAction="never"></item>
 
-    <item android:id="@+id/AbrirChart"
-        android:title="Abrir Chart"
+    <item android:id="@+id/AbrirChat"
+        android:title="Abrir Chat"
         app:showAsAction="never"></item>
 
     <item android:id="@+id/Sobre"

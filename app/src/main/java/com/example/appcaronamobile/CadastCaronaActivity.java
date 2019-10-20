@@ -5,9 +5,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
-public class CadastCaronaActivity extends AppCompatActivity implements MyListener {
+import com.example.appcaronamobile.Fragments.CadastCarona1;
+
+public class CadastCaronaActivity extends AppCompatActivity {
 
     FragmentManager fragmentManager;
 
@@ -24,13 +25,4 @@ public class CadastCaronaActivity extends AppCompatActivity implements MyListene
 
     }
 
-    @Override
-    public void nextFragment(int i) {
-        if(i==1){
-            Toast.makeText(this, "Deu certo", Toast.LENGTH_SHORT).show();
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.frame, new CadastCarona2(), "CadastroCaronaPart2");
-            transaction.commitAllowingStateLoss();
-        }
-    }
 }

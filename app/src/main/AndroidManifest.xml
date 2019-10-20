@@ -9,7 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CadastCaronaActivity"></activity>
+        <activity android:name=".CadastroCaronaActivity" />
+        <activity android:name=".TelaPrincipalActivity" />
+        <activity
+            android:name=".CadastroPt2Activity"
+            android:label="@string/cadastro" />
+        <activity
+            android:name=".CadastroPt1Activity"
+            android:label="@string/cadastro" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
