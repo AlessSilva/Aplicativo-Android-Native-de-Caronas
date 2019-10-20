@@ -11,6 +11,7 @@ import com.example.appcaronamobile.Util.CustomAdapters.Instituicoes_Adapter;
 import com.example.appcaronamobile.Util.CustomAdapters.Situacoes_Adapter;
 
 public class CadastroPt2Activity extends AppCompatActivity {
+
     private Spinner spinnerInstituicoes;
     private Spinner spinnerSituacoes;
 

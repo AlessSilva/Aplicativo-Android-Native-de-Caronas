@@ -12,12 +12,12 @@ import com.example.appcaronamobile.Util.Masks.MaskEditUtil;
 
 public class CadastroPt1Activity extends AppCompatActivity {
 
-    private EditText primeiroNome;
-    private EditText sobrenome;
-    private EditText telefone;
-    private EditText email;
-    private EditText senha;
-    private EditText senhaRepetida;
+    private EditText primeiroNome = null;
+    private EditText sobrenome = null;
+    private EditText telefone = null;
+    private EditText email = null;
+    private EditText senha = null;
+    private EditText senhaRepetida = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

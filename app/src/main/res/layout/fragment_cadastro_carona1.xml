@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00611B1B"
+    android:background="#A825CC84"
     tools:context=".Fragments.CadastroCarona1">
 
     <androidx.cardview.widget.CardView
@@ -17,6 +17,16 @@
         app:cardBackgroundColor="#283593"
         app:cardElevation="1dp"
         app:contentPadding="10dp">
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#6C283593"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -73,9 +83,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:background="@drawable/shape_round_edittext"
                         android:ems="10"
                         android:hint="Quantidade"
                         android:inputType="number"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="5dp"
                         android:textColor="#090000" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -136,11 +151,16 @@
                         android:id="@+id/editText2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/shape_round_edittext"
                         android:ems="10"
                         android:gravity="start|top"
                         android:hint="Descreva aqui possíveis pontos de parada para seus passageiros."
                         android:inputType="textMultiLine"
-                        android:lines="5" />
+                        android:lines="5"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="5dp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -183,7 +203,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button5"
+                    android:id="@+id/buttonFinalizar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
@@ -191,7 +211,7 @@
                     android:text="Cancelar Carona" />
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/buttonVoltarPt2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
@@ -200,6 +220,8 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        </ScrollView>
 
     </androidx.cardview.widget.CardView>
 </FrameLayout>

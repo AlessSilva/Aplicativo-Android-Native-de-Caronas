@@ -12,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-import com.example.appcaronamobile.MyListener;
 import com.example.appcaronamobile.R;
 import com.example.appcaronamobile.Repository.MyListener;
 
@@ -23,7 +22,6 @@ public class CadastroCarona1 extends Fragment {
     View view = null;
     Spinner spinner_veiculos = null;
     ArrayAdapter<CharSequence> adapter_spinner = null;
-    Button button = null;
 
     public CadastroCarona1() {
     }
@@ -44,11 +42,6 @@ public class CadastroCarona1 extends Fragment {
         spinner_veiculos.setAdapter(adapter_spinner);
 
         return view;
-    }
-
-    private void sendData(){
-        MyListener myListener = (MyListener) getActivity();
-        myListener.nextFragment(1);
     }
 
 }

@@ -2,6 +2,8 @@ package com.example.appcaronamobile;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.appcaronamobile.Fragments.Map;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class TelaPrincipalActivity extends AppCompatActivity
@@ -18,10 +21,18 @@ public class TelaPrincipalActivity extends AppCompatActivity
     private final int rqCadastroCaronaP1 = 300;
     private BottomNavigationView navigationView;
 
+    FragmentManager fragmentManager=null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_principal);
+
+        fragmentManager = getSupportFragmentManager();
+
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.add(R.id.containerPrincipal,new Map(),"MapContainer");
+        transaction.commitAllowingStateLoss();
 
         navigationView = (BottomNavigationView) findViewById(R.id.navigationView);
         navigationView.setOnNavigationItemSelectedListener(this);
@@ -73,6 +84,11 @@ public class TelaPrincipalActivity extends AppCompatActivity
                 break;
             }
             case R.id.navigation_mapa: {
+
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.containerPrincipal,new Map(),"MapContainer");
+                transaction.commitAllowingStateLoss();
+
                 break;
             }
             case R.id.navigation_caronas: {

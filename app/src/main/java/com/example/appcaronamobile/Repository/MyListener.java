@@ -2,6 +2,11 @@ package com.example.appcaronamobile.Repository;
 
 public interface MyListener {
 
-    void nextFragment( int i );
+    void proximoFragmentoP1( String pn, String sn, String tel, String eml, String s1 );
 
+    void voltarFragmentoP1();
+
+    void finalizarFragmentoP2( String inst, String sit );
+
+    void voltarFragmentoP2();
 }

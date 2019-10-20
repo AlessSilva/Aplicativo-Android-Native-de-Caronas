@@ -11,7 +11,7 @@ import com.example.appcaronamobile.Fragments.CadastroCarona1;
 import com.example.appcaronamobile.Fragments.CadastroCarona2;
 import com.example.appcaronamobile.Repository.MyListener;
 
-public class CadastroCaronaActivity extends AppCompatActivity implements MyListener {
+public class CadastroCaronaActivity extends AppCompatActivity {
 
     FragmentManager fragmentManager;
 
@@ -28,13 +28,4 @@ public class CadastroCaronaActivity extends AppCompatActivity implements MyListe
 
     }
 
-    @Override
-    public void nextFragment(int i) {
-        if(i==1){
-            Toast.makeText(this, "Deu certo", Toast.LENGTH_SHORT).show();
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.replace(R.id.frame, new CadastroCarona2(), "CadastroCaronaPart2");
-            transaction.commitAllowingStateLoss();
-        }
-    }
 }
