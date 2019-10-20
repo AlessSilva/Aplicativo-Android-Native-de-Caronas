@@ -6,6 +6,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
+import com.example.appcaronamobile.Fragments.CadastCarona1;
+
 public class CadastCaronaActivity extends AppCompatActivity {
 
     FragmentManager fragmentManager;
