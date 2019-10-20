@@ -1,6 +1,15 @@
 <resources>
-    <string name="app_name">AppCaronaMobile</string>
+    <string name="app_name">Quize</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="Veiculos">
+
+        <item>Carro1</item>
+        <item>Carro2</item>
+        <item>Bicicleta de dois</item>
+        <item>Mobilete</item>
+
+    </string-array>
+
 </resources>
