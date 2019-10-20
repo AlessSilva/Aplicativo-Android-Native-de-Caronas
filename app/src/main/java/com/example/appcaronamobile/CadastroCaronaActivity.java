@@ -7,24 +7,23 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.appcaronamobile.Fragments.CadastCarona1;
-import com.example.appcaronamobile.Fragments.CadastCarona2;
-import com.example.appcaronamobile.Fragments.Map;
+import com.example.appcaronamobile.Fragments.CadastroCarona1;
+import com.example.appcaronamobile.Fragments.CadastroCarona2;
+import com.example.appcaronamobile.Repository.MyListener;
 
-public class CadastCaronaActivity extends AppCompatActivity implements MyListener {
+public class CadastroCaronaActivity extends AppCompatActivity implements MyListener {
 
     FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadast_carona);
+        setContentView(R.layout.activity_cadastro_carona);
 
         fragmentManager = getSupportFragmentManager();
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.add(R.id.frame, new Map(), "CadastroCaronaPart1");
-        //transaction.add(R.id.frame, new CadastCarona1(), "CadastroCaronaPart1");
+        transaction.add(R.id.frame, new CadastroCarona1(), "CadastroCaronaPart1");
         transaction.commitAllowingStateLoss();
 
     }
@@ -34,7 +33,7 @@ public class CadastCaronaActivity extends AppCompatActivity implements MyListene
         if(i==1){
             Toast.makeText(this, "Deu certo", Toast.LENGTH_SHORT).show();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.frame, new CadastCarona2(), "CadastroCaronaPart2");
+            transaction.replace(R.id.frame, new CadastroCarona2(), "CadastroCaronaPart2");
             transaction.commitAllowingStateLoss();
         }
     }

@@ -2,6 +2,27 @@
     <string name="app_name">Quize</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cadastro">Cadastro</string>
+    <string name="mantenha_me_conectado">Mantenha-me conectado</string>
+    <string name="entrar">Entrar</string>
+    <string name="esqueci_minha_senha">Esqueci minha senha</string>
+    <string name="todo">TODO</string>
+    <string name="login">Login</string>
+    <string name="email_ou_telefone">Email ou Telefone</string>
+    <string name="cadastre_se_aqui">Cadastre-se aqui</string>
+    <string name="senha">Senha</string>
+    <string name="repita_a_senha">Repita a senha</string>
+    <string name="voltar">Voltar</string>
+    <string name="pr_ximo">Próximo</string>
+    <string name="dados_pessoais">Dados Pessoais</string>
+    <string name="primeiro_nome">Primeiro Nome</string>
+    <string name="sobrenome">Sobrenome</string>
+    <string name="_00_0_0000_0000">(00) 0 0000-0000</string>
+    <string name="email">Email</string>
+    <string name="sobre_a_universidade">Sobre a universidade</string>
+    <string name="finalizar">Finalizar</string>
+    <string name="diga_mais_sobre_voc">Diga Mais Sobre Você!</string>
+    <string name="da_onde_voc">Da Onde Você É?</string>
 
     <string-array name="Veiculos">
 

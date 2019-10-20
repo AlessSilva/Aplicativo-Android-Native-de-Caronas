@@ -12,16 +12,16 @@ import android.view.ViewGroup;
 import com.example.appcaronamobile.R;
 
 
-public class CadastCarona2 extends Fragment {
+public class CadastroCarona2 extends Fragment {
 
 
-    public CadastCarona2() {
+    public CadastroCarona2() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_cadast_carona2, container, false);
+        return inflater.inflate(R.layout.fragment_cadastro_carona2, container, false);
     }
 
 }
