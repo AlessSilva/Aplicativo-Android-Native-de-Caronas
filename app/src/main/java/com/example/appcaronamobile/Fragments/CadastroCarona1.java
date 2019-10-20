@@ -13,9 +13,10 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.example.appcaronamobile.R;
+import com.example.appcaronamobile.Repository.MyListener;
 
 
-public class CadastCarona1 extends Fragment {
+public class CadastroCarona1 extends Fragment {
 
 
     View view = null;
@@ -23,13 +24,13 @@ public class CadastCarona1 extends Fragment {
     ArrayAdapter<CharSequence> adapter_spinner = null;
     Button button = null;
 
-    public CadastCarona1() {
+    public CadastroCarona1() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view =  inflater.inflate(R.layout.fragment_cadast_carona1, container, false);
+        view =  inflater.inflate(R.layout.fragment_cadastro_carona1, container, false);
         //button = (Button) view.findViewById(R.id.next);
         //button.setOnClickListener(new View.OnClickListener() {
         //    @Override
