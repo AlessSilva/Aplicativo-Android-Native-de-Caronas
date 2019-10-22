@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.appcaronamobile.Model.Usuario;
+
 public class MainActivity extends AppCompatActivity {
 
     Intent intent;
@@ -37,6 +39,19 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, TelaPrincipalActivity.class);
 
             //TODO: enviar os valores do cadastro pra TelaPrincipal
+
+            String primeiroNome = data.getStringExtra("primeiro_nome");
+            String sobrenome = data.getStringExtra("sobrenome");
+            String telefone = data.getStringExtra("telefone");
+            String email = data.getStringExtra("email");
+            String senha = data.getStringExtra("senha");
+            String situacao = data.getStringExtra("situacao");
+            String instituicao = data.getStringExtra("instituicao");
+
+            //TODO: persistir usuario
+            Usuario novoUsuario = new Usuario(primeiroNome, sobrenome, telefone, email, senha, situacao, instituicao);
+
+            intent.putExtra("usuario", novoUsuario);
 
             startActivity(intent);
 
