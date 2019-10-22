@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.appcaronamobile.Model.Usuario;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         if( requestCode==111 && resultCode==112 ){
 
-            Intent intent = new Intent(this, TelaPrincipalActivity.class);
+            final Intent intent = new Intent(this, TelaPrincipalActivity.class);
 
             //TODO: enviar os valores do cadastro pra TelaPrincipal
 
@@ -54,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("usuario", novoUsuario);
 
             startActivity(intent);
-
         }else{
 
             Toast.makeText(this, "Cadastro Cancelado", Toast.LENGTH_SHORT).show();

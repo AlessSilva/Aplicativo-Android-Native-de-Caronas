@@ -61,7 +61,7 @@
                         android:textSize="18sp" />
 
                     <EditText
-                        android:id="@+id/editTextPrimeiroNome"
+                        android:id="@+id/editTextLogin"
                         android:layout_width="30dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
@@ -94,7 +94,7 @@
                         android:textSize="18sp" />
 
                     <EditText
-                        android:id="@+id/editTextSenha"
+                        android:id="@+id/editTextSenhaLogin"
                         android:layout_width="30dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
@@ -124,7 +124,7 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/buttonEntrar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
