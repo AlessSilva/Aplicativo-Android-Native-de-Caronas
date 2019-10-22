@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.appcaronamobile.Fragments.Map;
+import com.example.appcaronamobile.Model.Usuario;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class TelaPrincipalActivity extends AppCompatActivity
@@ -22,6 +23,8 @@ public class TelaPrincipalActivity extends AppCompatActivity
     private BottomNavigationView navigationView;
 
     FragmentManager fragmentManager=null;
+
+    Usuario usuario = (Usuario) getIntent().getSerializableExtra("usuario");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +84,7 @@ public class TelaPrincipalActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.navigation_conta: {
+
                 break;
             }
             case R.id.navigation_mapa: {
