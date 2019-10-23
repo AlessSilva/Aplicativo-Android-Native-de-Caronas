@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -47,8 +48,6 @@ public class CadastroUsuarioActivity extends AppCompatActivity implements MyList
         email = eml;
         senha = s1;
 
-        Toast.makeText(this, pn+" "+" "+" "+sn, Toast.LENGTH_SHORT).show();
-
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frameCadastro, new CadastroPt2(), "CadastroUsuarioPart2");
         transaction.commitAllowingStateLoss();
@@ -71,7 +70,18 @@ public class CadastroUsuarioActivity extends AppCompatActivity implements MyList
 
         Toast.makeText(this, inst+" "+" "+" "+sit, Toast.LENGTH_SHORT).show();
         //TODO: Enviar os valores pra main
-        setResult( 112 );
+
+        Intent intent = new Intent();
+
+        intent.putExtra("primeiro_nome", primNome);
+        intent.putExtra("sobrenome", segNome);
+        intent.putExtra("telefone", telefone);
+        intent.putExtra("email", email);
+        intent.putExtra("senha", senha);
+        intent.putExtra("situacao", situacao);
+        intent.putExtra("instituicao", instituicao);
+
+        setResult(112, intent);
         finish();
 
     }

@@ -7,7 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.appcaronamobile.Model.Usuario;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,12 +37,24 @@ public class MainActivity extends AppCompatActivity {
 
         if( requestCode==111 && resultCode==112 ){
 
-            Intent intent = new Intent(this, TelaPrincipalActivity.class);
+            final Intent intent = new Intent(this, TelaPrincipalActivity.class);
 
             //TODO: enviar os valores do cadastro pra TelaPrincipal
 
-            startActivity(intent);
+            String primeiroNome = data.getStringExtra("primeiro_nome");
+            String sobrenome = data.getStringExtra("sobrenome");
+            String telefone = data.getStringExtra("telefone");
+            String email = data.getStringExtra("email");
+            String senha = data.getStringExtra("senha");
+            String situacao = data.getStringExtra("situacao");
+            String instituicao = data.getStringExtra("instituicao");
 
+            //TODO: persistir usuario
+            Usuario novoUsuario = new Usuario(primeiroNome, sobrenome, telefone, email, senha, situacao, instituicao);
+
+            intent.putExtra("usuario", novoUsuario);
+
+            startActivity(intent);
         }else{
 
             Toast.makeText(this, "Cadastro Cancelado", Toast.LENGTH_SHORT).show();

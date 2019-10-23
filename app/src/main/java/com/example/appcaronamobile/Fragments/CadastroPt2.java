@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.appcaronamobile.R;
 import com.example.appcaronamobile.Repository.MyListener;
@@ -42,8 +43,19 @@ public class CadastroPt2 extends Fragment {
         finalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: Pegar valores do Spinner!!!
-                sendData("UFC","Aluno");
+                spinnerInstituicoes = (Spinner) getView().findViewById(R.id.spinnerInstituicao);
+                spinnerSituacoes    = (Spinner) getView().findViewById(R.id.spinnerSituacao);
+
+                int posInst = spinnerInstituicoes.getSelectedItemPosition();
+                int posSit = spinnerSituacoes.getSelectedItemPosition();
+
+                if(posInst == 0 || posSit == 0) {
+                    Toast.makeText(getContext(), "Selecione os campos que restam", Toast.LENGTH_LONG).show();
+                } else {
+                    String instituicao = spinnerInstituicoes.getSelectedItem().toString();
+                    String situacao    = spinnerSituacoes.getSelectedItem().toString();
+                    sendData(instituicao, situacao);
+                }
             }
         });
 
