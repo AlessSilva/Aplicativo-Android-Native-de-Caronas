@@ -43,7 +43,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_margin="2dp"
                     android:background="#71413A3A"
                     android:orientation="horizontal"
@@ -71,13 +71,14 @@
                         android:inputType="textEmailAddress"
                         android:paddingLeft="20dp"
                         android:paddingTop="5dp"
-                        android:paddingRight="20dp" />
+                        android:paddingRight="20dp"
+                        android:paddingBottom="5dp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_margin="2dp"
                     android:background="#71413A3A"
                     android:orientation="horizontal"
@@ -101,7 +102,10 @@
                         android:layout_weight=".75"
                         android:background="@drawable/shape_round_edittext"
                         android:inputType="textPassword"
-                        android:paddingLeft="20dp" />
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="5dp" />
 
                 </LinearLayout>
 

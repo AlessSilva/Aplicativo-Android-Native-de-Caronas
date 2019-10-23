@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.appcaronamobile.Fragments.ListarCaronas;
 import com.example.appcaronamobile.Fragments.Map;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -92,6 +93,11 @@ public class TelaPrincipalActivity extends AppCompatActivity
                 break;
             }
             case R.id.navigation_caronas: {
+
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.containerPrincipal,new ListarCaronas(),"ListarCaronaContainer");
+                transaction.commitAllowingStateLoss();
+
                 break;
             }
         }
