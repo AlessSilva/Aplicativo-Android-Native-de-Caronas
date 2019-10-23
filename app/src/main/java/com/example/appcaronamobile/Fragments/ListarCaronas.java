@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.appcaronamobile.Carona;
+import com.example.appcaronamobile.Model.Carona;
 import com.example.appcaronamobile.R;
 import com.example.appcaronamobile.Repository.MyAdapterListarCaronas;
 

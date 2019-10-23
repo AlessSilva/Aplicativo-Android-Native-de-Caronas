@@ -1,4 +1,4 @@
-package com.example.appcaronamobile;
+package com.example.appcaronamobile.Model;
 
 public class Carona {
 

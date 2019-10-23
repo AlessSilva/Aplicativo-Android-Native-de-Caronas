@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.appcaronamobile.Carona;
+import com.example.appcaronamobile.Model.Carona;
 import com.example.appcaronamobile.R;
 
 import java.util.List;

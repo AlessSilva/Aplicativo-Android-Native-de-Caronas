@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.appcaronamobile.Fragments.Conta;
+import com.example.appcaronamobile.Fragments.ListarCaronas;
 import com.example.appcaronamobile.Fragments.Map;
 import com.example.appcaronamobile.Model.Usuario;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -26,7 +27,7 @@ public class TelaPrincipalActivity extends AppCompatActivity
 
     FragmentManager fragmentManager=null;
 
-    Usuario usuario = (Usuario) getIntent().getSerializableExtra("usuario");
+    Usuario usuario = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,8 @@ public class TelaPrincipalActivity extends AppCompatActivity
         setContentView(R.layout.activity_tela_principal);
 
         fragmentManager = getSupportFragmentManager();
+
+        usuario = (Usuario) getIntent().getSerializableExtra("usuario");
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(R.id.containerPrincipal,new Map(),"MapContainer");
@@ -87,8 +90,9 @@ public class TelaPrincipalActivity extends AppCompatActivity
         switch (item.getItemId()) {
             case R.id.navigation_conta: {
                 getSupportActionBar().setTitle("Conta");
-                Fragment conta = Conta.newInstance();
-                openFragment(conta);
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.containerPrincipal,new Conta(),"ContaContainer");
+                transaction.commitAllowingStateLoss();
                 break;
             }
             case R.id.navigation_mapa: {
@@ -100,6 +104,10 @@ public class TelaPrincipalActivity extends AppCompatActivity
                 break;
             }
             case R.id.navigation_caronas: {
+                getSupportActionBar().setTitle("Caronas");
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.containerPrincipal,new ListarCaronas(),"CaronasContainer");
+                transaction.commitAllowingStateLoss();
                 break;
             }
         }
