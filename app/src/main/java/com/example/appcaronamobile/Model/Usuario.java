@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 @SuppressWarnings("serial")
 public class Usuario implements Serializable {
+    private Long id;
     private String primeiroNome;
     private String sobrenome;
     private String telefone;
@@ -22,6 +23,10 @@ public class Usuario implements Serializable {
         this.situacao = situacao;
         this.instituicao = instituicao;
     }
+
+    public Long getId() { return id; }
+
+    public void setId(Long id) { this.id = id; }
 
     public String getPrimeiroNome() {
         return primeiroNome;
@@ -81,12 +86,13 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "Usuario{" +
-                "primeiroNome='" + primeiroNome + '\'' +
-                ", sobrenome='" + sobrenome + '\'' +
-                ", telefone='" + telefone + '\'' +
-                ", email='" + email + '\'' +
-                ", senha='" + senha + '\'' +
-                '}';
+        return id + "," +
+                primeiroNome + "," +
+                sobrenome + "," +
+                telefone + "," +
+                email + "," +
+                senha + "," +
+                situacao + "," +
+                instituicao;
     }
 }
