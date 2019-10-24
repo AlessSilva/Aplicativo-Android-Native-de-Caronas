@@ -2,7 +2,6 @@ package com.example.appcaronamobile;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -28,7 +27,7 @@ public class TelaPrincipalActivity extends AppCompatActivity
     private BottomNavigationView navigationView = null;
     private FloatingActionButton fab = null;
 
-    FragmentManager fragmentManager=null;
+    FragmentManager fragmentManager = null;
 
 
     Usuario usuario = null;
@@ -105,8 +104,12 @@ public class TelaPrincipalActivity extends AppCompatActivity
         switch (item.getItemId()) {
             case R.id.navigation_conta: {
                 getSupportActionBar().setTitle("Conta");
+                Conta conta = new Conta();
+                Bundle arguments = new Bundle();
+                arguments.putSerializable("usuario", usuario);
+                conta.setArguments(arguments);
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.containerPrincipal,new Conta(),"ContaContainer");
+                transaction.replace(R.id.containerPrincipal, conta,"ContaContainer");
                 transaction.commitAllowingStateLoss();
                 break;
             }
@@ -115,7 +118,6 @@ public class TelaPrincipalActivity extends AppCompatActivity
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.containerPrincipal,new Map(),"MapContainer");
                 transaction.commitAllowingStateLoss();
-
                 break;
             }
             case R.id.navigation_caronas: {
@@ -128,12 +130,4 @@ public class TelaPrincipalActivity extends AppCompatActivity
         }
         return true;
     }
-
-    private void openFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
-
 }
