@@ -200,7 +200,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/buttonVoltarPt1"
+                        android:id="@+id/buttonVoltarCarona"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -210,7 +210,7 @@
                         android:textColor="#FF8F00" />
 
                     <Button
-                        android:id="@+id/buttonProximoPt1"
+                        android:id="@+id/buttonProximoCarona"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

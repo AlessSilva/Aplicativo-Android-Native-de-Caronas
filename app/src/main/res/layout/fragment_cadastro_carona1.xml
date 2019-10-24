@@ -79,7 +79,7 @@
                         app:fontFamily="sans-serif" />
 
                     <EditText
-                        android:id="@+id/editText"
+                        android:id="@+id/editTextVagasCaronaCad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -119,7 +119,7 @@
                         app:fontFamily="sans-serif" />
 
                     <Spinner
-                        android:id="@+id/spinnerVeiculos"
+                        android:id="@+id/spinnerVeiculosCaronaCad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="5" />
@@ -152,7 +152,7 @@
                         app:fontFamily="sans-serif" />
 
                     <EditText
-                        android:id="@+id/editText0"
+                        android:id="@+id/editTextHorarioCaronaCad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -190,7 +190,7 @@
                         android:textSize="18sp" />
 
                     <EditText
-                        android:id="@+id/editText2"
+                        android:id="@+id/editTextDestinoCaronaCad"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/shape_round_edittext"
@@ -220,14 +220,14 @@
                     android:orientation="horizontal">
 
                     <RadioGroup
-                        android:id="@+id/radioGroupAjuda"
+                        android:id="@+id/radioGroupAjudaCaronaCad"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:padding="10dp">
 
                         <RadioButton
-                            android:id="@+id/radioAjuda"
+                            android:id="@+id/radioAjudaCaronaCad"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Passageiros precisam ajudar nos custos"
@@ -245,22 +245,24 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/buttonFinalizar"
+                    android:id="@+id/buttonVoltarCarona"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="5"
-                    android:background="#FF8F00"
-                    android:text="Cancelar Carona" />
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:onClick="onClickVoltar"
+                    android:text="@string/voltar"
+                    android:textColor="#FF8F00" />
 
                 <Button
-                    android:id="@+id/buttonVoltarPt2"
+                    android:id="@+id/buttonProximoCarona"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="5"
-                    android:background="#58972C"
-                    android:text="Cadastrar Carona" />
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:onClick="onClickProximo"
+                    android:text="@string/pr_ximo"
+                    android:textColor="#FF8F00" />
             </LinearLayout>
 
         </LinearLayout>

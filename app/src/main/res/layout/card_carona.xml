@@ -10,7 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="2dp"
         android:background="#9E9D24"
         android:padding="10dp"
         app:cardBackgroundColor="#FAF8F6"
@@ -22,27 +25,27 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <ImageView
+           <!-- <ImageView
                 android:id="@+id/CardViewCaronaImageViewPerfil"
                 android:layout_width="300dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_weight="8"
                 tools:srcCompat="@tools:sample/avatars[10]" />
-
+            -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="5dp">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="1dp"
                     android:background="#A0A79898"
-                    app:cardBackgroundColor="#7791D8D8"
+                    app:cardBackgroundColor="#AAFDFDFD"
                     app:contentPadding="5dp">
 
                     <LinearLayout
@@ -52,10 +55,10 @@
 
                         <ImageView
                             android:id="@+id/imageView3"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="0"
-                            android:src="@drawable/ic_user" />
+                            android:src="@mipmap/ic_user" />
 
                         <TextView
                             android:id="@+id/CardViewCaronaUserName"
@@ -73,7 +76,7 @@
                     android:layout_height="30dp"
                     android:layout_margin="1dp"
                     android:background="#A0A79898"
-                    app:cardBackgroundColor="#7791D8D8"
+                    app:cardBackgroundColor="#AAFDFDFD"
                     app:contentPadding="5dp">
 
                     <LinearLayout
@@ -83,10 +86,10 @@
 
                         <ImageView
                             android:id="@+id/imageView4"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="0"
-                            android:src="@drawable/ic_vagas" />
+                            android:src="@mipmap/ic_vaga" />
 
                         <TextView
                             android:id="@+id/CardViewCaronaVagas"
@@ -109,28 +112,42 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_weight="0"
-                        android:background="@color/design_default_color_primary"
+                        android:background="#B5FF8F00"
                         android:paddingLeft="10dp"
                         android:paddingTop="3dp"
                         android:paddingRight="10dp"
                         android:paddingBottom="3dp"
-                        android:text="Ver mais detalhes"
-                        android:textColor="#FFFFFF" />
+                        android:text="Mais detalhes"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp" />
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="50dp"
-                        android:layout_height="match_parent"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_weight="0"
-                        android:padding="10dp"
-                        app:cardBackgroundColor="#F9A825">
+                        app:cardBackgroundColor="#A91565C0">
 
                         <ImageView
                             android:id="@+id/CardViewCaronaVeiculo"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/ic_car" />
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_car2" />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="0"
+                        app:cardBackgroundColor="#A91565C0">
+
+                        <ImageView
+                            android:id="@+id/CardViewCaronaAjuda"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
                     </androidx.cardview.widget.CardView>
 
                 </LinearLayout>

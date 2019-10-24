@@ -1,7 +1,6 @@
 package com.example.appcaronamobile.Fragments;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,10 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.appcaronamobile.CadastroPt2Activity;
 import com.example.appcaronamobile.R;
 import com.example.appcaronamobile.Repository.MyListener;
 import com.example.appcaronamobile.Util.Masks.MaskEditUtil;
@@ -52,8 +49,8 @@ public class CadastroPt1 extends Fragment {
         senha = view.findViewById(R.id.editTextSenha);
         senhaRepetida = view.findViewById(R.id.editTextSenhaRepetida);
 
-        proximo =view.findViewById(R.id.buttonProximoPt1);
-        voltar = view.findViewById(R.id.buttonVoltarPt1);
+        proximo =view.findViewById(R.id.buttonProximoCarona);
+        voltar = view.findViewById(R.id.buttonVoltarCarona);
 
         proximo.setOnClickListener(new View.OnClickListener() {
             @Override

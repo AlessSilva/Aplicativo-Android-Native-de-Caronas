@@ -39,11 +39,14 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
 
         Carona carona = listCarona.get(position);
         holder.vagas.setText(carona.getVagas()+"");
-        holder.perfil.setImageResource( R.drawable.galinha );
+        //holder.perfil.setImageResource( R.drawable.galinha );
         if ( carona.gettipoVeiculo().equals("CARRO") ){
-            holder.tipoveiculo.setImageResource(R.drawable.ic_car);
+            holder.tipoveiculo.setImageResource(R.mipmap.ic_car2);
         }else{
-            holder.tipoveiculo.setImageResource(R.drawable.ic_moto);
+            holder.tipoveiculo.setImageResource(R.mipmap.ic_moto);
+        }
+        if ( carona.isAjuda() ){
+            holder.ajuda.setImageResource(R.mipmap.ic_ajuda);
         }
 
     }
@@ -57,8 +60,9 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
 
         View view;
         TextView vagas =  null;
-        ImageView perfil = null;
+        //ImageView perfil = null;
         ImageView tipoveiculo = null;
+        ImageView ajuda = null;
 
         public CaronaViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -66,8 +70,9 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
             view = itemView;
 
             vagas = view.findViewById(R.id.CardViewCaronaVagas);
-            perfil = view.findViewById(R.id.CardViewCaronaImageViewPerfil);
+            //perfil = view.findViewById(R.id.CardViewCaronaImageViewPerfil);
             tipoveiculo = view.findViewById(R.id.CardViewCaronaVeiculo);
+            ajuda = view.findViewById(R.id.CardViewCaronaAjuda);
 
         }
     }
