@@ -79,7 +79,7 @@ public class TelaPrincipalActivity extends AppCompatActivity
 
                 Toast.makeText(this, "Seus Veículos", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(this, CadastroVeiculoActivity.class);
+                Intent intent = new Intent(this, MeusVeiculosActivity.class);
 
                 intent.putExtra("usuario", usuario);
 

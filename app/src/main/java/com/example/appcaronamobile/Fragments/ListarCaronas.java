@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.appcaronamobile.Model.Carona;
 import com.example.appcaronamobile.R;
-import com.example.appcaronamobile.Repository.MyAdapterListarCaronas;
+import com.example.appcaronamobile.Util.CustomAdapters.MyAdapterListarCaronas;
 
 import java.util.ArrayList;
 import java.util.List;

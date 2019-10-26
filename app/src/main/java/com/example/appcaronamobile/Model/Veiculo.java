@@ -1,6 +1,9 @@
 package com.example.appcaronamobile.Model;
 
-public class Veiculo {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Veiculo implements Serializable {
 
     private Long id;
     private String modelo;
@@ -61,5 +64,15 @@ public class Veiculo {
 
     public void setCor(String cor) {
         this.cor = cor;
+    }
+
+    @Override
+    public String toString() {
+        String modeloV = "Modelo: " + modelo;
+        String tipoV = "Tipo: " + tipo;
+        String corV = "Cor: " + cor;
+        String placaV = "Placa: " + placa;
+
+        return modeloV + "\n" + tipoV + "\n" + corV + "\n" + placaV;
     }
 }

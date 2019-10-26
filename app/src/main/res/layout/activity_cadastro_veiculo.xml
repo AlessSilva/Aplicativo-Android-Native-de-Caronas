@@ -131,7 +131,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/shape_round_edittext"
-                        android:inputType="textCapWords"
+                        android:inputType="textCapCharacters"
                         android:paddingLeft="20dp"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp" />
