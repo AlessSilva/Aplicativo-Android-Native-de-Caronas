@@ -77,11 +77,13 @@ public class TelaPrincipalActivity extends AppCompatActivity
         switch (item.getItemId()){
             case R.id.VerVeiculos:
 
-                Toast.makeText(this, "Ver Veículos", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Seus Veículos", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(this, MeusVeiculosActivity.class);
+                Intent intent = new Intent(this, CadastroVeiculoActivity.class);
 
                 intent.putExtra("usuario", usuario);
+
+                startActivity(intent);
 
                 break;
             case R.id.HistoricoCaronas:

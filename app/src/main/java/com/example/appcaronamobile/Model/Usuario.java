@@ -1,6 +1,8 @@
 package com.example.appcaronamobile.Model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings("serial")
 public class Usuario implements Serializable {
@@ -12,6 +14,7 @@ public class Usuario implements Serializable {
     private String senha;
     private String situacao;
     private String instituicao;
+    private List<Veiculo> veiculos;
 
     public Usuario(String primeiroNome, String sobrenome, String telefone,
                    String email, String senha, String situacao, String instituicao) {
@@ -22,6 +25,7 @@ public class Usuario implements Serializable {
         this.senha = senha;
         this.situacao = situacao;
         this.instituicao = instituicao;
+        this.veiculos = new ArrayList<Veiculo>();
     }
 
     public Usuario(Long id, String primeiroNome, String sobrenome, String telefone,
@@ -34,6 +38,7 @@ public class Usuario implements Serializable {
         this.senha = senha;
         this.situacao = situacao;
         this.instituicao = instituicao;
+        this.veiculos = new ArrayList<Veiculo>();
     }
 
     public Long getId() { return id; }
@@ -94,6 +99,18 @@ public class Usuario implements Serializable {
 
     public void setInstituicao(String instituicao) {
         this.instituicao = instituicao;
+    }
+
+    public List<Veiculo> getVeiculos() {
+        return veiculos;
+    }
+
+    public void setVeiculos(List<Veiculo> veiculos) {
+        this.veiculos = veiculos;
+    }
+
+    public void addVeiculo(Veiculo veiculo) {
+        this.veiculos.add(veiculo);
     }
 
     @Override
