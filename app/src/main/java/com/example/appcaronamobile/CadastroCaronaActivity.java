@@ -25,6 +25,7 @@ public class CadastroCaronaActivity extends AppCompatActivity implements MyListe
     private String horario;
     private String destino;
     private boolean ajuda;
+    private LatLng latLng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +48,6 @@ public class CadastroCaronaActivity extends AppCompatActivity implements MyListe
         this.destino = destino;
         this.ajuda = ajuda;
 
-        Toast.makeText(this, vagas+"\n"+veiculo+"\n"+" "+horario+"\n"+destino+"\n"+ajuda, Toast.LENGTH_SHORT).show();
-
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frame, new CadastroCarona2(), "CadastroCaronaPart2");
         transaction.commitAllowingStateLoss();
@@ -57,20 +56,27 @@ public class CadastroCaronaActivity extends AppCompatActivity implements MyListe
 
     public void voltarFragmentoP1(){
 
+        Toast.makeText(this, "Carona Cancelada", Toast.LENGTH_SHORT).show();
+        finish();
+
     }
 
-    public void finalizarFragmentoP2(LatLng latLng){
+    public void finalizarFragmentoP2(){
 
-        Toast.makeText(this, latLng.toString(), Toast.LENGTH_LONG).show();
+        Toast.makeText(this, vagas+"\n"+veiculo+"\n"+" "+horario+"\n"+destino+"\n"+ajuda+"\n"+latLng.toString(), Toast.LENGTH_SHORT).show();
         finish();
 
     }
 
     public void voltarFragmentoP2(){
 
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.add(R.id.frame, new CadastroCarona1(), "CadastroCaronaPart1");
+        transaction.commitAllowingStateLoss();
+
     }
 
     public void receberLatLng(LatLng latLn) {
-        Toast.makeText(this, latLn.toString(), Toast.LENGTH_LONG).show();
+        latLng = latLn;
     }
 }

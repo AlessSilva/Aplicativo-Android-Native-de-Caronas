@@ -2,15 +2,12 @@ package com.example.appcaronamobile.Fragments;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
 
 import android.location.Location;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.example.appcaronamobile.R;
 import com.example.appcaronamobile.Repository.MyListener2;
-import com.example.appcaronamobile.Repository.MyListener3;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
