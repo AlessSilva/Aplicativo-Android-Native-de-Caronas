@@ -41,8 +41,12 @@ public class Map extends SupportMapFragment implements OnMapReadyCallback,
 
                     if ( task.isSuccessful() ){
                         Location l = (Location) task.getResult();
-                        LatLng ll = new LatLng( l.getLatitude(), l.getLongitude() );
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom( ll , 15f));
+                        if( l != null ){
+
+                            LatLng ll = new LatLng( l.getLatitude(), l.getLongitude() );
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom( ll , 15f));
+
+                        }
                     }
 
                 }
