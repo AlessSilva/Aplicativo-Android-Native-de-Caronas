@@ -8,7 +8,7 @@ public interface MyListener2 {
 
     void voltarFragmentoP1();
 
-    void finalizarFragmentoP2(LatLng latLng);
+    void finalizarFragmentoP2();
 
     void voltarFragmentoP2();
 

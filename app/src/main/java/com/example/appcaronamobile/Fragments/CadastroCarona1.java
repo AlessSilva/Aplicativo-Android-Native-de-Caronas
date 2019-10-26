@@ -35,6 +35,7 @@ public class CadastroCarona1 extends Fragment {
     ArrayAdapter<CharSequence> adapter_spinner = null;
 
     Button proximo = null;
+    Button voltar = null;
 
     public CadastroCarona1() {
     }
@@ -79,6 +80,14 @@ public class CadastroCarona1 extends Fragment {
             }
         });
 
+        voltar = view.findViewById(R.id.buttonVoltarCarona);
+        voltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                back();
+            }
+        });
+
         return view;
     }
 
@@ -86,6 +95,13 @@ public class CadastroCarona1 extends Fragment {
 
         MyListener2 myListener2 = (MyListener2) getActivity();
         myListener2.proximoFragmentoP1(vagas, veiculo, horario, destino, ajuda);
+
+    }
+
+    private void back(){
+
+        MyListener2 myListener2 = (MyListener2) getActivity();
+        myListener2.voltarFragmentoP1();
 
     }
 

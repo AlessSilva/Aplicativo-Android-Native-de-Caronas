@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MeusVeiculosActivity"></activity>
+        <activity android:name=".DetalhesCaronaActivity"></activity>
+        <activity android:name=".MeusVeiculosActivity" />
         <activity android:name=".CadastroVeiculoActivity" />
         <activity android:name=".CadastroUsuarioActivity" />
         <!--
