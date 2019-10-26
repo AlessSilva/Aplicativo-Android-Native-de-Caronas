@@ -9,17 +9,18 @@ public class UsuarioDBMemory implements UsuarioDAO {
 
     private static ArrayList<Usuario> listaUsuario;
     private static UsuarioDBMemory usuarioDAO;
+    private static Long idgerador = new Long(1000);
 
     private UsuarioDBMemory(){
 
         listaUsuario = new ArrayList<Usuario>();
-        listaUsuario.add( new Usuario("Alessandro", "Souza","(66) 666666666",
+        listaUsuario.add( new Usuario(new Long(1),"Alessandro", "Souza","(66) 666666666",
                 "ale@alu.ufc.com.br", "mirio", "Discente", "UFC") );
 
-        listaUsuario.add( new Usuario("Carlos Edu", "Ferreira","(44) 444444444",
+        listaUsuario.add( new Usuario(new Long(2),"Carlos Edu", "Ferreira","(44) 444444444",
                 "cadu@alu.ufc.com.br", "nhem", "Discente", "UFC") );
 
-        listaUsuario.add( new Usuario("Victoria", "Pacheco","(24) 898989898",
+        listaUsuario.add( new Usuario(new Long(3),"Victoria", "Pacheco","(24) 898989898",
                 "viviPacheco@ifce.com.br", "vivi", "Docente", "IFCE") );
 
     }
@@ -27,12 +28,25 @@ public class UsuarioDBMemory implements UsuarioDAO {
     @Override
     public void addUsuario(Usuario usuario) {
 
+        idgerador = new Long( idgerador.intValue()+1 );
+        usuario.setId( idgerador );
         listaUsuario.add(usuario);
 
     }
 
     @Override
     public void editUsuario(Usuario usuario) {
+
+        int i = 0;
+        for ( Usuario u : listaUsuario ){
+
+            if ( u.getId().equals( usuario.getId() ) ){
+
+                listaUsuario.set(i,usuario);
+                return;
+            }
+            i++;
+        }
 
     }
 

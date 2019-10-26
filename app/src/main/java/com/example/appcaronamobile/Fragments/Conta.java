@@ -16,11 +16,16 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
+import com.example.appcaronamobile.Dao.UsuarioDAO;
 import com.example.appcaronamobile.Model.Usuario;
 import com.example.appcaronamobile.R;
 import com.example.appcaronamobile.Util.Masks.MaskEditUtil;
 
 public class Conta extends Fragment {
+
+    UsuarioDAO usuarioDAO = null;
+
     Usuario usuario = null;
     private String senhaPedida = "";
     private EditText input;
@@ -52,6 +57,8 @@ public class Conta extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_conta, container, false);
+
+        usuarioDAO = UsuarioDBMemory.getInstance();
 
         Bundle arguments = getArguments();
 
@@ -146,6 +153,8 @@ public class Conta extends Fragment {
                                 usuario.setSenha(senha);
                                 usuario.setSituacao(sit);
                                 usuario.setTelefone(telefone);
+
+                                usuarioDAO.editUsuario(usuario);
 
                                 Toast.makeText(getContext(), "Alterações Salvas", Toast.LENGTH_SHORT).show();
                             } else {

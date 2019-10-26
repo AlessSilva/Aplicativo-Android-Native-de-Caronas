@@ -24,6 +24,18 @@ public class Usuario implements Serializable {
         this.instituicao = instituicao;
     }
 
+    public Usuario(Long id, String primeiroNome, String sobrenome, String telefone,
+                   String email, String senha, String situacao, String instituicao) {
+        this.id = id;
+        this.primeiroNome = primeiroNome;
+        this.sobrenome = sobrenome;
+        this.telefone = telefone;
+        this.email = email;
+        this.senha = senha;
+        this.situacao = situacao;
+        this.instituicao = instituicao;
+    }
+
     public Long getId() { return id; }
 
     public void setId(Long id) { this.id = id; }

@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
+import com.example.appcaronamobile.Dao.UsuarioDAO;
 import com.example.appcaronamobile.Fragments.Conta;
 import com.example.appcaronamobile.Fragments.ListarCaronas;
 import com.example.appcaronamobile.Fragments.Map;
@@ -29,7 +31,6 @@ public class TelaPrincipalActivity extends AppCompatActivity
 
     FragmentManager fragmentManager = null;
 
-
     Usuario usuario = null;
 
     @Override
@@ -39,7 +40,7 @@ public class TelaPrincipalActivity extends AppCompatActivity
 
         fragmentManager = getSupportFragmentManager();
 
-        usuario = (Usuario) getIntent().getSerializableExtra("usuario");
+        usuario = (Usuario)  getIntent().getSerializableExtra("usuario");
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(R.id.containerPrincipal,new Map(),"MapContainer");
@@ -74,16 +75,20 @@ public class TelaPrincipalActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()){
-            case R.id.AddCarona:
+            case R.id.VerVeiculos:
+
+                Toast.makeText(this, "Ver Veículos", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(this, MeusVeiculosActivity.class);
+
+                intent.putExtra("usuario", usuario);
+
                 break;
             case R.id.HistoricoCaronas:
                 Toast.makeText(this, "Histórico de Caronas", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.VerAmigos:
                 Toast.makeText(this, "Ver Amigos", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.VerVeiculos:
-                Toast.makeText(this, "Ver Veículos", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.AbrirChat:
                 Toast.makeText(this, "Abrir Chat", Toast.LENGTH_SHORT).show();

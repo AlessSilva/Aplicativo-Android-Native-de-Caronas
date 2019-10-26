@@ -2,23 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/AddCarona"
-        android:title="Adicionar Carona"
-        android:icon="@drawable/carpool"
-        app:showAsAction="always"></item>
-
-    <item android:id="@+id/HistoricoCaronas"
-        android:title="Histórico de Caronas"
-        app:showAsAction="never"></item>
-
     <item android:id="@+id/VerVeiculos"
         android:title="Meus Veículos"
-        app:showAsAction="never"
+        app:showAsAction="always"
         android:icon="@mipmap/ic_launcher">
     </item>
 
     <item android:id="@+id/VerAmigos"
         android:title="Meus Amigos"
+        app:showAsAction="always"
+        android:icon="@mipmap/ic_launcher">
+    </item>
+
+    <item android:id="@+id/HistoricoCaronas"
+        android:title="Histórico de Caronas"
         app:showAsAction="never"></item>
 
     <item android:id="@+id/AbrirChat"

@@ -47,10 +47,16 @@ public class Map2 extends SupportMapFragment implements OnMapReadyCallback,
 
                     if ( task.isSuccessful() ){
                         Location l = (Location) task.getResult();
-                        latLng = new LatLng( l.getLatitude(), l.getLongitude() );
-                        sendLatLgt();
-                        marker = mMap.addMarker(new MarkerOptions().position(latLng).title("Local de Encontro"));
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom( latLng , 15f));
+
+                        if( l != null ){
+
+                            latLng = new LatLng( l.getLatitude(), l.getLongitude() );
+                            sendLatLgt();
+                            marker = mMap.addMarker(new MarkerOptions().position(latLng).title("Local de Encontro"));
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom( latLng , 15f));
+
+                        }
+
                     }
 
                 }
