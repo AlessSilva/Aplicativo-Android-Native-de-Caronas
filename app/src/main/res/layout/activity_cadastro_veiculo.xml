@@ -75,18 +75,14 @@
                     app:cardBackgroundColor="#71413A3A"
                     app:contentPadding="5dp">
 
-                    <EditText
-                        android:id="@+id/editTextTipoCarro"
-                        android:hint="Tipo"
+                    <Spinner
+                        android:id="@+id/spinnerTipoVeiculo"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/shape_round_edittext"
-                        android:inputType="textCapWords"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp" />
+                        android:layout_height="45dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="5dp"
+                        android:spinnerMode="dropdown" />
 
                 </androidx.cardview.widget.CardView>
 

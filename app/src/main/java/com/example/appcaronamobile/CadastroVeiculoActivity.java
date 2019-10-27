@@ -11,9 +11,12 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import com.example.appcaronamobile.Model.Veiculo;
+import com.example.appcaronamobile.Util.CustomAdapters.Tipos_Veiculos_Adapter;
 import com.example.appcaronamobile.Util.Masks.MaskEditUtil;
 
 public class CadastroVeiculoActivity extends AppCompatActivity {
@@ -22,7 +25,7 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
     private EditText input;
 
     private EditText modeloV;
-    private EditText tipoV;
+    private Spinner tipoV;
     private EditText corV;
     private EditText placaV;
 
@@ -33,13 +36,19 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
 
     private Veiculo veiculo;
 
+    private SpinnerAdapter spinnerAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_veiculo);
 
+        tipoV = findViewById(R.id.spinnerTipoVeiculo);
+        spinnerAdapter = new Tipos_Veiculos_Adapter(this);
+        tipoV.setAdapter(spinnerAdapter);
+
+
         modeloV = findViewById(R.id.editTextModeloCarro);
-        tipoV = findViewById(R.id.editTextTipoCarro);
         corV = findViewById(R.id.editTextCorCarro);
         placaV = findViewById(R.id.editTextPlacaCarro);
 
@@ -53,11 +62,11 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 modelo = modeloV.getText().toString();
-                tipo = tipoV.getText().toString();
+                tipo = tipoV.getSelectedItem().toString();
                 cor = corV.getText().toString();
                 placa = placaV.getText().toString();
 
-                if(modelo.equals("") || tipo.equals("") || cor.equals("") || placa.equals("")) {
+                if(tipoV.getSelectedItemPosition() == 0 || modelo.equals("") || tipo.equals("") || cor.equals("") || placa.equals("")) {
                     Toast.makeText(view.getContext(), "Preencha todos os campos!", Toast.LENGTH_LONG).show();
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());

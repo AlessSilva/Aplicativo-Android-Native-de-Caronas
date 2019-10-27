@@ -55,14 +55,21 @@
                         android:onClick="onClickButtonRemover"
                         android:text="Remover" />
 
+                    <Button
+                        android:id="@+id/buttonEditarVeiculo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:text="Editar" />
+
                 </LinearLayout>
 
                 <ListView
                     android:id="@+id/listMeusVeiculos"
                     android:layout_width="match_parent"
-                    android:layout_height="417dp"
-                    android:background="#71413A3A"
-                    android:scrollbars="vertical" />
+                    android:layout_height="412dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true" />
             </LinearLayout>
         </ScrollView>
     </androidx.cardview.widget.CardView>
