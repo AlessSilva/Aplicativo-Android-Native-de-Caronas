@@ -26,16 +26,17 @@ public class UsuarioDBMemory implements UsuarioDAO {
     }
 
     @Override
-    public void addUsuario(Usuario usuario) {
+    public Usuario addUsuario(Usuario usuario) {
 
         idgerador = new Long( idgerador.intValue()+1 );
         usuario.setId( idgerador );
         listaUsuario.add(usuario);
 
+        return usuario;
     }
 
     @Override
-    public void editUsuario(Usuario usuario) {
+    public Usuario editUsuario(Usuario usuario) {
 
         int i = 0;
         for ( Usuario u : listaUsuario ){
@@ -43,10 +44,12 @@ public class UsuarioDBMemory implements UsuarioDAO {
             if ( u.getId().equals( usuario.getId() ) ){
 
                 listaUsuario.set(i,usuario);
-                return;
+                return usuario;
             }
             i++;
         }
+
+        return usuario;
 
     }
 

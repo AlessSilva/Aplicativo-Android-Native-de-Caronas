@@ -2,7 +2,6 @@ package com.example.appcaronamobile.DBMemory;
 
 import com.example.appcaronamobile.Dao.CaronaDAO;
 import com.example.appcaronamobile.Model.Carona;
-import com.example.appcaronamobile.Model.Usuario;
 import com.example.appcaronamobile.Model.Veiculo;
 
 import java.util.ArrayList;
@@ -20,33 +19,39 @@ public class CaronaDBMemory implements CaronaDAO {
         listaCarona.add( new Carona(new Long(1), new Long(3) , 3 ,
                 new Veiculo(  "Cacimbinha" , "CARRO", "J3SUS", "Pink" ),
                 "15:35", "Praça do Chalé", false,
-                -4.970172002073431, -39.0174075588584, new ArrayList<Usuario>()) );
+                -4.970172002073431, -39.0174075588584) );
 
         listaCarona.add( new Carona(new Long(2), new Long(3) , 2 ,
                 new Veiculo( "Cacimbinha" , "CARRO", "J3SUS", "Pink" ),
                 "9:30", "UFC", false,
-                -4.9698172002073431, -39.0146215588584, new ArrayList<Usuario>()) );
+                -4.9698172002073431, -39.0146215588584) );
 
         listaCarona.add( new Carona(new Long(3), new Long(1) , 1 ,
                 new Veiculo( "HONDA", "MOTO", "4L355", "AZUL DA COR DO MAR" ),
                 "13:00", "Rodoviária", false,
-                -4.930172002073431, -39.0174075588584, new ArrayList<Usuario>()) );
+                -4.930172002073431, -39.0174075588584) );
 
         listaCarona.add( new Carona(new Long(4), new Long(2) , 1 ,
                 new Veiculo( "COROLA", "CARRO", "JOJO666", "PRETO" ),
                 "21:30", "Quixeramobim", true,
-                -4.910172002073431, -39.0274075588584, new ArrayList<Usuario>()) );
+                -4.910172002073431, -39.0274075588584) );
 
     }
 
     @Override
-    public void addCarona(Carona carona) {
+    public Carona addCarona(Carona carona) {
 
+        idgerador = new Long( idgerador.intValue()+1 );
+        carona.setId( idgerador );
+        listaCarona.add(carona);
+
+        return carona;
     }
 
     @Override
-    public void editCarona(Carona carona) {
+    public Carona editCarona(Carona carona) {
 
+        return carona;
     }
 
     @Override

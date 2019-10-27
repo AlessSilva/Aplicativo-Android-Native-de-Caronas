@@ -4,33 +4,38 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.appcaronamobile.DBMemory.CaronaDBMemory;
+import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
+import com.example.appcaronamobile.Dao.CaronaDAO;
+import com.example.appcaronamobile.Dao.UsuarioDAO;
 import com.example.appcaronamobile.Fragments.CadastroCarona1;
 import com.example.appcaronamobile.Fragments.CadastroCarona2;
-import com.example.appcaronamobile.Fragments.CadastroPt2;
-import com.example.appcaronamobile.Fragments.Map;
-import com.example.appcaronamobile.Fragments.Map2;
-import com.example.appcaronamobile.Repository.MyListener;
+import com.example.appcaronamobile.Model.Usuario;
 import com.example.appcaronamobile.Repository.MyListener2;
 import com.google.android.gms.maps.model.LatLng;
 
 public class CadastroCaronaActivity extends AppCompatActivity implements MyListener2 {
 
-    FragmentManager fragmentManager;
+    FragmentManager fragmentManager = null;
 
+    private Usuario usuario = null;
     private int vagas;
     private String veiculo;
     private String horario;
     private String destino;
     private boolean ajuda;
-    private LatLng latLng;
+    private LatLng latLng = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_carona);
+
+        usuario = (Usuario) getIntent().getSerializableExtra("usuario");
 
         fragmentManager = getSupportFragmentManager();
 
@@ -63,7 +68,16 @@ public class CadastroCaronaActivity extends AppCompatActivity implements MyListe
 
     public void finalizarFragmentoP2(){
 
-        Toast.makeText(this, vagas+"\n"+veiculo+"\n"+" "+horario+"\n"+destino+"\n"+ajuda+"\n"+latLng.toString(), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent();
+        intent.putExtra("vagas",vagas);
+        intent.putExtra("horario",horario);
+        intent.putExtra("destino",destino);
+        intent.putExtra("ajuda",ajuda+"");
+        intent.putExtra("lat",latLng.latitude+"");
+        intent.putExtra("long",latLng.longitude+"");
+
+        setResult(666666,intent);
+
         finish();
 
     }

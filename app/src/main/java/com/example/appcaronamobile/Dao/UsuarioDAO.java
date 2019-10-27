@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 public interface UsuarioDAO {
 
-    public void addUsuario( Usuario usuario);
+    public Usuario addUsuario( Usuario usuario);
 
-    public void editUsuario( Usuario usuario );
+    public Usuario editUsuario( Usuario usuario );
 
     public void deleteUsuario( Long usuarioId );
 

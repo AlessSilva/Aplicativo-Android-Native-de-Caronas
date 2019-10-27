@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 public interface CaronaDAO {
 
-    public void addCarona( Carona carona);
+    public Carona addCarona( Carona carona);
 
-    public void editCarona( Carona carona );
+    public Carona editCarona( Carona carona );
 
     public void deleteCarona( Long caronaId );
 

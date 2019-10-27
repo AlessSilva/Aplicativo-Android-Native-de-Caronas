@@ -15,6 +15,7 @@ public class Usuario implements Serializable {
     private String situacao;
     private String instituicao;
     private List<Veiculo> veiculos;
+    private List<Carona> minhas_caronas;
 
     public Usuario(String primeiroNome, String sobrenome, String telefone,
                    String email, String senha, String situacao, String instituicao) {
@@ -26,6 +27,7 @@ public class Usuario implements Serializable {
         this.situacao = situacao;
         this.instituicao = instituicao;
         this.veiculos = new ArrayList<Veiculo>();
+        this.minhas_caronas = new ArrayList<Carona>();
     }
 
     public Usuario(Long id, String primeiroNome, String sobrenome, String telefone,
@@ -39,6 +41,7 @@ public class Usuario implements Serializable {
         this.situacao = situacao;
         this.instituicao = instituicao;
         this.veiculos = new ArrayList<Veiculo>();
+        this.minhas_caronas = new ArrayList<Carona>();
     }
 
     public Long getId() { return id; }
@@ -112,6 +115,12 @@ public class Usuario implements Serializable {
     public void addVeiculo(Veiculo veiculo) {
         this.veiculos.add(veiculo);
     }
+
+    public List<Carona> getMinhas_caronas() { return minhas_caronas; }
+
+    public void setMinhas_caronas(List<Carona> minhas_caronas) { this.minhas_caronas = minhas_caronas; }
+
+    public void addCarona( Carona carona ){ this.minhas_caronas.add(carona); }
 
     @Override
     public String toString() {

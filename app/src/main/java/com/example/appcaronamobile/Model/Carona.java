@@ -1,9 +1,10 @@
 package com.example.appcaronamobile.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Carona {
+public class Carona implements Serializable {
 
     private Long id;
     private int vagas;
@@ -16,7 +17,7 @@ public class Carona {
     private Long id_responsavel;
     List<Usuario> participantes;
 
-    public Carona(Long id, Long id_responsavel ,int vagas, Veiculo veiculo, String horario, String destino, boolean ajuda, double latitude, double longitude, List<Usuario> usuarios) {
+    public Carona(Long id, Long id_responsavel ,int vagas, Veiculo veiculo, String horario, String destino, boolean ajuda, double latitude, double longitude) {
         this.id = id;
         this.id_responsavel = id_responsavel;
         this.vagas = vagas;
@@ -26,10 +27,10 @@ public class Carona {
         this.ajuda = ajuda;
         this.latLocalEncontro = latitude;
         this.lngLocalEncontro = longitude;
-        this.participantes = usuarios;
+        this.participantes = new ArrayList<Usuario>();
     }
 
-    public Carona(Long id_responsavel, int vagas, Veiculo veiculo, String horario, String destino, boolean ajuda, double latitude, double longitude, List<Usuario> usuarios) {
+    public Carona(Long id_responsavel, int vagas, Veiculo veiculo, String horario, String destino, boolean ajuda, double latitude, double longitude) {
         this.id_responsavel = id_responsavel;
         this.vagas = vagas;
         this.veiculo = veiculo;
@@ -38,7 +39,7 @@ public class Carona {
         this.ajuda = ajuda;
         this.latLocalEncontro = latitude;
         this.lngLocalEncontro = longitude;
-        this.participantes = usuarios;
+        this.participantes = new ArrayList<Usuario>();
     }
 
     public int getVagas() {
@@ -93,25 +94,19 @@ public class Carona {
         return latLocalEncontro;
     }
 
-    public void setLatLocalEncontro(double latLocalEncontro) {
-        this.latLocalEncontro = latLocalEncontro;
-    }
+    public void setLatLocalEncontro(double latLocalEncontro) { this.latLocalEncontro = latLocalEncontro; }
 
     public double getLngLocalEncontro() {
         return lngLocalEncontro;
     }
 
-    public void setLngLocalEncontro(double lngLocalEncontro) {
-        this.lngLocalEncontro = lngLocalEncontro;
-    }
+    public void setLngLocalEncontro(double lngLocalEncontro) { this.lngLocalEncontro = lngLocalEncontro; }
 
     public List<Usuario> getParticipantes() {
         return participantes;
     }
 
-    public void setParticipantes(List<Usuario> participantes) {
-        this.participantes = participantes;
-    }
+    public void setParticipantes(List<Usuario> participantes) { this.participantes = participantes; }
 
     public Long getId_responsavel() {
         return id_responsavel;
@@ -120,4 +115,6 @@ public class Carona {
     public void setId_responsavel(Long id_responsavel) {
         this.id_responsavel = id_responsavel;
     }
+
+    public void addUsuario( Usuario usuario ){ this.participantes.add(usuario); }
 }
