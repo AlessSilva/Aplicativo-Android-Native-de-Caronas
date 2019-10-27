@@ -7,6 +7,7 @@ import android.widget.EditText;
 
 public abstract class MaskEditUtil {
     public static final String FORMAT_PHONE = "(##) #########";
+    public static final String FORMAT_PLACA = "###-####";
 
     public static TextWatcher mask(final EditText editText, final String mask) {
         return new TextWatcher() {

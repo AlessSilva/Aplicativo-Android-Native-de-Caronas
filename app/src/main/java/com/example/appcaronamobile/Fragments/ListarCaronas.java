@@ -15,7 +15,7 @@ import com.example.appcaronamobile.DBMemory.CaronaDBMemory;
 import com.example.appcaronamobile.Dao.CaronaDAO;
 import com.example.appcaronamobile.Model.Carona;
 import com.example.appcaronamobile.R;
-import com.example.appcaronamobile.Repository.MyAdapterListarCaronas;
+import com.example.appcaronamobile.Util.CustomAdapters.MyAdapterListarCaronas;
 
 import java.util.ArrayList;
 import java.util.List;
