@@ -152,7 +152,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textView"
+                            android:id="@+id/textViewAlertCaronaVeiculoPlaca"
                             android:layout_width="131dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"

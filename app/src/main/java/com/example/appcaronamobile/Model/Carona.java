@@ -7,7 +7,7 @@ public class Carona {
 
     private Long id;
     private int vagas;
-    private String veiculo; //TODO: Deve ser um objeto
+    private Veiculo veiculo; //TODO: Deve ser um objeto
     private String horario;
     private String destino;
     private double latLocalEncontro;
@@ -16,7 +16,7 @@ public class Carona {
     private Long id_responsavel;
     List<Usuario> participantes;
 
-    public Carona(Long id, Long id_responsavel ,int vagas, String veiculo, String horario, String destino, boolean ajuda, double latitude, double longitude, List<Usuario> usuarios) {
+    public Carona(Long id, Long id_responsavel ,int vagas, Veiculo veiculo, String horario, String destino, boolean ajuda, double latitude, double longitude, List<Usuario> usuarios) {
         this.id = id;
         this.id_responsavel = id_responsavel;
         this.vagas = vagas;
@@ -29,7 +29,7 @@ public class Carona {
         this.participantes = usuarios;
     }
 
-    public Carona(Long id_responsavel, int vagas, String veiculo, String horario, String destino, boolean ajuda, double latitude, double longitude, List<Usuario> usuarios) {
+    public Carona(Long id_responsavel, int vagas, Veiculo veiculo, String horario, String destino, boolean ajuda, double latitude, double longitude, List<Usuario> usuarios) {
         this.id_responsavel = id_responsavel;
         this.vagas = vagas;
         this.veiculo = veiculo;
@@ -49,11 +49,11 @@ public class Carona {
         this.vagas = vagas;
     }
 
-    public String getVeiculo() {
+    public Veiculo getVeiculo() {
         return veiculo;
     }
 
-    public void setVeiculo(String veiculo) {
+    public void setVeiculo(Veiculo veiculo) {
         this.veiculo = veiculo;
     }
 

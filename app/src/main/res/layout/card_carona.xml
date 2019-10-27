@@ -66,8 +66,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Nome do usuário aquiiii"
-                            android:textColor="#F9050505"
-                            android:textSize="16dp" />
+                            android:textColor="#1565C0"
+                            android:textSize="16dp"
+                            app:fontFamily="sans-serif-condensed-medium" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -99,7 +100,8 @@
                             android:layout_weight="0"
                             android:text="Quantidade de vagas aqui"
                             android:textColor="#F0090808"
-                            android:textSize="16dp" />
+                            android:textSize="16dp"
+                            app:fontFamily="sans-serif-condensed-medium" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 

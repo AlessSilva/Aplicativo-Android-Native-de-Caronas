@@ -49,10 +49,19 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
         Carona carona = listCarona.get(position);
 
         holder.vagas.setText( "Vagas: " + (carona.getVagas()-carona.getParticipantes().size()) + " de "+carona.getVagas());
-        holder.responsavel.setText( "Carona de @"+usuarioDAO.getUsuario( carona.getId_responsavel() ).getPrimeiroNome() );
+        holder.responsavel.setText( "@"+usuarioDAO.getUsuario( carona.getId_responsavel() ).getPrimeiroNome() );
 
-        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaUser ))
-                .setText( usuarioDAO.getUsuario( carona.getId_responsavel() ).getPrimeiroNome() + usuarioDAO.getUsuario( carona.getId_responsavel() ).getSobrenome() );
+        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaUserNome ))
+                .setText( usuarioDAO.getUsuario( carona.getId_responsavel() ).getPrimeiroNome() +" "+ usuarioDAO.getUsuario( carona.getId_responsavel() ).getSobrenome() );
+
+        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaUserInsituicao ))
+                .setText( usuarioDAO.getUsuario( carona.getId_responsavel() ).getInstituicao() );
+
+        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaUserSituacao ))
+                .setText( usuarioDAO.getUsuario( carona.getId_responsavel() ).getSituacao() );
+
+        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaUserTelefone ))
+                .setText( usuarioDAO.getUsuario( carona.getId_responsavel() ).getTelefone() );
 
         ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaVagasTotal ))
                 .setText( carona.getVagas()+"" );
@@ -67,9 +76,12 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
                 .setText( carona.getDestino() );
 
         ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaVeiculo ))
-                .setText( carona.getVeiculo() );
+                .setText( carona.getVeiculo().getModelo() );
 
-        if ( carona.getVeiculo().equals("CARRO") ){
+        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaVeiculoPlaca ))
+                .setText( carona.getVeiculo().getPlaca() );
+
+        if ( carona.getVeiculo().getTipo().equals("CARRO") ){
             holder.tipoveiculo.setImageResource(R.mipmap.ic_car2);
 
             ( (ImageView) holder.alertView.findViewById( R.id.imageViewAlertCarona )).setImageResource( R.mipmap.ic_car2 );
