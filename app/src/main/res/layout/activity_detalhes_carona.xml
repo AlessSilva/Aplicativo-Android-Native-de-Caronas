@@ -6,238 +6,435 @@
     android:layout_height="match_parent"
     tools:context=".DetalhesCaronaActivity">
 
-    <androidx.cardview.widget.CardView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
-            android:orientation="vertical">
+            android:layout_margin="5dp">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_margin="1dp"
-                android:background="#2E7D32"
-                app:cardBackgroundColor="#BEEE9D0F"
-                app:contentPadding="5dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:text="Usuário:"
-                        android:textColor="#FDFCFC"
-                        app:fontFamily="sans-serif-medium" />
-
-                    <TextView
-                        android:id="@+id/textViewAlertCaronaUser"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:text="TextView" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_margin="1dp"
-                android:background="#2E7D32"
-                app:cardBackgroundColor="#BEEE9D0F"
-                app:contentPadding="5dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView61"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:text="Vagas:"
-                        android:textColor="#FDFCFC"
-                        app:fontFamily="sans-serif-medium" />
-
-                    <TextView
-                        android:id="@+id/textViewAlertCaronaVagasRestantes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.25"
-                        android:text="TextView" />
-
-                    <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="2dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.1"
-                        android:text="/"
-                        android:textColor="#FCF7F3F3"
-                        app:fontFamily="sans-serif-medium" />
-
-                    <TextView
-                        android:id="@+id/textViewAlertCaronaVagasTotal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.25"
-                        android:text="TextView" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_margin="1dp"
-                android:background="#2E7D32"
-                app:cardBackgroundColor="#BEEE9D0F"
-                app:contentPadding="5dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView64"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:text="Horário:"
-                        android:textColor="#FDFCFC"
-                        app:fontFamily="sans-serif-medium" />
-
-                    <TextView
-                        android:id="@+id/textViewAlertCaronaHorario"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:text="TextView" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:background="#2E7D32"
-                app:cardBackgroundColor="#BEEE9D0F"
-                app:contentPadding="5dp">
+                android:background="#FFFFFF"
+                android:orientation="vertical">
 
-                <LinearLayout
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="2.5dp"
+                    android:background="#2E7D32"
+                    app:cardBackgroundColor="#BEEE9D0F">
 
-                    <TextView
-                        android:id="@+id/textView69"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:text="Destino:"
-                        android:textColor="#FDFCFC"
-                        app:fontFamily="sans-serif-medium" />
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/textViewAlertCaronaDestino"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:text="TextView" />
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_margin="1dp"
+                            android:background="#2E7D32"
+                            app:cardBackgroundColor="#FFFFFF"
+                            app:contentPadding="5dp">
 
-                </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
 
-            </androidx.cardview.widget.CardView>
+                                <TextView
+                                    android:id="@+id/textView6111"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="Usuário:"
+                                    android:textColor="#131212"
+                                    app:fontFamily="sans-serif-medium" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_margin="1dp"
-                android:background="#2E7D32"
-                app:cardBackgroundColor="#BEEE9D0F"
-                app:contentPadding="5dp">
+                                <TextView
+                                    android:id="@+id/textViewAlertCaronaUserNome"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="TextView"
+                                    android:textColor="#283593" />
 
-                <LinearLayout
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_margin="1dp"
+                            android:background="#2E7D32"
+                            app:cardBackgroundColor="#FFFFFF"
+                            app:contentPadding="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textView612"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="Instituição:"
+                                    android:textColor="#131212"
+                                    app:fontFamily="sans-serif-medium" />
+
+                                <TextView
+                                    android:id="@+id/textViewAlertCaronaUserInsituicao"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="TextView"
+                                    android:textColor="#283593" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_margin="1dp"
+                            android:background="#2E7D32"
+                            app:cardBackgroundColor="#FFFFFF"
+                            app:contentPadding="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textView6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="Situação:"
+                                    android:textColor="#131212"
+                                    app:fontFamily="sans-serif-medium" />
+
+                                <TextView
+                                    android:id="@+id/textViewAlertCaronaUserSituacao"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="TextView"
+                                    android:textColor="#283593" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_margin="1dp"
+                            android:background="#2E7D32"
+                            app:cardBackgroundColor="#FFFFFF"
+                            app:contentPadding="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textView698"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="Telefone:"
+                                    android:textColor="#131212"
+                                    app:fontFamily="sans-serif-medium" />
+
+                                <TextView
+                                    android:id="@+id/textViewAlertCaronaUserTelefone"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="TextView"
+                                    android:textColor="#283593" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginTop="2.5dp"
+                    android:layout_marginBottom="2.5dp"
+                    android:background="#2E7D32"
+                    app:cardBackgroundColor="#BEEE9D0F">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_margin="1dp"
+                            android:background="#2E7D32"
+                            app:cardBackgroundColor="#A91565C0"
+                            app:contentPadding="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/textView15"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0.5"
+                                        android:text="Veículo: "
+                                        android:textColor="#EDEDF3"
+                                        app:fontFamily="sans-serif-medium" />
+
+                                    <TextView
+                                        android:id="@+id/textViewAlertCaronaVeiculo"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0.5"
+                                        android:text="Veículo: "
+                                        android:textColor="#F7F8FC" />
+
+                                    <ImageView
+                                        android:id="@+id/imageViewAlertCarona"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0.1"
+                                        app:srcCompat="@mipmap/ic_car2" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_margin="1dp"
+                            android:background="#2E7D32"
+                            app:cardBackgroundColor="#A91565C0"
+                            app:contentPadding="5dp">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textView3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="Placa:"
+                                    android:textColor="#EDEDF3"
+                                    app:fontFamily="sans-serif-medium" />
+
+                                <TextView
+                                    android:id="@+id/textViewAlertCaronaVeiculoPlaca"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="TextView"
+                                    android:textColor="#F2FFFFFF" />
+
+                            </LinearLayout>
+
+
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2.5dp"
+                    android:background="#2E7D32"
+                    app:cardBackgroundColor="#BEEE9D0F">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/textView15"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.5"
-                            android:text="Veículo: "
-                            android:textColor="#FFFCFC" />
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_margin="1dp"
+                            android:background="#2E7D32"
+                            app:cardBackgroundColor="#BEEE9D0F"
+                            app:contentPadding="5dp">
 
-                        <TextView
-                            android:id="@+id/textViewAlertCaronaVeiculo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.5"
-                            android:text="Veículo: " />
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
 
-                        <ImageView
-                            android:id="@+id/imageViewAlertCarona"
-                            android:layout_width="wrap_content"
+                                <TextView
+                                    android:id="@+id/textView61"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="Vagas:"
+                                    android:textColor="#FDFCFC"
+                                    app:fontFamily="sans-serif-medium" />
+
+                                <TextView
+                                    android:id="@+id/textViewAlertCaronaVagasRestantes"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.25"
+                                    android:text="TextView" />
+
+                                <TextView
+                                    android:id="@+id/textView9"
+                                    android:layout_width="2dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.1"
+                                    android:text="/"
+                                    android:textColor="#FCF7F3F3"
+                                    app:fontFamily="sans-serif-medium" />
+
+                                <TextView
+                                    android:id="@+id/textViewAlertCaronaVagasTotal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.25"
+                                    android:text="TextView" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_margin="1dp"
+                            android:background="#2E7D32"
+                            app:cardBackgroundColor="#BEEE9D0F"
+                            app:contentPadding="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textView64"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="Horário:"
+                                    android:textColor="#FDFCFC"
+                                    app:fontFamily="sans-serif-medium" />
+
+                                <TextView
+                                    android:id="@+id/textViewAlertCaronaHorario"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="TextView" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.1"
-                            app:srcCompat="@mipmap/ic_car2" />
+                            android:layout_margin="1dp"
+                            android:background="#2E7D32"
+                            app:cardBackgroundColor="#BEEE9D0F"
+                            app:contentPadding="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textView69"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="Destino:"
+                                    android:textColor="#FDFCFC"
+                                    app:fontFamily="sans-serif-medium" />
+
+                                <TextView
+                                    android:id="@+id/textViewAlertCaronaDestino"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="TextView" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
                     </LinearLayout>
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="#C150971E"
-                android:paddingLeft="20dp"
-                android:paddingTop="5dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="5dp"
-                android:text="Quero Participar" />
 
 
-            <Button
-                android:id="@+id/buttonVerParticipantes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:shadowColor="#00B32323"
-                android:text="Ver participantes"
-                android:textColor="#0277BD"
-                android:textSize="10dp" />
+                </androidx.cardview.widget.CardView>
 
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:background="#C150971E"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="5dp"
+                    android:text="Quero Participar" />
+
+
+                <Button
+                    android:id="@+id/buttonAlertCaronaFechar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:shadowColor="#00B32323"
+                    android:text="Fechar"
+                    android:textColor="#C62828"
+                    android:textSize="10dp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
+
 </FrameLayout>

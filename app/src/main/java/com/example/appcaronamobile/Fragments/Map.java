@@ -85,7 +85,7 @@ public class Map extends SupportMapFragment implements OnMapReadyCallback,
 
             latLng = new LatLng( c.getLatLocalEncontro(), c.getLngLocalEncontro() );
 
-            if( c.getVeiculo() == "CARRO" ){
+            if( c.getVeiculo().getTipo() == "CARRO" ){
                 mMap.addMarker(new MarkerOptions().position(latLng)
                         .title( usuarioDAO.getUsuario( c.getId_responsavel() ).getPrimeiroNome() )
                         .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_car2)));
