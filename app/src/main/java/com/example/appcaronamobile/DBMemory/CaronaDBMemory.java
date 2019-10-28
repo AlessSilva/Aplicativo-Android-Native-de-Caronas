@@ -2,6 +2,7 @@ package com.example.appcaronamobile.DBMemory;
 
 import com.example.appcaronamobile.Dao.CaronaDAO;
 import com.example.appcaronamobile.Model.Carona;
+import com.example.appcaronamobile.Model.Usuario;
 import com.example.appcaronamobile.Model.Veiculo;
 
 import java.util.ArrayList;
@@ -51,6 +52,17 @@ public class CaronaDBMemory implements CaronaDAO {
     @Override
     public Carona editCarona(Carona carona) {
 
+        int i = 0;
+        for ( Carona c : listaCarona ){
+
+            if ( c.getId().equals( carona.getId() ) ){
+
+                listaCarona.set(i,carona);
+                return carona;
+            }
+            i++;
+        }
+
         return carona;
     }
 
@@ -67,6 +79,23 @@ public class CaronaDBMemory implements CaronaDAO {
     @Override
     public ArrayList<Carona> getListaCarona() {
         return listaCarona;
+    }
+
+    @Override
+    public ArrayList<Carona> getListaCarora(Long usuario){
+
+        ArrayList<Carona> caronas = new ArrayList<Carona>();
+
+        for ( Carona c : listaCarona ){
+
+            if( c.getId_responsavel().equals( usuario ) ){
+                caronas.add(c);
+            }
+
+        }
+
+        return caronas;
+
     }
 
     public static CaronaDAO getInstance(){

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class UsuarioDBMemory implements UsuarioDAO {
 
     private static ArrayList<Usuario> listaUsuario;
+    private static Usuario usuario_logado;
     private static UsuarioDBMemory usuarioDAO;
     private static Long idgerador = new Long(1000);
 
@@ -15,14 +16,15 @@ public class UsuarioDBMemory implements UsuarioDAO {
 
         listaUsuario = new ArrayList<Usuario>();
         listaUsuario.add( new Usuario(new Long(1),"Alessandro", "Souza","(66) 666666666",
-                "ale@alu.ufc.com.br", "mirio", "Discente", "UFC") );
+                "ale@ufc", "mirio", "Discente", "UFC") );
 
         listaUsuario.add( new Usuario(new Long(2),"Carlos Edu", "Ferreira","(44) 444444444",
-                "cadu@alu.ufc.com.br", "nhem", "Discente", "UFC") );
+                "cadu@ufc", "nhem", "Discente", "UFC") );
 
         listaUsuario.add( new Usuario(new Long(3),"Victoria", "Pacheco","(24) 898989898",
-                "viviPacheco@ifce.com.br", "vivi", "Docente", "IFCE") );
+                "viviPacheco@ifce", "vivi", "Docente", "IFCE") );
 
+        usuario_logado = null;
     }
 
     @Override
@@ -77,7 +79,8 @@ public class UsuarioDBMemory implements UsuarioDAO {
 
             if ( u.getEmail().equals(login) || u.getTelefone().equals(login) ){
                 if ( u.getSenha().equals(senha) ){
-                    return u;
+                    usuario_logado = u;
+                    return usuario_logado;
                 }
             }
 
@@ -98,6 +101,11 @@ public class UsuarioDBMemory implements UsuarioDAO {
         }
 
         return usuarioDAO;
+    }
+
+    @Override
+    public Usuario getLogado(){
+        return usuario_logado;
     }
 
 }

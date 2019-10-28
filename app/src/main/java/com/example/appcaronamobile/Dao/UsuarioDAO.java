@@ -17,4 +17,6 @@ public interface UsuarioDAO {
     public ArrayList<Usuario> getListaUsuario();
 
     public Usuario login( String login, String senha );
+
+    public Usuario getLogado();
 }

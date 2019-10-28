@@ -29,6 +29,7 @@ public class CadastroCarona1 extends Fragment {
     EditText horario = null;
     EditText destino = null;
     RadioGroup ajudaG = null;
+    RadioButton radioButton_selec;
     boolean ajuda = false;
 
     Spinner spinner_veiculos = null;
@@ -54,6 +55,8 @@ public class CadastroCarona1 extends Fragment {
         destino = view.findViewById(R.id.editTextDestinoCaronaCad);
         ajudaG = view.findViewById( R.id.radioGroupAjudaCaronaCad );
 
+        radioButton_selec = view.findViewById( R.id.radioAjudaCaronaCad );
+
         proximo = view.findViewById(R.id.buttonProximoCarona);
         proximo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,14 +67,11 @@ public class CadastroCarona1 extends Fragment {
                 String de = destino.getText().toString();
                 String ve = spinner_veiculos.getSelectedItem().toString();
 
-                RadioButton radioButton_selec = view.findViewById( ajudaG.getCheckedRadioButtonId() );
-                if(radioButton_selec == null){
-                    ajuda = false;
-                }else{
+                if(radioButton_selec.isChecked()){
                     ajuda = true;
                 }
 
-                if ( va == null || ho.equals("") || de.equals("") || ve.equals("") ) {
+                if ( va == null || va.equals("") || ho.equals("") || de.equals("") || ve.equals("") ) {
                     Toast.makeText(getContext(), "Preencha todos os campos", Toast.LENGTH_LONG).show();
                 }else {
                     sendData(Integer.parseInt(va),ve,ho,de,ajuda);

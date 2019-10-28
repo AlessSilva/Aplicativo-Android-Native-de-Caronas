@@ -15,6 +15,8 @@ public class Carona implements Serializable {
     private double lngLocalEncontro;
     private boolean ajuda;
     private Long id_responsavel;
+    private int likes;
+    private int dislikes;
     List<Usuario> participantes;
 
     public Carona(Long id, Long id_responsavel ,int vagas, Veiculo veiculo, String horario, String destino, boolean ajuda, double latitude, double longitude) {
@@ -28,6 +30,8 @@ public class Carona implements Serializable {
         this.latLocalEncontro = latitude;
         this.lngLocalEncontro = longitude;
         this.participantes = new ArrayList<Usuario>();
+        this.likes = 0;
+        this.dislikes = 0;
     }
 
     public Carona(Long id_responsavel, int vagas, Veiculo veiculo, String horario, String destino, boolean ajuda, double latitude, double longitude) {
@@ -117,4 +121,16 @@ public class Carona implements Serializable {
     }
 
     public void addUsuario( Usuario usuario ){ this.participantes.add(usuario); }
+
+    public int getLikes() { return likes; }
+
+    public void setLikes(int likes) { this.likes = likes; }
+
+    public int getDislikes() { return dislikes; }
+
+    public void setDislikes(int dislikes) { this.dislikes = dislikes; }
+
+    public void addLike(){ this.likes++; }
+
+    public void addDislike(){ this.dislikes++; }
 }

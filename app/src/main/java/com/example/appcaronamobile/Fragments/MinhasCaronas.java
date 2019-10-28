@@ -12,56 +12,41 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.appcaronamobile.DBMemory.CaronaDBMemory;
-import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
 import com.example.appcaronamobile.Dao.CaronaDAO;
-import com.example.appcaronamobile.Dao.UsuarioDAO;
 import com.example.appcaronamobile.Model.Carona;
 import com.example.appcaronamobile.Model.Usuario;
 import com.example.appcaronamobile.R;
 import com.example.appcaronamobile.Util.CustomAdapters.MyAdapterListarCaronas;
+import com.example.appcaronamobile.Util.CustomAdapters.MyAdapterMinhasCaronas;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class ListarCaronas extends Fragment {
+public class MinhasCaronas extends Fragment {
 
-    View view = null;
+    Usuario usuario;
+    View view;
+    CaronaDAO caronaDAO = null;
+    RecyclerView mRecycleView;
     List<Carona> caronas;
 
-    UsuarioDAO usuarioDAO  =null;
-    CaronaDAO caronaDAO = null;
+    public MinhasCaronas() {}
 
-    Usuario usuario = null;
-
-    public ListarCaronas() {
-    }
-
-    RecyclerView mRecycleView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_listar_caronas, container, false);
+        view = inflater.inflate(R.layout.fragment_minhas_caronas, container, false);
+
+        usuario = (Usuario) getActivity().getIntent().getSerializableExtra("usuario");
 
         caronaDAO = CaronaDBMemory.getInstance();
-        usuarioDAO = UsuarioDBMemory.getInstance();
-        usuario = usuarioDAO.getLogado();
 
-        mRecycleView = view.findViewById(R.id.recyclerCaronas);
+        mRecycleView = view.findViewById(R.id.recyclerMCaronas);
         GridLayoutManager gridLayoutManager = new GridLayoutManager( this.getContext(),1 );
         mRecycleView.setLayoutManager(gridLayoutManager);
 
-        caronas = new ArrayList<Carona>();
-
-        for( Carona c : caronaDAO.getListaCarona() ){
-
-            if( (!c.getParticipantes().contains(usuario)) && (!c.getId_responsavel().equals(usuario.getId())) ){
-                caronas.add(c);
-            }
-        }
-
-        //caronas = caronaDAO.getListaCarona();
-        MyAdapterListarCaronas adapterListCaronas = new MyAdapterListarCaronas(this.getContext(),caronas);
+        caronas = caronaDAO.getListaCarora(usuario.getId());
+        MyAdapterMinhasCaronas adapterListCaronas = new MyAdapterMinhasCaronas(this.getContext(),caronas);
 
         mRecycleView.setAdapter(adapterListCaronas);
 

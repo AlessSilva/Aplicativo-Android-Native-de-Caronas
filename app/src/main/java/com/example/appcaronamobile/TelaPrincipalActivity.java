@@ -94,6 +94,13 @@ public class TelaPrincipalActivity extends AppCompatActivity
                 break;
             case R.id.HistoricoCaronas:
                 Toast.makeText(this, "Histórico de Caronas", Toast.LENGTH_SHORT).show();
+
+                Intent intent2 = new Intent(this, HistoricoCaronasActivity.class);
+
+                intent2.putExtra("usuario",usuario);
+
+                startActivity(intent2);
+
                 break;
             case R.id.VerAmigos:
                 Toast.makeText(this, "Ver Amigos", Toast.LENGTH_SHORT).show();

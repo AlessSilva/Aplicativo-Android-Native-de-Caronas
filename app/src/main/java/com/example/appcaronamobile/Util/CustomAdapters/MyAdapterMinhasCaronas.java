@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,49 +12,48 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.appcaronamobile.DBMemory.CaronaDBMemory;
 import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
-import com.example.appcaronamobile.Dao.CaronaDAO;
 import com.example.appcaronamobile.Dao.UsuarioDAO;
 import com.example.appcaronamobile.Model.Carona;
 import com.example.appcaronamobile.R;
 
 import java.util.List;
 
-public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListarCaronas.CaronaViewHolder>{
+public class MyAdapterMinhasCaronas extends RecyclerView.Adapter<MyAdapterMinhasCaronas.CaronaViewHolder2> {
+
 
     private Context mContext;
     private List<Carona> listCarona;
     private ViewGroup parent;
 
     UsuarioDAO usuarioDAO = null;
-    CaronaDAO caronaDAO = null;
 
-    public MyAdapterListarCaronas( Context mContext, List<Carona> listCarona  ){
+    public MyAdapterMinhasCaronas( Context mContext, List<Carona> listCarona  ){
 
         this.mContext = mContext;
         this.listCarona = listCarona;
 
         usuarioDAO = UsuarioDBMemory.getInstance();
-        caronaDAO = CaronaDBMemory.getInstance();
     }
 
     @NonNull
     @Override
-    public CaronaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CaronaViewHolder2 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         this.parent = parent;
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_carona,parent,false);
-        return new CaronaViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_minhas_caronas,parent,false);
+        return new CaronaViewHolder2(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final CaronaViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull CaronaViewHolder2 holder, int position) {
 
-        holder.carona = listCarona.get(position);
-        Carona carona = holder.carona;
+        Carona carona = listCarona.get(position);
 
-        holder.vagas.setText( "Vagas: " + (carona.getVagas()-carona.getParticipantes().size()) + " de "+carona.getVagas());
-        holder.responsavel.setText( "@"+usuarioDAO.getUsuario( carona.getId_responsavel() ).getPrimeiroNome() );
+        holder.data.setText( "Data: .../.../..." );
+        holder.horario.setText("Horário: " + carona.getHorario());
+        holder.destino.setText("Destino: " + carona.getDestino());
+        holder.like.setText(carona.getLikes()+"");
+        holder.dislike.setText(carona.getDislikes()+"");
 
         ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaUserNome ))
                 .setText( usuarioDAO.getUsuario( carona.getId_responsavel() ).getPrimeiroNome() +" "+ usuarioDAO.getUsuario( carona.getId_responsavel() ).getSobrenome() );
@@ -87,40 +85,7 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
         ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaVeiculoPlaca ))
                 .setText( carona.getVeiculo().getPlaca() );
 
-        holder.participar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                if( (holder.carona.getVagas() - holder.carona.getParticipantes().size()) > 0 ){
-
-                    holder.carona.addUsuario( usuarioDAO.getLogado() );
-                    holder.carona = caronaDAO.editCarona(holder.carona);
-
-                    listCarona.remove(holder.getAdapterPosition());
-                    notifyItemRemoved(holder.getAdapterPosition());
-                    notifyItemRangeChanged(holder.getAdapterPosition(),listCarona.size());
-
-                    Toast.makeText(mContext,"Participação confirmada"+caronaDAO.getListaCarona().size(),Toast.LENGTH_SHORT).show();
-
-                }
-
-            }
-        });
-
-        if ( carona.getVeiculo().getTipo().equals("CARRO") ){
-            holder.tipoveiculo.setImageResource(R.mipmap.ic_car2);
-
-            ( (ImageView) holder.alertView.findViewById( R.id.imageViewAlertCarona )).setImageResource( R.mipmap.ic_car2 );
-
-        }else{
-            holder.tipoveiculo.setImageResource(R.mipmap.ic_moto);
-
-            ( (ImageView) holder.alertView.findViewById( R.id.imageViewAlertCarona )).setImageResource( R.mipmap.ic_moto );
-
-        }
-        if ( carona.isAjuda() ){
-            holder.ajuda.setImageResource(R.mipmap.ic_ajuda);
-        }
 
     }
 
@@ -129,28 +94,29 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
         return listCarona.size();
     }
 
-    public class CaronaViewHolder extends RecyclerView.ViewHolder{
+    public class CaronaViewHolder2 extends RecyclerView.ViewHolder{
+
 
         View view = null;
-        TextView vagas =  null;
-        TextView responsavel = null;
-        ImageView tipoveiculo = null;
-        ImageView ajuda = null;
+        TextView data = null;
+        TextView horario = null;
+        TextView destino = null;
+        TextView like = null;
+        TextView dislike = null;
+
         View alertView = null;
         AlertDialog alertDialog = null;
         Button detalhes = null;
-        Button participar = null;
-        Carona carona;
 
-        public CaronaViewHolder(@NonNull View itemView) {
+        public CaronaViewHolder2(@NonNull View itemView) {
             super(itemView);
 
             view = itemView;
-
-            vagas = view.findViewById(R.id.CardViewCaronaVagas);
-            responsavel = view.findViewById(R.id.CardViewCaronaUserName);
-            tipoveiculo = view.findViewById(R.id.CardViewCaronaVeiculo);
-            ajuda = view.findViewById(R.id.CardViewCaronaAjuda);
+            data = view.findViewById( R.id.CardViewMCaronaData );
+            horario = view.findViewById( R.id.CardViewMCaronaHorario );
+            destino = view.findViewById( R.id.CardViewMCaronaDestino );
+            like = view.findViewById( R.id.textViewMCLike );
+            dislike = view.findViewById( R.id.textViewMCDislike );
 
             alertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_detalhes_carona, parent,false);
             AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
@@ -158,7 +124,9 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
             builder.setView( alertView );
             alertDialog = builder.create();
 
-            detalhes = view.findViewById( R.id.CardViewCaronaCaronaInfo );
+            detalhes = view.findViewById( R.id.CardViewMCInfo );
+
+            //Toast.makeText(parent.getContext(), detalhes+"", Toast.LENGTH_SHORT).show();
             detalhes.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -166,9 +134,8 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
                 }
             });
 
-            participar = view.findViewById( R.id.buttonCardViewParticipar );
-
         }
 
     }
+
 }

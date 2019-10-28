@@ -25,14 +25,14 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-           <!-- <ImageView
-                android:id="@+id/CardViewCaronaImageViewPerfil"
-                android:layout_width="300dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_weight="8"
-                tools:srcCompat="@tools:sample/avatars[10]" />
-            -->
+            <!-- <ImageView
+                 android:id="@+id/CardViewCaronaImageViewPerfil"
+                 android:layout_width="300dp"
+                 android:layout_height="100dp"
+                 android:layout_gravity="center"
+                 android:layout_weight="8"
+                 tools:srcCompat="@tools:sample/avatars[10]" />
+             -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -53,19 +53,12 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <ImageView
-                            android:id="@+id/imageView3"
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0"
-                            android:src="@drawable/ic_user" />
-
                         <TextView
-                            android:id="@+id/CardViewCaronaUserName"
+                            android:id="@+id/CardViewMCaronaData"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Nome do usuário aquiiii"
+                            android:text="Data aquiiii"
                             android:textColor="#1565C0"
                             android:textSize="16dp"
                             app:fontFamily="sans-serif-condensed-medium" />
@@ -86,36 +79,56 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <ImageView
-                            android:id="@+id/imageView4"
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0"
-                            android:src="@drawable/ic_vagas" />
-
                         <TextView
-                            android:id="@+id/CardViewCaronaVagas"
+                            android:id="@+id/CardViewMCaronaHorario"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="0"
-                            android:text="Quantidade de vagas aqui"
-                            android:textColor="#F0090808"
+                            android:text="Horario aquiiiii"
+                            android:textColor="#1565C0"
                             android:textSize="16dp"
                             app:fontFamily="sans-serif-condensed-medium" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:background="#A0A79898"
+                    app:cardBackgroundColor="#AAFDFDFD"
+                    app:contentPadding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/CardViewMCaronaDestino"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Destino aquiii"
+                            android:textColor="#1565C0"
+                            android:textSize="16dp"
+                            app:fontFamily="sans-serif-condensed-medium" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/CardViewCaronaCaronaInfo"
+                        android:id="@+id/CardViewMCInfo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:layout_marginRight="3dp"
+                        android:layout_marginRight="2.5dp"
                         android:layout_weight="0"
                         android:background="#B5FF8F00"
                         android:paddingLeft="10dp"
@@ -127,17 +140,20 @@
                         android:textSize="14sp" />
 
                     <Button
-                        android:id="@+id/buttonCardViewParticipar"
+                        android:id="@+id/cardViewMCParticipantes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:background="#C150971E"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="5dp"
-                        android:paddingRight="20dp"
-                        android:paddingBottom="5dp"
-                        android:text="Participar" />
+                        android:layout_marginLeft="2.5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="0"
+                        android:background="#1565C0"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="3dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="3dp"
+                        android:text="Participantes"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="30dp"
@@ -168,6 +184,53 @@
                             android:layout_height="match_parent" />
                     </androidx.cardview.widget.CardView>
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="2.5dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="60dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="0.1"
+                        app:srcCompat="@drawable/ic_like" />
+
+                    <TextView
+                        android:id="@+id/textViewMCLike"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textColor="#232423" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="2.5dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="60dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="0.1"
+                        app:srcCompat="@drawable/ic_dislike" />
+
+                    <TextView
+                        android:id="@+id/textViewMCDislike"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textColor="#232423" />
                 </LinearLayout>
 
             </LinearLayout>
