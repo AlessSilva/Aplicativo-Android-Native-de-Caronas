@@ -45,7 +45,7 @@ public class MinhasCaronas extends Fragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager( this.getContext(),1 );
         mRecycleView.setLayoutManager(gridLayoutManager);
 
-        caronas = caronaDAO.getListaCarora(usuario.getId());
+        caronas = caronaDAO.getListaCarona(usuario.getId());
         MyAdapterMinhasCaronas adapterListCaronas = new MyAdapterMinhasCaronas(this.getContext(),caronas);
 
         mRecycleView.setAdapter(adapterListCaronas);

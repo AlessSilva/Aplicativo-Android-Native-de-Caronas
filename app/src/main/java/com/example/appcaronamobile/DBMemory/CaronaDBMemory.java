@@ -82,7 +82,7 @@ public class CaronaDBMemory implements CaronaDAO {
     }
 
     @Override
-    public ArrayList<Carona> getListaCarora(Long usuario){
+    public ArrayList<Carona> getListaCarona(Long usuario){
 
         ArrayList<Carona> caronas = new ArrayList<Carona>();
 
@@ -90,6 +90,27 @@ public class CaronaDBMemory implements CaronaDAO {
 
             if( c.getId_responsavel().equals( usuario ) ){
                 caronas.add(c);
+            }
+
+        }
+
+        return caronas;
+
+    }
+
+    @Override
+    public ArrayList<Carona> getListaCaronaParticipacao(Long usuario){
+
+        ArrayList<Carona> caronas = new ArrayList<Carona>();
+
+        for ( Carona c : listaCarona ){
+
+            for( Usuario u : c.getParticipantes() ){
+
+                if ( u.getId().equals(usuario) ){
+                    caronas.add(c);
+                }
+
             }
 
         }

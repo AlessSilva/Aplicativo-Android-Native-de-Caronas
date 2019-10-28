@@ -132,5 +132,9 @@ public class Carona implements Serializable {
 
     public void addLike(){ this.likes++; }
 
+    public void removeLike(){ this.likes--; }
+
     public void addDislike(){ this.dislikes++; }
+
+    public void removeDislike(){ this.dislikes--; }
 }

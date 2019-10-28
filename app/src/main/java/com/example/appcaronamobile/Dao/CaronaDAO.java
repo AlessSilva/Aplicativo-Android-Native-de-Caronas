@@ -17,6 +17,8 @@ public interface CaronaDAO {
 
     public ArrayList<Carona> getListaCarona();
 
-    public ArrayList<Carona> getListaCarora(Long usuario);
+    public ArrayList<Carona> getListaCarona(Long usuario);
+
+    public ArrayList<Carona> getListaCaronaParticipacao(Long usuario);
 
 }
