@@ -16,6 +16,7 @@ import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
 import com.example.appcaronamobile.Dao.CaronaDAO;
 import com.example.appcaronamobile.Dao.UsuarioDAO;
 import com.example.appcaronamobile.Model.Carona;
+import com.example.appcaronamobile.Model.Participante;
 import com.example.appcaronamobile.Model.Usuario;
 import com.example.appcaronamobile.R;
 import com.example.appcaronamobile.Util.CustomAdapters.MyAdapterListarCaronas;
@@ -55,12 +56,12 @@ public class ListarCaronas extends Fragment {
 
         for( Carona c : caronaDAO.getListaCarona() ){
 
-            if( (!c.getParticipantes().contains(usuario)) && (!c.getId_responsavel().equals(usuario.getId())) ){
+            if( (c.getParticipante(usuario) == null) && (!c.getId_responsavel().equals(usuario.getId())) ){
                 caronas.add(c);
             }
         }
 
-        //caronas = caronaDAO.getListaCarona();
+
         MyAdapterListarCaronas adapterListCaronas = new MyAdapterListarCaronas(this.getContext(),caronas);
 
         mRecycleView.setAdapter(adapterListCaronas);

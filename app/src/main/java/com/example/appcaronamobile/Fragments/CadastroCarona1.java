@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.appcaronamobile.R;
 import com.example.appcaronamobile.Repository.MyListener2;
+import com.example.appcaronamobile.Util.Masks.MaskEditUtil;
 
 
 public class CadastroCarona1 extends Fragment {
@@ -26,6 +27,7 @@ public class CadastroCarona1 extends Fragment {
     View view = null;
 
     EditText vagas = null;
+    EditText data = null;
     EditText horario = null;
     EditText destino = null;
     RadioGroup ajudaG = null;
@@ -52,6 +54,9 @@ public class CadastroCarona1 extends Fragment {
 
         vagas = view.findViewById(R.id.editTextVagasCaronaCad);
         horario = view.findViewById(R.id.editTextHorarioCaronaCad);
+        horario.addTextChangedListener(MaskEditUtil.mask(horario, MaskEditUtil.FORMAT_HORARIO));
+        data = view.findViewById(R.id.editTextDataCaronaCad);
+        data.addTextChangedListener(MaskEditUtil.mask(data, MaskEditUtil.FORMAT_DATA));
         destino = view.findViewById(R.id.editTextDestinoCaronaCad);
         ajudaG = view.findViewById( R.id.radioGroupAjudaCaronaCad );
 
@@ -64,6 +69,7 @@ public class CadastroCarona1 extends Fragment {
 
                 String va = vagas.getText().toString();
                 String ho = horario.getText().toString();
+                String da = data.getText().toString();
                 String de = destino.getText().toString();
                 String ve = spinner_veiculos.getSelectedItem().toString();
 
@@ -71,10 +77,10 @@ public class CadastroCarona1 extends Fragment {
                     ajuda = true;
                 }
 
-                if ( va == null || va.equals("") || ho.equals("") || de.equals("") || ve.equals("") ) {
+                if ( va == null || va.equals("") || ho.equals("") || da.equals("") || de.equals("") || ve.equals("") ) {
                     Toast.makeText(getContext(), "Preencha todos os campos", Toast.LENGTH_LONG).show();
                 }else {
-                    sendData(Integer.parseInt(va),ve,ho,de,ajuda);
+                    sendData(Integer.parseInt(va),ve,ho,da,de,ajuda);
                 }
 
             }
@@ -91,10 +97,10 @@ public class CadastroCarona1 extends Fragment {
         return view;
     }
 
-    private void sendData( int vagas, String veiculo, String horario, String destino, boolean ajuda ){
+    private void sendData( int vagas, String veiculo, String horario, String data, String destino, boolean ajuda ){
 
         MyListener2 myListener2 = (MyListener2) getActivity();
-        myListener2.proximoFragmentoP1(vagas, veiculo, horario, destino, ajuda);
+        myListener2.proximoFragmentoP1(vagas, veiculo, horario, data, destino, ajuda);
 
     }
 

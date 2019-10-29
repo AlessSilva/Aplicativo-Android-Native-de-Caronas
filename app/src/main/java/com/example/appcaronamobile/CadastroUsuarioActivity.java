@@ -69,7 +69,6 @@ public class CadastroUsuarioActivity extends AppCompatActivity implements MyList
         situacao = sit;
 
         Toast.makeText(this, inst+" "+" "+" "+sit, Toast.LENGTH_SHORT).show();
-        //TODO: Enviar os valores pra main
 
         Intent intent = new Intent();
 

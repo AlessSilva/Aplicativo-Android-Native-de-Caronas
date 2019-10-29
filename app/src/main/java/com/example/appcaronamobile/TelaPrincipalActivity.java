@@ -158,13 +158,14 @@ public class TelaPrincipalActivity extends AppCompatActivity
 
             int vagas = Integer.valueOf(data.getExtras().get("vagas").toString());
             String horario = data.getExtras().get("horario").toString();
+            String dataa = data.getExtras().get("data").toString();
             String destino = data.getExtras().get("destino").toString();
             boolean ajuda = Boolean.valueOf(data.getExtras().get("ajuda").toString());
             double lat = Double.valueOf(data.getExtras().get("lat").toString());
             double lon = Double.valueOf(data.getExtras().get("long").toString());
 
             Veiculo v = new Veiculo( "Fusquinha anos 50", "CARRO", "placa", "amarelo" );
-            Carona carona = new Carona( usuario.getId() , vagas, v , horario, destino, ajuda, lat, lon );
+            Carona carona = new Carona( usuario.getId() , vagas, v , horario, dataa, destino, ajuda, lat, lon );
 
             CaronaDAO caronaDAO = CaronaDBMemory.getInstance();
             UsuarioDAO usuarioDAO = UsuarioDBMemory.getInstance();

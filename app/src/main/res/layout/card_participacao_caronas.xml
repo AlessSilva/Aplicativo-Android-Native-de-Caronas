@@ -34,6 +34,32 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:background="#A0A79898"
+                    app:cardBackgroundColor="#AAFDFDFD"
+                    app:contentPadding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/CardViewPCStatus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Status aquiii"
+                            android:textColor="#141414"
+                            android:textSize="16dp"
+                            app:fontFamily="sans-serif-condensed-medium" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="1dp"
                     android:background="#A0A79898"

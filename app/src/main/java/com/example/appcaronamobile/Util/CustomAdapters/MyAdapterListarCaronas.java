@@ -18,6 +18,7 @@ import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
 import com.example.appcaronamobile.Dao.CaronaDAO;
 import com.example.appcaronamobile.Dao.UsuarioDAO;
 import com.example.appcaronamobile.Model.Carona;
+import com.example.appcaronamobile.Model.Participante;
 import com.example.appcaronamobile.R;
 
 import java.util.List;
@@ -93,14 +94,15 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
 
                 if( (holder.carona.getVagas() - holder.carona.getParticipantes().size()) > 0 ){
 
-                    holder.carona.addUsuario( usuarioDAO.getLogado() );
+
+                    holder.carona.addUsuario( new Participante( usuarioDAO.getLogado(), "") );
                     holder.carona = caronaDAO.editCarona(holder.carona);
 
                     listCarona.remove(holder.getAdapterPosition());
                     notifyItemRemoved(holder.getAdapterPosition());
                     notifyItemRangeChanged(holder.getAdapterPosition(),listCarona.size());
 
-                    Toast.makeText(mContext,"Participação confirmada"+caronaDAO.getListaCarona().size(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext,"Participação confirmada",Toast.LENGTH_SHORT).show();
 
                 }
 

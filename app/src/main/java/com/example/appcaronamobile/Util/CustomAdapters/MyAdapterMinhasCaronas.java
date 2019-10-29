@@ -1,6 +1,7 @@
 package com.example.appcaronamobile.Util.CustomAdapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appcaronamobile.DBMemory.CaronaDBMemory;
 import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
+import com.example.appcaronamobile.Dao.CaronaDAO;
 import com.example.appcaronamobile.Dao.UsuarioDAO;
 import com.example.appcaronamobile.Model.Carona;
+import com.example.appcaronamobile.ParticipantesCaronaActivity;
 import com.example.appcaronamobile.R;
 
 import java.util.List;
@@ -27,6 +31,7 @@ public class MyAdapterMinhasCaronas extends RecyclerView.Adapter<MyAdapterMinhas
     private ViewGroup parent;
 
     UsuarioDAO usuarioDAO = null;
+    CaronaDAO caronaDAO = null;
 
     public MyAdapterMinhasCaronas( Context mContext, List<Carona> listCarona  ){
 
@@ -34,6 +39,7 @@ public class MyAdapterMinhasCaronas extends RecyclerView.Adapter<MyAdapterMinhas
         this.listCarona = listCarona;
 
         usuarioDAO = UsuarioDBMemory.getInstance();
+        caronaDAO = CaronaDBMemory.getInstance();
     }
 
     @NonNull
@@ -45,11 +51,12 @@ public class MyAdapterMinhasCaronas extends RecyclerView.Adapter<MyAdapterMinhas
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CaronaViewHolder2 holder, int position) {
+    public void onBindViewHolder(@NonNull final CaronaViewHolder2 holder, int position) {
 
-        Carona carona = listCarona.get(position);
+        final Carona carona = listCarona.get(position);
+        holder.carona = carona;
 
-        holder.data.setText( "Data: .../.../..." );
+        holder.data.setText( "Data: " + carona.getData() );
         holder.horario.setText("Horário: " + carona.getHorario());
         holder.destino.setText("Destino: " + carona.getDestino());
         holder.like.setText(carona.getLikes()+"");
@@ -85,7 +92,19 @@ public class MyAdapterMinhasCaronas extends RecyclerView.Adapter<MyAdapterMinhas
         ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaVeiculoPlaca ))
                 .setText( carona.getVeiculo().getPlaca() );
 
+        holder.participantes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                holder.carona = caronaDAO.getCarona(carona.getId());
+                listCarona.set( holder.getAdapterPosition(), holder.carona );
+                notifyDataSetChanged();
+                Intent intent = new Intent(mContext, ParticipantesCaronaActivity.class);
+                intent.putExtra("carona", holder.carona);
+                mContext.startActivity(intent);
+
+            }
+        });
 
     }
 
@@ -96,6 +115,7 @@ public class MyAdapterMinhasCaronas extends RecyclerView.Adapter<MyAdapterMinhas
 
     public class CaronaViewHolder2 extends RecyclerView.ViewHolder{
 
+        Carona carona = null;
 
         View view = null;
         TextView data = null;
@@ -107,6 +127,7 @@ public class MyAdapterMinhasCaronas extends RecyclerView.Adapter<MyAdapterMinhas
         View alertView = null;
         AlertDialog alertDialog = null;
         Button detalhes = null;
+        Button participantes = null;
 
         public CaronaViewHolder2(@NonNull View itemView) {
             super(itemView);
@@ -126,6 +147,7 @@ public class MyAdapterMinhasCaronas extends RecyclerView.Adapter<MyAdapterMinhas
 
             detalhes = view.findViewById( R.id.CardViewMCInfo );
 
+            participantes = view.findViewById( R.id.cardViewMCParticipantes );
             //Toast.makeText(parent.getContext(), detalhes+"", Toast.LENGTH_SHORT).show();
             detalhes.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -133,6 +155,18 @@ public class MyAdapterMinhasCaronas extends RecyclerView.Adapter<MyAdapterMinhas
                     alertDialog.show();
                 }
             });
+
+            participantes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(mContext, ParticipantesCaronaActivity.class);
+                    intent.putExtra("carona", carona);
+                    mContext.startActivity(intent);
+
+                }
+            });
+
 
         }
 

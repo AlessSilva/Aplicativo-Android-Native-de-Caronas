@@ -17,10 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ParticipantesCaronaActivity"></activity>
         <activity
             android:name=".HistoricoCaronasActivity"
             android:label="@string/title_activity_historico_caronas"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MeusVeiculosActivity"
             android:label="Veículos" />

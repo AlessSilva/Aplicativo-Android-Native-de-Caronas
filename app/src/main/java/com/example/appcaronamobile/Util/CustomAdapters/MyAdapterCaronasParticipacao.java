@@ -55,7 +55,15 @@ public class MyAdapterCaronasParticipacao extends RecyclerView.Adapter<MyAdapter
         Carona carona = listCarona.get(position);
         holder.carona = carona;
 
-        holder.data.setText( "Data: .../.../..." );
+        if (holder.carona.getParticipante( usuarioDAO.getLogado() ).isConfirmacao()){
+            holder.status.setText("Confirmada");
+            holder.status.setTextColor( parent.getResources().getColor(android.R.color.holo_green_light) );
+        }else {
+            holder.status.setText("Não Confirmada");
+            holder.status.setTextColor( parent.getResources().getColor(android.R.color.holo_red_light) );
+        }
+
+        holder.data.setText( "Data: "+carona.getData() );
         holder.horario.setText("Horário: " + carona.getHorario());
         holder.destino.setText("Destino: " + carona.getDestino());
 
@@ -89,6 +97,18 @@ public class MyAdapterCaronasParticipacao extends RecyclerView.Adapter<MyAdapter
         ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaVeiculoPlaca ))
                 .setText( carona.getVeiculo().getPlaca() );
 
+        if(holder.carona.getParticipante( usuarioDAO.getLogado() ).isLike()){
+
+            holder.estadoLike = "10";
+            holder.like.setBackgroundColor( parent.getResources().getColor(android.R.color.holo_blue_light) );
+
+        }else if ( holder.carona.getParticipante( usuarioDAO.getLogado() ).isLike() ){
+
+            holder.estadoLike = "01";
+            holder.dislike.setBackgroundColor( parent.getResources().getColor(android.R.color.holo_red_light) );
+
+        }
+
         holder.like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,7 +116,7 @@ public class MyAdapterCaronasParticipacao extends RecyclerView.Adapter<MyAdapter
                 if( holder.estadoLike.equals("00") ){
 
                     holder.estadoLike = "10";
-                    holder.carona.addLike();
+                    holder.carona.getParticipante( usuarioDAO.getLogado() ).setLike(true);
                     holder.carona = caronaDAO.editCarona(holder.carona);
 
                     holder.like.setBackgroundColor( parent.getResources().getColor(android.R.color.holo_blue_light) );
@@ -106,7 +126,7 @@ public class MyAdapterCaronasParticipacao extends RecyclerView.Adapter<MyAdapter
                 }else if ( holder.estadoLike.equals("10") ){
 
                     holder.estadoLike = "00";
-                    holder.carona.removeLike();
+                    holder.carona.getParticipante( usuarioDAO.getLogado() ).setLike(false);
                     holder.carona = caronaDAO.editCarona(holder.carona);
 
                     holder.like.setBackgroundColor( parent.getResources().getColor(android.R.color.white) );
@@ -125,7 +145,7 @@ public class MyAdapterCaronasParticipacao extends RecyclerView.Adapter<MyAdapter
                 if( holder.estadoLike.equals("00") ){
 
                     holder.estadoLike = "01";
-                    holder.carona.addDislike();
+                    holder.carona.getParticipante( usuarioDAO.getLogado() ).setDislike(true);
                     holder.carona = caronaDAO.editCarona(holder.carona);
 
                     holder.dislike.setBackgroundColor( parent.getResources().getColor(android.R.color.holo_red_light) );
@@ -135,7 +155,7 @@ public class MyAdapterCaronasParticipacao extends RecyclerView.Adapter<MyAdapter
                 }else if ( holder.estadoLike.equals("01") ){
 
                     holder.estadoLike = "00";
-                    holder.carona.removeDislike();
+                    holder.carona.getParticipante( usuarioDAO.getLogado() ).setDislike(false);
                     holder.carona = caronaDAO.editCarona(holder.carona);
 
                     holder.dislike.setBackgroundColor( parent.getResources().getColor(android.R.color.white) );
@@ -159,6 +179,7 @@ public class MyAdapterCaronasParticipacao extends RecyclerView.Adapter<MyAdapter
         Carona carona;
 
         View view = null;
+        TextView status = null;
         TextView data = null;
         TextView horario = null;
         TextView destino = null;
@@ -175,6 +196,7 @@ public class MyAdapterCaronasParticipacao extends RecyclerView.Adapter<MyAdapter
             super(itemView);
 
             view = itemView;
+            status = view.findViewById( R.id.CardViewPCStatus );
             data = view.findViewById( R.id.CardViewPCaronaData );
             horario = view.findViewById( R.id.CardViewPCaronaHorario );
             destino = view.findViewById( R.id.CardViewPCaronaDestino );

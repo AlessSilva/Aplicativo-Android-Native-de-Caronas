@@ -4,7 +4,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 public interface MyListener2 {
 
-    void proximoFragmentoP1( int vagas, String veiculo, String horario, String destino, boolean ajuda );
+    void proximoFragmentoP1( int vagas, String veiculo, String horario, String data, String destino, boolean ajuda );
 
     void voltarFragmentoP1();
 

@@ -5,18 +5,18 @@
     <item android:id="@+id/VerVeiculos"
         android:title="Meus Veículos"
         app:showAsAction="always"
-        android:icon="@mipmap/ic_launcher">
-    </item>
-
-    <item android:id="@+id/VerAmigos"
-        android:title="Meus Amigos"
-        app:showAsAction="always"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/garagem">
     </item>
 
     <item android:id="@+id/HistoricoCaronas"
         android:title="Histórico de Caronas"
         app:showAsAction="never"></item>
+
+    <item android:id="@+id/VerAmigos"
+        android:title="Meus Amigos"
+        app:showAsAction="never"
+        android:icon="@mipmap/ic_launcher">
+    </item>
 
     <item android:id="@+id/AbrirChat"
         android:title="Abrir Chat"

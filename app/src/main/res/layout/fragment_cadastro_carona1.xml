@@ -64,48 +64,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:background="#000277BD"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Vagas:"
-                        android:textColor="#F3F7FC"
-                        android:textSize="18sp"
-                        app:fontFamily="sans-serif" />
-
-                    <EditText
-                        android:id="@+id/editTextVagasCaronaCad"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_round_edittext"
-                        android:ems="10"
-                        android:hint="Quantidade"
-                        android:inputType="number"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="5dp"
-                        android:paddingRight="20dp"
-                        android:paddingBottom="5dp"
-                        android:textColor="#090000" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="1dp"
-                android:background="#A0A79898"
-                app:cardBackgroundColor="#71413A3A"
-                app:contentPadding="5dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <TextView
@@ -142,7 +100,91 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView0"
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Vagas:"
+                        android:textColor="#F3F7FC"
+                        android:textSize="18sp"
+                        app:fontFamily="sans-serif" />
+
+                    <EditText
+                        android:id="@+id/editTextVagasCaronaCad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_round_edittext"
+                        android:ems="10"
+                        android:hint="Quantidade"
+                        android:inputType="number"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="5dp"
+                        android:textColor="#090000" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:background="#A0A79898"
+                app:cardBackgroundColor="#71413A3A"
+                app:contentPadding="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:background="#000277BD"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView8989"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Data:"
+                        android:textColor="#F3F7FC"
+                        android:textSize="18sp"
+                        app:fontFamily="sans-serif" />
+
+                    <EditText
+                        android:id="@+id/editTextDataCaronaCad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_round_edittext"
+                        android:ems="10"
+                        android:hint="00:00:00"
+                        android:inputType="number"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="5dp"
+                        android:textColor="#090000" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="1dp"
+                android:background="#A0A79898"
+                app:cardBackgroundColor="#71413A3A"
+                app:contentPadding="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:background="#000277BD"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView898"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -250,7 +292,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
-                    android:onClick="onClickVoltar"
                     android:text="@string/voltar"
                     android:textColor="#FF8F00" />
 
@@ -260,7 +301,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
-                    android:onClick="onClickProximo"
                     android:text="@string/pr_ximo"
                     android:textColor="#FF8F00" />
             </LinearLayout>

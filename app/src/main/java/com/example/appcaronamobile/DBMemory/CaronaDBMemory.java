@@ -2,7 +2,7 @@ package com.example.appcaronamobile.DBMemory;
 
 import com.example.appcaronamobile.Dao.CaronaDAO;
 import com.example.appcaronamobile.Model.Carona;
-import com.example.appcaronamobile.Model.Usuario;
+import com.example.appcaronamobile.Model.Participante;
 import com.example.appcaronamobile.Model.Veiculo;
 
 import java.util.ArrayList;
@@ -18,23 +18,23 @@ public class CaronaDBMemory implements CaronaDAO {
         listaCarona = new ArrayList<Carona>();
 
         listaCarona.add( new Carona(new Long(1), new Long(3) , 3 ,
-                new Veiculo(  "Cacimbinha" , "CARRO", "J3SUS", "Pink" ),
-                "15:35", "Praça do Chalé", false,
+                new Veiculo(  "Cacimbinha" , "CARRO", "J3SUS", "Pink" ), "15:35",
+                "21/10/2019", "Praça do Chalé", false,
                 -4.970172002073431, -39.0174075588584) );
 
         listaCarona.add( new Carona(new Long(2), new Long(3) , 2 ,
-                new Veiculo( "Cacimbinha" , "CARRO", "J3SUS", "Pink" ),
-                "9:30", "UFC", false,
+                new Veiculo( "Cacimbinha" , "CARRO", "J3SUS", "Pink" ), "9:30",
+                "21/10/2019", "UFC", false,
                 -4.9698172002073431, -39.0146215588584) );
 
         listaCarona.add( new Carona(new Long(3), new Long(1) , 1 ,
-                new Veiculo( "HONDA", "MOTO", "4L355", "AZUL DA COR DO MAR" ),
-                "13:00", "Rodoviária", false,
+                new Veiculo( "HONDA", "MOTO", "4L355", "AZUL DA COR DO MAR" ), "13:00",
+                "21/10/2019", "Rodoviária", false,
                 -4.930172002073431, -39.0174075588584) );
 
         listaCarona.add( new Carona(new Long(4), new Long(2) , 1 ,
-                new Veiculo( "COROLA", "CARRO", "JOJO666", "PRETO" ),
-                "21:30", "Quixeramobim", true,
+                new Veiculo( "COROLA", "CARRO", "JOJO666", "PRETO" ), "21:30",
+                "21/10/2019", "Quixeramobim", true,
                 -4.910172002073431, -39.0274075588584) );
 
     }
@@ -73,6 +73,15 @@ public class CaronaDBMemory implements CaronaDAO {
 
     @Override
     public Carona getCarona(Long caronaId) {
+
+        for( Carona c : listaCarona ){
+
+            if ( c.getId().equals( caronaId ) ){
+                return c;
+            }
+
+        }
+
         return null;
     }
 
@@ -105,9 +114,9 @@ public class CaronaDBMemory implements CaronaDAO {
 
         for ( Carona c : listaCarona ){
 
-            for( Usuario u : c.getParticipantes() ){
+            for( Participante p : c.getParticipantes() ){
 
-                if ( u.getId().equals(usuario) ){
+                if ( p.getUsuario().getId().equals(usuario) ){
                     caronas.add(c);
                 }
 

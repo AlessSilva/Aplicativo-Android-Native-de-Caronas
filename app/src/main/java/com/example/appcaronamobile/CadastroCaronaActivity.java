@@ -8,10 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.appcaronamobile.DBMemory.CaronaDBMemory;
-import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
-import com.example.appcaronamobile.Dao.CaronaDAO;
-import com.example.appcaronamobile.Dao.UsuarioDAO;
 import com.example.appcaronamobile.Fragments.CadastroCarona1;
 import com.example.appcaronamobile.Fragments.CadastroCarona2;
 import com.example.appcaronamobile.Model.Usuario;
@@ -26,6 +22,7 @@ public class CadastroCaronaActivity extends AppCompatActivity implements MyListe
     private int vagas;
     private String veiculo;
     private String horario;
+    private String data;
     private String destino;
     private boolean ajuda;
     private LatLng latLng = null;
@@ -45,13 +42,14 @@ public class CadastroCaronaActivity extends AppCompatActivity implements MyListe
 
     }
 
-    public void proximoFragmentoP1( int vagas, String veiculo, String horario, String destino, boolean ajuda ){
+    public void proximoFragmentoP1( int vagas, String veiculo, String horario, String data, String destino, boolean ajuda ){
 
         this.vagas = vagas;
         this.veiculo = veiculo;
         this.horario = horario;
         this.destino = destino;
         this.ajuda = ajuda;
+        this.data = data;
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frame, new CadastroCarona2(), "CadastroCaronaPart2");
@@ -71,6 +69,7 @@ public class CadastroCaronaActivity extends AppCompatActivity implements MyListe
         Intent intent = new Intent();
         intent.putExtra("vagas",vagas);
         intent.putExtra("horario",horario);
+        intent.putExtra("data",data);
         intent.putExtra("destino",destino);
         intent.putExtra("ajuda",ajuda+"");
         intent.putExtra("lat",latLng.latitude+"");
