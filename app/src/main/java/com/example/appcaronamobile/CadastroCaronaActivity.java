@@ -11,16 +11,17 @@ import android.widget.Toast;
 import com.example.appcaronamobile.Fragments.CadastroCarona1;
 import com.example.appcaronamobile.Fragments.CadastroCarona2;
 import com.example.appcaronamobile.Model.Usuario;
+import com.example.appcaronamobile.Model.Veiculo;
 import com.example.appcaronamobile.Repository.MyListener2;
+import com.example.appcaronamobile.Util.Codes.ResultCode;
 import com.google.android.gms.maps.model.LatLng;
 
 public class CadastroCaronaActivity extends AppCompatActivity implements MyListener2 {
 
     FragmentManager fragmentManager = null;
 
-    private Usuario usuario = null;
+    private Usuario usuario;
     private int vagas;
-    private String veiculo;
     private String horario;
     private String data;
     private String destino;
@@ -42,10 +43,9 @@ public class CadastroCaronaActivity extends AppCompatActivity implements MyListe
 
     }
 
-    public void proximoFragmentoP1( int vagas, String veiculo, String horario, String data, String destino, boolean ajuda ){
+    public void proximoFragmentoP1(int vagas, Veiculo veiculo, String horario, String data, String destino, boolean ajuda ){
 
         this.vagas = vagas;
-        this.veiculo = veiculo;
         this.horario = horario;
         this.destino = destino;
         this.ajuda = ajuda;
@@ -59,7 +59,7 @@ public class CadastroCaronaActivity extends AppCompatActivity implements MyListe
 
     public void voltarFragmentoP1(){
 
-        Toast.makeText(this, "Carona Cancelada", Toast.LENGTH_SHORT).show();
+        setResult(ResultCode.CAD_CARPOOL_CANCEL);
         finish();
 
     }
@@ -75,7 +75,7 @@ public class CadastroCaronaActivity extends AppCompatActivity implements MyListe
         intent.putExtra("lat",latLng.latitude+"");
         intent.putExtra("long",latLng.longitude+"");
 
-        setResult(666666,intent);
+        setResult(ResultCode.CAD_CARPOOL_SUCESS,intent);
 
         finish();
 

@@ -28,7 +28,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="2.5dp"
                     android:background="#2E7D32"
-                    app:cardBackgroundColor="#BEEE9D0F">
+                    app:cardBackgroundColor="#FFFEFE">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -182,7 +182,7 @@
                     android:layout_marginTop="2.5dp"
                     android:layout_marginBottom="2.5dp"
                     android:background="#2E7D32"
-                    app:cardBackgroundColor="#BEEE9D0F">
+                    app:cardBackgroundColor="#FFFEFE">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -281,7 +281,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2.5dp"
                     android:background="#2E7D32"
-                    app:cardBackgroundColor="#BEEE9D0F">
+                    app:cardBackgroundColor="#FFFEFE">
 
                     <LinearLayout
                         android:layout_width="match_parent"

@@ -12,6 +12,7 @@ import com.example.appcaronamobile.Fragments.CadastroCarona1;
 import com.example.appcaronamobile.Fragments.CadastroPt1;
 import com.example.appcaronamobile.Fragments.CadastroPt2;
 import com.example.appcaronamobile.Repository.MyListener;
+import com.example.appcaronamobile.Util.Codes.ResultCode;
 
 public class CadastroUsuarioActivity extends AppCompatActivity implements MyListener {
 
@@ -57,8 +58,8 @@ public class CadastroUsuarioActivity extends AppCompatActivity implements MyList
     @Override
     public void voltarFragmentoP1() {
 
+        setResult( ResultCode.CAD_USER_CANCEL );
         finish();
-        setResult( 113 );
 
     }
 
@@ -67,8 +68,6 @@ public class CadastroUsuarioActivity extends AppCompatActivity implements MyList
 
         instituicao = inst;
         situacao = sit;
-
-        Toast.makeText(this, inst+" "+" "+" "+sit, Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent();
 
@@ -80,7 +79,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity implements MyList
         intent.putExtra("situacao", situacao);
         intent.putExtra("instituicao", instituicao);
 
-        setResult(112, intent);
+        setResult(ResultCode.CAD_USER_SUCESS, intent);
         finish();
 
     }

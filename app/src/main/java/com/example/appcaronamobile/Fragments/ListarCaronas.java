@@ -46,7 +46,9 @@ public class ListarCaronas extends Fragment {
 
         caronaDAO = CaronaDBMemory.getInstance();
         usuarioDAO = UsuarioDBMemory.getInstance();
-        usuario = usuarioDAO.getLogado();
+
+        Bundle arguments = getArguments();
+        usuario = (Usuario) arguments.getSerializable("usuario");
 
         mRecycleView = view.findViewById(R.id.recyclerCaronas);
         GridLayoutManager gridLayoutManager = new GridLayoutManager( this.getContext(),1 );

@@ -39,19 +39,13 @@ public class CadastroCarona2 extends Fragment {
         FloatingActionButton fabOk = view.findViewById(R.id.fabOk);
         fabOk.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
-                ok();
-            }
+            public void onClick(View view) {ok();}
         });
 
         FloatingActionButton fabCancel = view.findViewById(R.id.fabCancel);
         fabCancel.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                cancel();
-
-            }
+            public void onClick(View view) {cancel();}
         });
 
         return view;

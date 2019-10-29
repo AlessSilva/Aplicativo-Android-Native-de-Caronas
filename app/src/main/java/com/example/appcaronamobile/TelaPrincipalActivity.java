@@ -24,13 +24,14 @@ import com.example.appcaronamobile.Fragments.Map;
 import com.example.appcaronamobile.Model.Carona;
 import com.example.appcaronamobile.Model.Usuario;
 import com.example.appcaronamobile.Model.Veiculo;
+import com.example.appcaronamobile.Util.Codes.RequestCodes;
+import com.example.appcaronamobile.Util.Codes.ResultCode;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class TelaPrincipalActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-    private final int rqCadastroCarona = 300;
     private BottomNavigationView navigationView = null;
     private FloatingActionButton fab = null;
 
@@ -54,15 +55,16 @@ public class TelaPrincipalActivity extends AppCompatActivity
         navigationView = (BottomNavigationView) findViewById(R.id.navigationView);
         navigationView.setOnNavigationItemSelectedListener(this);
 
-        FloatingActionButton fab = findViewById(R.id.floatingActionButton);
+        fab = findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Toast.makeText(view.getContext(), "Adicionar Carona", Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(view.getContext(), CadastroCaronaActivity.class);
                 intent.putExtra("usuario", usuario);
-                startActivityForResult(intent,rqCadastroCarona);
+                startActivityForResult(intent, RequestCodes.CAD_CARPOOL);
 
             }
         });
@@ -142,8 +144,12 @@ public class TelaPrincipalActivity extends AppCompatActivity
             }
             case R.id.navigation_caronas: {
                 getSupportActionBar().setTitle("Caronas");
+                ListarCaronas listarCaronas = new ListarCaronas();
+                Bundle arguments = new Bundle();
+                arguments.putSerializable("usuario",usuario);
+                listarCaronas.setArguments(arguments);
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.containerPrincipal,new ListarCaronas(),"CaronasContainer");
+                transaction.replace(R.id.containerPrincipal,listarCaronas,"CaronasContainer");
                 transaction.commitAllowingStateLoss();
                 break;
             }
@@ -154,7 +160,7 @@ public class TelaPrincipalActivity extends AppCompatActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
-        if (requestCode == rqCadastroCarona && resultCode == 666666){
+        if (requestCode == RequestCodes.CAD_CARPOOL && resultCode == ResultCode.CAD_CARPOOL_SUCESS){
 
             int vagas = Integer.valueOf(data.getExtras().get("vagas").toString());
             String horario = data.getExtras().get("horario").toString();
@@ -172,6 +178,10 @@ public class TelaPrincipalActivity extends AppCompatActivity
 
             usuario.addCarona( caronaDAO.addCarona(carona) );
             usuario = usuarioDAO.editUsuario(usuario);
+
+        }else if( requestCode == RequestCodes.CAD_CARPOOL && resultCode == ResultCode.CAD_CARPOOL_CANCEL ){
+
+            Toast.makeText(this, "Carona Cancelada", Toast.LENGTH_SHORT).show();
 
         }
 

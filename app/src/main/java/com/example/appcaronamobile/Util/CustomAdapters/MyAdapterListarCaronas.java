@@ -53,40 +53,11 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
     public void onBindViewHolder(@NonNull final CaronaViewHolder holder, final int position) {
 
         holder.carona = listCarona.get(position);
-        Carona carona = holder.carona;
 
-        holder.vagas.setText( "Vagas: " + (carona.getVagas()-carona.getParticipantes().size()) + " de "+carona.getVagas());
-        holder.responsavel.setText( "@"+usuarioDAO.getUsuario( carona.getId_responsavel() ).getPrimeiroNome() );
-
-        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaUserNome ))
-                .setText( usuarioDAO.getUsuario( carona.getId_responsavel() ).getPrimeiroNome() +" "+ usuarioDAO.getUsuario( carona.getId_responsavel() ).getSobrenome() );
-
-        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaUserInsituicao ))
-                .setText( usuarioDAO.getUsuario( carona.getId_responsavel() ).getInstituicao() );
-
-        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaUserSituacao ))
-                .setText( usuarioDAO.getUsuario( carona.getId_responsavel() ).getSituacao() );
-
-        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaUserTelefone ))
-                .setText( usuarioDAO.getUsuario( carona.getId_responsavel() ).getTelefone() );
-
-        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaVagasTotal ))
-                .setText( carona.getVagas()+"" );
-
-        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaVagasRestantes ))
-                .setText( (carona.getVagas()-carona.getParticipantes().size())+"" );
-
-        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaHorario ))
-                .setText( carona.getHorario() );
-
-        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaDestino ))
-                .setText( carona.getDestino() );
-
-        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaVeiculo ))
-                .setText( carona.getVeiculo().getModelo() );
-
-        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaVeiculoPlaca ))
-                .setText( carona.getVeiculo().getPlaca() );
+        holder.vagas.setText( "Vagas: " + (holder.carona.getVagas()-holder.carona.getParticipantes().size()) );
+        holder.responsavel.setText( "@"+usuarioDAO.getUsuario( holder.carona.getId_responsavel() ).getPrimeiroNome() );
+        holder.horario.setText("Horário: "+holder.carona.getHorario());
+        holder.destino.setText("Destino: "+holder.carona.getDestino());
 
         holder.participar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +80,7 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
             }
         });
 
-        if ( carona.getVeiculo().getTipo().equals("CARRO") ){
+        if ( holder.carona.getVeiculo().getTipo().equals("CARRO") ){
             holder.tipoveiculo.setImageResource(R.mipmap.ic_car2);
 
             ( (ImageView) holder.alertView.findViewById( R.id.imageViewAlertCarona )).setImageResource( R.mipmap.ic_car2 );
@@ -120,9 +91,41 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
             ( (ImageView) holder.alertView.findViewById( R.id.imageViewAlertCarona )).setImageResource( R.mipmap.ic_moto );
 
         }
-        if ( carona.isAjuda() ){
+        if ( holder.carona.isAjuda() ){
             holder.ajuda.setImageResource(R.mipmap.ic_ajuda);
         }
+
+        //------------------------------------- Campos do Alert ----------------------------------------------
+
+        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaUserNome ))
+                .setText( usuarioDAO.getUsuario( holder.carona.getId_responsavel() ).getPrimeiroNome() +" "+ usuarioDAO.getUsuario( holder.carona.getId_responsavel() ).getSobrenome() );
+
+        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaUserInsituicao ))
+                .setText( usuarioDAO.getUsuario( holder.carona.getId_responsavel() ).getInstituicao() );
+
+        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaUserSituacao ))
+                .setText( usuarioDAO.getUsuario( holder.carona.getId_responsavel() ).getSituacao() );
+
+        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaUserTelefone ))
+                .setText( usuarioDAO.getUsuario( holder.carona.getId_responsavel() ).getTelefone() );
+
+        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaVagasTotal ))
+                .setText( holder.carona.getVagas()+"" );
+
+        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaVagasRestantes ))
+                .setText( (holder.carona.getVagas()-holder.carona.getParticipantes().size())+"" );
+
+        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaHorario ))
+                .setText( holder.carona.getHorario() );
+
+        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaDestino ))
+                .setText( holder.carona.getDestino() );
+
+        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaVeiculo ))
+                .setText( holder.carona.getVeiculo().getModelo() );
+
+        ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaVeiculoPlaca ))
+                .setText( holder.carona.getVeiculo().getPlaca() );
 
     }
 
@@ -135,6 +138,8 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
 
         View view = null;
         TextView vagas =  null;
+        TextView horario = null;
+        TextView destino = null;
         TextView responsavel = null;
         ImageView tipoveiculo = null;
         ImageView ajuda = null;
@@ -150,6 +155,8 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
             view = itemView;
 
             vagas = view.findViewById(R.id.CardViewCaronaVagas);
+            horario = view.findViewById(R.id.CardViewCaronaHorario);
+            destino = view.findViewById(R.id.CardViewCaronaDestino);
             responsavel = view.findViewById(R.id.CardViewCaronaUserName);
             tipoveiculo = view.findViewById(R.id.CardViewCaronaVeiculo);
             ajuda = view.findViewById(R.id.CardViewCaronaAjuda);
@@ -165,6 +172,13 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
                 @Override
                 public void onClick(View view) {
                     alertDialog.show();
+                }
+            });
+
+            ((Button)alertView.findViewById(R.id.buttonAlertCaronaFechar)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialog.cancel();
                 }
             });
 

@@ -23,22 +23,21 @@ import com.example.appcaronamobile.Util.Masks.MaskEditUtil;
 
 public class CadastroCarona1 extends Fragment {
 
-
     View view = null;
 
     EditText vagas = null;
     EditText data = null;
     EditText horario = null;
     EditText destino = null;
-    RadioGroup ajudaG = null;
     RadioButton radioButton_selec;
+
     boolean ajuda = false;
 
     Spinner spinner_veiculos = null;
     ArrayAdapter<CharSequence> adapter_spinner = null;
 
-    Button proximo = null;
-    Button voltar = null;
+    Button buttonProximo = null;
+    Button buttonVoltar = null;
 
     public CadastroCarona1() {
     }
@@ -58,12 +57,11 @@ public class CadastroCarona1 extends Fragment {
         data = view.findViewById(R.id.editTextDataCaronaCad);
         data.addTextChangedListener(MaskEditUtil.mask(data, MaskEditUtil.FORMAT_DATA));
         destino = view.findViewById(R.id.editTextDestinoCaronaCad);
-        ajudaG = view.findViewById( R.id.radioGroupAjudaCaronaCad );
 
         radioButton_selec = view.findViewById( R.id.radioAjudaCaronaCad );
 
-        proximo = view.findViewById(R.id.buttonProximoCarona);
-        proximo.setOnClickListener(new View.OnClickListener() {
+        buttonProximo = view.findViewById(R.id.buttonProximoCarona);
+        buttonProximo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -86,8 +84,8 @@ public class CadastroCarona1 extends Fragment {
             }
         });
 
-        voltar = view.findViewById(R.id.buttonVoltarCarona);
-        voltar.setOnClickListener(new View.OnClickListener() {
+        buttonVoltar = view.findViewById(R.id.buttonVoltarCarona);
+        buttonVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 back();
@@ -100,7 +98,7 @@ public class CadastroCarona1 extends Fragment {
     private void sendData( int vagas, String veiculo, String horario, String data, String destino, boolean ajuda ){
 
         MyListener2 myListener2 = (MyListener2) getActivity();
-        myListener2.proximoFragmentoP1(vagas, veiculo, horario, data, destino, ajuda);
+        myListener2.proximoFragmentoP1(vagas, null, horario, data, destino, ajuda);
 
     }
 
