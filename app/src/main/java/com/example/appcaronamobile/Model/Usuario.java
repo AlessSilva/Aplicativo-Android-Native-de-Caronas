@@ -112,6 +112,14 @@ public class Usuario implements Serializable {
         this.veiculos = veiculos;
     }
 
+    public Veiculo getVeiculoAt(int position) {
+        return veiculos.get(position);
+    }
+
+    public void overrideVeiculo(int position, Veiculo veiculo) {
+        veiculos.set(position, veiculo);
+    }
+
     public void addVeiculo(Veiculo veiculo) {
         this.veiculos.add(veiculo);
     }

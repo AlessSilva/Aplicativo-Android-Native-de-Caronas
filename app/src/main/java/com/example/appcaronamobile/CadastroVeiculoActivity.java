@@ -16,6 +16,8 @@ import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import com.example.appcaronamobile.Model.Veiculo;
+import com.example.appcaronamobile.Util.Codes.RequestCodes;
+import com.example.appcaronamobile.Util.Codes.ResultCodes;
 import com.example.appcaronamobile.Util.CustomAdapters.Tipos_Veiculos_Adapter;
 import com.example.appcaronamobile.Util.Masks.MaskEditUtil;
 
@@ -33,6 +35,7 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
     private String tipo;
     private String cor;
     private String placa;
+    private String code;
 
     private Veiculo veiculo;
 
@@ -55,6 +58,14 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
         placaV.addTextChangedListener(MaskEditUtil.mask(placaV, MaskEditUtil.FORMAT_PLACA));
 
         senhaDoUsuario = getIntent().getStringExtra("senha");
+        code = getIntent().getStringExtra("code");
+        String placa2 = getIntent().getStringExtra("placa");
+        String modelo2 = getIntent().getStringExtra("modelo");
+        String cor2 = getIntent().getStringExtra("cor");
+
+        modeloV.setText(modelo2);
+        corV.setText(cor2);
+        placaV.setText(placa2);
 
         Button finalizar = (Button) findViewById(R.id.buttonSalvarAlteracoesCarro);
 
@@ -83,8 +94,14 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
                                 veiculo = new Veiculo(modelo, tipo, placa, cor);
                                 Intent intent = new Intent();
                                 intent.putExtra("veiculo", veiculo);
-                                setResult(222, intent);
-                                Toast.makeText(getApplicationContext(), "Veículo cadastrado com sucesso!", Toast.LENGTH_LONG).show();
+                                if(code.equals(String.valueOf(RequestCodes.ADD_VEICULO))) {
+                                    setResult(ResultCodes.ADD_VEICULOS, intent);
+                                    Toast.makeText(getApplicationContext(), "Veículo cadastrado com sucesso!", Toast.LENGTH_LONG).show();
+                                }
+                                else if(code.equals(String.valueOf(RequestCodes.EDITAR_VEICULOS))) {
+                                    setResult(ResultCodes.EDITAR_VEICULO, intent);
+                                    Toast.makeText(getApplicationContext(), "Veículo editado com sucesso!", Toast.LENGTH_LONG).show();
+                                }
                                 finish();
                             } else {
                                 Toast.makeText(getApplicationContext(), "Senha incorreta", Toast.LENGTH_SHORT).show();
@@ -109,7 +126,7 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode == KeyEvent.KEYCODE_BACK) {
             Intent intent = new Intent();
-            setResult(333, intent);
+            setResult(ResultCodes.CANCELAR, intent);
         }
         return super.onKeyDown(keyCode, event);
     }

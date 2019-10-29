@@ -6,14 +6,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.example.appcaronamobile.Fragments.CadastroCarona1;
 import com.example.appcaronamobile.Fragments.CadastroCarona2;
 import com.example.appcaronamobile.Model.Usuario;
 import com.example.appcaronamobile.Model.Veiculo;
 import com.example.appcaronamobile.Repository.MyListener2;
-import com.example.appcaronamobile.Util.Codes.ResultCode;
+import com.example.appcaronamobile.Util.Codes.ResultCodes;
 import com.google.android.gms.maps.model.LatLng;
 
 public class CadastroCaronaActivity extends AppCompatActivity implements MyListener2 {
@@ -59,7 +58,7 @@ public class CadastroCaronaActivity extends AppCompatActivity implements MyListe
 
     public void voltarFragmentoP1(){
 
-        setResult(ResultCode.CAD_CARPOOL_CANCEL);
+        setResult(ResultCodes.CAD_CARPOOL_CANCEL);
         finish();
 
     }
@@ -75,7 +74,7 @@ public class CadastroCaronaActivity extends AppCompatActivity implements MyListe
         intent.putExtra("lat",latLng.latitude+"");
         intent.putExtra("long",latLng.longitude+"");
 
-        setResult(ResultCode.CAD_CARPOOL_SUCESS,intent);
+        setResult(ResultCodes.CAD_CARPOOL_SUCESS,intent);
 
         finish();
 

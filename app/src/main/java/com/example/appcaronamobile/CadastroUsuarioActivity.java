@@ -6,13 +6,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
-import com.example.appcaronamobile.Fragments.CadastroCarona1;
 import com.example.appcaronamobile.Fragments.CadastroPt1;
 import com.example.appcaronamobile.Fragments.CadastroPt2;
 import com.example.appcaronamobile.Repository.MyListener;
-import com.example.appcaronamobile.Util.Codes.ResultCode;
+import com.example.appcaronamobile.Util.Codes.ResultCodes;
 
 public class CadastroUsuarioActivity extends AppCompatActivity implements MyListener {
 
@@ -58,7 +56,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity implements MyList
     @Override
     public void voltarFragmentoP1() {
 
-        setResult( ResultCode.CAD_USER_CANCEL );
+        setResult( ResultCodes.CAD_USER_CANCEL );
         finish();
 
     }
@@ -79,7 +77,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity implements MyList
         intent.putExtra("situacao", situacao);
         intent.putExtra("instituicao", instituicao);
 
-        setResult(ResultCode.CAD_USER_SUCESS, intent);
+        setResult(ResultCodes.CAD_USER_SUCESS, intent);
         finish();
 
     }

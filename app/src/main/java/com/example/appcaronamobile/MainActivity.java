@@ -14,7 +14,7 @@ import com.example.appcaronamobile.Util.Codes.RequestCodes;
 import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
 import com.example.appcaronamobile.Dao.UsuarioDAO;
 import com.example.appcaronamobile.Model.Usuario;
-import com.example.appcaronamobile.Util.Codes.ResultCode;
+import com.example.appcaronamobile.Util.Codes.ResultCodes;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if( requestCode==RequestCodes.CAD_USER && resultCode==ResultCode.CAD_USER_SUCESS ){
+        if( requestCode==RequestCodes.CAD_USER && resultCode== ResultCodes.CAD_USER_SUCESS ){
 
             String primeiroNome = data.getStringExtra("primeiro_nome");
             String sobrenome = data.getStringExtra("sobrenome");
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
             Logar( novoUsuario );
 
-        }else if ( requestCode==RequestCodes.CAD_USER && resultCode== ResultCode.CAD_USER_CANCEL){
+        }else if ( requestCode==RequestCodes.CAD_USER && resultCode== ResultCodes.CAD_USER_CANCEL){
 
             Toast.makeText(this, "Cadastro Cancelado", Toast.LENGTH_SHORT).show();
 

@@ -25,7 +25,7 @@ import com.example.appcaronamobile.Model.Carona;
 import com.example.appcaronamobile.Model.Usuario;
 import com.example.appcaronamobile.Model.Veiculo;
 import com.example.appcaronamobile.Util.Codes.RequestCodes;
-import com.example.appcaronamobile.Util.Codes.ResultCode;
+import com.example.appcaronamobile.Util.Codes.ResultCodes;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -91,7 +91,7 @@ public class TelaPrincipalActivity extends AppCompatActivity
 
                 intent.putExtra("usuario", usuario);
 
-                startActivity(intent);
+                startActivityForResult(intent, 666);
 
                 break;
             case R.id.HistoricoCaronas:
@@ -160,7 +160,7 @@ public class TelaPrincipalActivity extends AppCompatActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
-        if (requestCode == RequestCodes.CAD_CARPOOL && resultCode == ResultCode.CAD_CARPOOL_SUCESS){
+        if (requestCode == RequestCodes.CAD_CARPOOL && resultCode == ResultCodes.CAD_CARPOOL_SUCESS){
 
             int vagas = Integer.valueOf(data.getExtras().get("vagas").toString());
             String horario = data.getExtras().get("horario").toString();
@@ -179,10 +179,14 @@ public class TelaPrincipalActivity extends AppCompatActivity
             usuario.addCarona( caronaDAO.addCarona(carona) );
             usuario = usuarioDAO.editUsuario(usuario);
 
-        }else if( requestCode == RequestCodes.CAD_CARPOOL && resultCode == ResultCode.CAD_CARPOOL_CANCEL ){
+        }else if( requestCode == RequestCodes.CAD_CARPOOL && resultCode == ResultCodes.CAD_CARPOOL_CANCEL ){
 
             Toast.makeText(this, "Carona Cancelada", Toast.LENGTH_SHORT).show();
 
+        }
+
+        if(requestCode == RequestCodes.MEUS_VEICULOS && resultCode == ResultCodes.MEUS_VEICULOS) {
+            usuario = (Usuario) data.getSerializableExtra("usuario");
         }
 
         super.onActivityResult(requestCode, resultCode, data);

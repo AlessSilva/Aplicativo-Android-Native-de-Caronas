@@ -4,15 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.appcaronamobile.Model.Usuario;
 import com.example.appcaronamobile.Model.Veiculo;
+import com.example.appcaronamobile.Util.Codes.RequestCodes;
+import com.example.appcaronamobile.Util.Codes.ResultCodes;
 import com.example.appcaronamobile.Util.CustomAdapters.VeiculosAdapter;
 
 public class MeusVeiculosActivity extends AppCompatActivity {
@@ -55,17 +56,57 @@ public class MeusVeiculosActivity extends AppCompatActivity {
     public void onClickButtonAdicionar(View view) {
         Intent intent = new Intent(this, CadastroVeiculoActivity.class);
         intent.putExtra("senha", usuario.getSenha());
-        startActivityForResult(intent, 111);
+        intent.putExtra("modelo", "");
+        intent.putExtra("cor", "");
+        intent.putExtra("placa", "");
+        intent.putExtra("code", String.valueOf(RequestCodes.ADD_VEICULO));
+        startActivityForResult(intent, RequestCodes.ADD_VEICULO);
+    }
+
+    public void onClickButtonEditar(View view) {
+        if(selecionado == -1) {
+            Toast.makeText(this, "Selecione um veículo", Toast.LENGTH_SHORT).show();
+        } else {
+            Veiculo veiculo = usuario.getVeiculoAt(selecionado);
+            Intent intent = new Intent(this, CadastroVeiculoActivity.class);
+            intent.putExtra("modelo", veiculo.getModelo());
+            intent.putExtra("cor", veiculo.getCor());
+            intent.putExtra("placa", veiculo.getPlaca());
+            intent.putExtra("senha", usuario.getSenha());
+            intent.putExtra("code", String.valueOf(RequestCodes.EDITAR_VEICULOS));
+            startActivityForResult(intent, RequestCodes.EDITAR_VEICULOS);
+        }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK) {
+            Intent intent = new Intent();
+            intent.putExtra("usuario", usuario);
+            setResult(ResultCodes.MEUS_VEICULOS, intent);
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 111) {
+        if(requestCode == RequestCodes.ADD_VEICULO) {
             if(resultCode == 222) {
                 Veiculo veiculo = (Veiculo) data.getSerializableExtra("veiculo");
                 usuario.addVeiculo(veiculo);
                 veiculosAdapter.notifyDataSetChanged();
+            }
+            if(resultCode == 333) {
+                Toast.makeText(this, "Operação cancelada", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else if(requestCode == RequestCodes.EDITAR_VEICULOS) {
+            if(resultCode == 555) {
+                Veiculo veiculo = (Veiculo) data.getSerializableExtra("veiculo");
+                usuario.overrideVeiculo(selecionado, veiculo);
+                veiculosAdapter.notifyDataSetChanged();
+                selecionado = -1;
             }
             if(resultCode == 333) {
                 Toast.makeText(this, "Operação cancelada", Toast.LENGTH_SHORT).show();
