@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -18,7 +19,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.provider.MediaStore;
 
@@ -28,6 +28,7 @@ import com.example.appcaronamobile.Util.Codes.RequestCodes;
 import com.example.appcaronamobile.Util.CustomAdapters.Instituicoes_Adapter;
 import com.example.appcaronamobile.Util.CustomAdapters.Situacoes_Adapter;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class CadastroPt2 extends Fragment {
@@ -43,6 +44,8 @@ public class CadastroPt2 extends Fragment {
     private Button voltar=null;
     private Button uploadImage = null;
 
+    private Bitmap imagem;
+
     public CadastroPt2() {
     }
 
@@ -52,6 +55,7 @@ public class CadastroPt2 extends Fragment {
         view =  inflater.inflate(R.layout.activity_cadastro_pt2, container, false);
 
         imageView = (ImageView) view.findViewById(R.id.imageViewPerfil);
+        imagem = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
 
         this.showInstituicoesSpinner();
         this.showSituacoesSpinner();
@@ -115,7 +119,9 @@ public class CadastroPt2 extends Fragment {
     private void sendData( String inst, String sit ){
 
         MyListener myListener = (MyListener)getActivity();
-        myListener.finalizarFragmentoP2(inst,sit);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        imagem.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        myListener.finalizarFragmentoP2(inst,sit, byteArrayOutputStream.toByteArray());
 
     }
 
@@ -137,13 +143,12 @@ public class CadastroPt2 extends Fragment {
         if(requestCode == RequestCodes.GALLERY_REQUEST) {
             if(resultCode == Activity.RESULT_OK) {
                 Uri returnUri = data.getData();
-                Bitmap bitmapImage = null;
                 try {
-                    bitmapImage = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), returnUri);
+                    imagem = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), returnUri);
                 } catch (IOException e) {
                     Toast.makeText(getContext(), "Exception on gallery connection: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 }
-                imageView.setImageBitmap(bitmapImage);
+                imageView.setImageBitmap(imagem);
             }
         }
     }

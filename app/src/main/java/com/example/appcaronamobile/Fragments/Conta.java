@@ -2,6 +2,8 @@ package com.example.appcaronamobile.Fragments;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -37,6 +40,11 @@ public class Conta extends Fragment {
     private EditText senhaE;
     private EditText senharepetidaE;
 
+    private ImageView showImage;
+    private byte[] imagemByte;
+
+    private Bitmap imageBitmap;
+
     private String inst;
     private String sit;
 
@@ -63,6 +71,12 @@ public class Conta extends Fragment {
         Bundle arguments = getArguments();
 
         usuario = (Usuario) arguments.getSerializable("usuario");
+
+        imagemByte = usuario.getImagem();
+        imageBitmap = BitmapFactory.decodeByteArray(imagemByte, 0, imagemByte.length);
+
+        showImage = view.findViewById(R.id.imageViewPerfilConta);
+        showImage.setImageBitmap(imageBitmap);
 
         nomeE = view.findViewById(R.id.editTextPrimeiroNomeConta);
         sobrenomeE = view.findViewById(R.id.editTextSobrenomeConta);

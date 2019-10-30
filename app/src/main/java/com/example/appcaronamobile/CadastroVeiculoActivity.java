@@ -1,16 +1,27 @@
 package com.example.appcaronamobile;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.method.PasswordTransformationMethod;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
@@ -21,6 +32,9 @@ import com.example.appcaronamobile.Util.Codes.ResultCodes;
 import com.example.appcaronamobile.Util.CustomAdapters.Tipos_Veiculos_Adapter;
 import com.example.appcaronamobile.Util.Masks.MaskEditUtil;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
 public class CadastroVeiculoActivity extends AppCompatActivity {
     private String senhaPedida = "";
     private String senhaDoUsuario;
@@ -30,21 +44,31 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
     private Spinner tipoV;
     private EditText corV;
     private EditText placaV;
+    private ImageView imageView;
 
     private String modelo;
     private String tipo;
     private String cor;
     private String placa;
     private String code;
+    private byte[] image;
+
+    private Bitmap imagem;
+
+    private ByteArrayOutputStream byteArrayOutputStream;
 
     private Veiculo veiculo;
 
     private SpinnerAdapter spinnerAdapter;
 
+    private Button uploadImage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_veiculo);
+
+        imageView = findViewById(R.id.imageViewVeiculo);
 
         tipoV = findViewById(R.id.spinnerTipoVeiculo);
         spinnerAdapter = new Tipos_Veiculos_Adapter(this);
@@ -62,6 +86,9 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
         String placa2 = getIntent().getStringExtra("placa");
         String modelo2 = getIntent().getStringExtra("modelo");
         String cor2 = getIntent().getStringExtra("cor");
+
+        imagem = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+        imageView.setImageBitmap(imagem);
 
         modeloV.setText(modelo2);
         corV.setText(cor2);
@@ -91,7 +118,7 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialogInterface, int i) {
                             senhaPedida = input.getText().toString();
                             if(senhaDoUsuario.equals(senhaPedida)) {
-                                veiculo = new Veiculo(modelo, tipo, placa, cor);
+                                veiculo = new Veiculo(modelo, tipo, placa, cor, image);
                                 Intent intent = new Intent();
                                 intent.putExtra("veiculo", veiculo);
                                 if(code.equals(String.valueOf(RequestCodes.ADD_VEICULO))) {
@@ -120,6 +147,18 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
                 }
             }
         });
+
+        uploadImage = findViewById(R.id.uploadImageButtonVeiculo);
+        uploadImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(ActivityCompat.checkSelfPermission(view.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    getRequestPermission();
+                } else {
+                    startGallery();
+                }
+            }
+        });
     }
 
     @Override
@@ -131,4 +170,34 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+    public void getRequestPermission() {
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, RequestCodes.CAMERA_REQUEST);
+    }
+
+    private void startGallery() {
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        cameraIntent.setType("image/*");
+        if (cameraIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(cameraIntent, RequestCodes.CAMERA_REQUEST);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == RequestCodes.CAMERA_REQUEST) {
+            if(resultCode == Activity.RESULT_OK) {
+                Uri returnUri = data.getData();
+                try {
+                    imagem = MediaStore.Images.Media.getBitmap(getContentResolver(), returnUri);
+                } catch (IOException e) {
+                    Toast.makeText(this, "Exception on gallery connection: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+                imageView.setImageBitmap(imagem);
+                byteArrayOutputStream = new ByteArrayOutputStream();
+                imagem.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                image = byteArrayOutputStream.toByteArray();
+            }
+        }
+    }
 }

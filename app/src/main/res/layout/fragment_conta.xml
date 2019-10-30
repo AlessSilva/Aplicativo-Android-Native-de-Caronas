@@ -34,14 +34,6 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imageViewPerfil2"
-                    android:layout_width="match_parent"
-                    android:layout_height="113dp"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="20dp"
-                    app:srcCompat="@drawable/login" />
-
                 <TextView
                     android:id="@+id/textViewTitleDadosPessoais"
                     android:layout_width="match_parent"
@@ -50,6 +42,20 @@
                     android:layout_marginBottom="5dp"
                     android:text="Seus Dados"
                     android:textColor="#EDFFFFFF" />
+
+                <ImageView
+                    android:id="@+id/imageViewPerfilConta"
+                    android:layout_width="match_parent"
+                    android:layout_height="113dp"
+                    android:layout_marginBottom="20dp"
+                    app:srcCompat="@drawable/login" />
+
+                <Button
+                    android:id="@+id/uploadImageButtonConta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:text="Upload de imagem" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/col"

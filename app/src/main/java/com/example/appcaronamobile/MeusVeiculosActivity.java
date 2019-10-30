@@ -73,6 +73,7 @@ public class MeusVeiculosActivity extends AppCompatActivity {
             intent.putExtra("cor", veiculo.getCor());
             intent.putExtra("placa", veiculo.getPlaca());
             intent.putExtra("senha", usuario.getSenha());
+            intent.putExtra("imagem", veiculo.getImagem());
             intent.putExtra("code", String.valueOf(RequestCodes.EDITAR_VEICULOS));
             startActivityForResult(intent, RequestCodes.EDITAR_VEICULOS);
         }
@@ -92,23 +93,23 @@ public class MeusVeiculosActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == RequestCodes.ADD_VEICULO) {
-            if(resultCode == 222) {
+            if(resultCode == ResultCodes.ADD_VEICULOS) {
                 Veiculo veiculo = (Veiculo) data.getSerializableExtra("veiculo");
                 usuario.addVeiculo(veiculo);
                 veiculosAdapter.notifyDataSetChanged();
             }
-            if(resultCode == 333) {
+            if(resultCode == ResultCodes.CANCELAR) {
                 Toast.makeText(this, "Operação cancelada", Toast.LENGTH_SHORT).show();
             }
         }
         else if(requestCode == RequestCodes.EDITAR_VEICULOS) {
-            if(resultCode == 555) {
+            if(resultCode == ResultCodes.EDITAR_VEICULO) {
                 Veiculo veiculo = (Veiculo) data.getSerializableExtra("veiculo");
                 usuario.overrideVeiculo(selecionado, veiculo);
                 veiculosAdapter.notifyDataSetChanged();
                 selecionado = -1;
             }
-            if(resultCode == 333) {
+            if(resultCode == ResultCodes.CANCELAR) {
                 Toast.makeText(this, "Operação cancelada", Toast.LENGTH_SHORT).show();
             }
         }
