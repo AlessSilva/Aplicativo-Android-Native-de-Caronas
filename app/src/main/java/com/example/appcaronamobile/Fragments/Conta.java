@@ -73,10 +73,16 @@ public class Conta extends Fragment {
         usuario = (Usuario) arguments.getSerializable("usuario");
 
         imagemByte = usuario.getImagem();
-        imageBitmap = BitmapFactory.decodeByteArray(imagemByte, 0, imagemByte.length);
 
-        showImage = view.findViewById(R.id.imageViewPerfilConta);
-        showImage.setImageBitmap(imageBitmap);
+        if ( imagemByte != null ){
+
+            imageBitmap = BitmapFactory.decodeByteArray(imagemByte, 0, imagemByte.length);
+
+            showImage = view.findViewById(R.id.imageViewPerfilConta);
+            showImage.setImageBitmap(imageBitmap);
+
+
+        }
 
         nomeE = view.findViewById(R.id.editTextPrimeiroNomeConta);
         sobrenomeE = view.findViewById(R.id.editTextSobrenomeConta);

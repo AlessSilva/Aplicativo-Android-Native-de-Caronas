@@ -17,27 +17,24 @@ public class UsuarioDBMemory implements UsuarioDAO {
 
         listaUsuario = new ArrayList<Usuario>();
 
-        Usuario u1 = new Usuario(new Long(1),"Alessandro", "Souza","(87) 9 893443882",
-                "ale@123", "123", "Discente", "UFC");
+        Usuario u1 = new Usuario( new Long(1),"Alessandro", "Souza", "(90) 9 999921232",
+                "ale@123", "123", "Discente", "UFC", null);
 
-        u1.addVeiculo( new Veiculo("Toyota","Carro","MM5-DD12","Branco") );
-        u1.addVeiculo(new Veiculo("Corola","Carro","NN3-J3SU","Branco"));
+        u1.addVeiculo( new Veiculo( "Honda", "Moto", "3ER-EWQR", "Lilas", null) );
 
-        listaUsuario.add( u1 );
+        Usuario u2 = new Usuario( new Long(2),"Carlos", "Ferreira", "(90) 9 999921232",
+                "carlos@123", "123", "Discente", "UFC", null);
 
-        Usuario u2 = new Usuario(new Long(2),"Carlos Eduardo", "Ferreira","(94) 848454399",
-                "cadu@123", "nhem", "Discente", "UFC");
+        u2.addVeiculo( new Veiculo( "Honda", "Moto", "3ER-EWQR", "Lilas", null) );
+        u2.addVeiculo( new Veiculo( "Ferrari", "Carro", "3ER-EWW1", "Lilas", null) );
 
-        u2.addVeiculo( new Veiculo("Honda","Moto","F23-DD12","Azul") );
-        u2.addVeiculo(new Veiculo("Honda","Moto","LOP-LOCO","Preto"));
+        Usuario u3 = new Usuario( new Long(3),"Viviane", "Pacheco", "(90) 9 999921232",
+                "ale@123", "123", "Docente", "IFCE", null);
 
-        listaUsuario.add( u2 );
+        u3.addVeiculo( new Veiculo( "Honda", "Moto", "3ER-EWQR", "Lilas", null) );
 
-        Usuario u3 = new Usuario(new Long(3),"Victoria", "Pacheco","(24) 898989898",
-                "vivi@123", "vivi", "Docente", "IFCE");
-
-        u3.addVeiculo( new Veiculo("Fusca","Carro","666-D3AB","Vermelho") );
-
+        listaUsuario.add(u1);
+        listaUsuario.add(u2);
         listaUsuario.add(u3);
 
         usuario_logado = null;

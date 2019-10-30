@@ -10,6 +10,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
+import com.example.appcaronamobile.Dao.UsuarioDAO;
 import com.example.appcaronamobile.Model.Usuario;
 import com.example.appcaronamobile.Model.Veiculo;
 import com.example.appcaronamobile.Util.Codes.RequestCodes;
@@ -21,6 +23,8 @@ public class MeusVeiculosActivity extends AppCompatActivity {
     private Usuario usuario;
     private VeiculosAdapter veiculosAdapter;
     private int selecionado = -1;
+
+    UsuarioDAO usuarioDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,8 @@ public class MeusVeiculosActivity extends AppCompatActivity {
                 listView.setSelector(android.R.color.holo_orange_light);
             }
         });
+
+        usuarioDAO = UsuarioDBMemory.getInstance();
     }
 
     public void onClickButtonRemover(View view) {
@@ -97,6 +103,7 @@ public class MeusVeiculosActivity extends AppCompatActivity {
                 Veiculo veiculo = (Veiculo) data.getSerializableExtra("veiculo");
                 usuario.addVeiculo(veiculo);
                 veiculosAdapter.notifyDataSetChanged();
+                usuario = usuarioDAO.editUsuario(usuario);
             }
             if(resultCode == ResultCodes.CANCELAR) {
                 Toast.makeText(this, "Operação cancelada", Toast.LENGTH_SHORT).show();
@@ -107,6 +114,7 @@ public class MeusVeiculosActivity extends AppCompatActivity {
                 Veiculo veiculo = (Veiculo) data.getSerializableExtra("veiculo");
                 usuario.overrideVeiculo(selecionado, veiculo);
                 veiculosAdapter.notifyDataSetChanged();
+                usuario = usuarioDAO.editUsuario(usuario);
                 selecionado = -1;
             }
             if(resultCode == ResultCodes.CANCELAR) {
