@@ -1,5 +1,6 @@
 package com.example.appcaronamobile;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -44,31 +45,24 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
     private Spinner tipoV;
     private EditText corV;
     private EditText placaV;
-    private ImageView imageView;
 
     private String modelo;
     private String tipo;
     private String cor;
     private String placa;
     private String code;
-    private byte[] image;
-
-    private Bitmap imagem;
 
     private ByteArrayOutputStream byteArrayOutputStream;
+    private byte[] imagemBytes;
 
     private Veiculo veiculo;
 
     private SpinnerAdapter spinnerAdapter;
 
-    private Button uploadImage;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_veiculo);
-
-        imageView = findViewById(R.id.imageViewVeiculo);
 
         tipoV = findViewById(R.id.spinnerTipoVeiculo);
         spinnerAdapter = new Tipos_Veiculos_Adapter(this);
@@ -86,13 +80,12 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
         String placa2 = getIntent().getStringExtra("placa");
         String modelo2 = getIntent().getStringExtra("modelo");
         String cor2 = getIntent().getStringExtra("cor");
-
-        imagem = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
-        imageView.setImageBitmap(imagem);
+        String tipo2 = getIntent().getStringExtra("tipo");
 
         modeloV.setText(modelo2);
         corV.setText(cor2);
         placaV.setText(placa2);
+        tipoV.setSelection(Integer.valueOf(tipo2));
 
         Button finalizar = (Button) findViewById(R.id.buttonSalvarAlteracoesCarro);
 
@@ -118,7 +111,7 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialogInterface, int i) {
                             senhaPedida = input.getText().toString();
                             if(senhaDoUsuario.equals(senhaPedida)) {
-                                veiculo = new Veiculo(modelo, tipo, placa, cor, image);
+                                veiculo = new Veiculo(modelo, tipo, placa, cor, null);
                                 Intent intent = new Intent();
                                 intent.putExtra("veiculo", veiculo);
                                 if(code.equals(String.valueOf(RequestCodes.ADD_VEICULO))) {
@@ -148,14 +141,16 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
             }
         });
 
-        uploadImage = findViewById(R.id.uploadImageButtonVeiculo);
+        Button uploadImage = findViewById(R.id.uploadImageButtonVeiculo);
         uploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
+            @TargetApi(Build.VERSION_CODES.M)
             public void onClick(View view) {
-                if(ActivityCompat.checkSelfPermission( view.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                    getRequestPermission();
+                if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{Manifest.permission.CAMERA}, RequestCodes.CAMERA_PERMISSION);
                 } else {
-                    startGallery();
+                    Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, RequestCodes.CAMERA_REQUEST);
                 }
             }
         });
@@ -170,33 +165,28 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    public void getRequestPermission() {
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, RequestCodes.CAMERA_REQUEST);
-    }
-
-    private void startGallery() {
-        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        cameraIntent.setType("image/*");
-        if (cameraIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(cameraIntent, RequestCodes.CAMERA_REQUEST);
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == RequestCodes.CAMERA_PERMISSION) {
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, RequestCodes.CAMERA_REQUEST);
+            }
         }
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == RequestCodes.CAMERA_REQUEST) {
             if(resultCode == Activity.RESULT_OK) {
-                Uri returnUri = data.getData();
-                try {
-                    imagem = MediaStore.Images.Media.getBitmap(getContentResolver(), returnUri);
-                } catch (IOException e) {
-                    Toast.makeText(this, "Exception on gallery connection: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                }
-                imageView.setImageBitmap(imagem);
+                Bitmap imagem = (Bitmap) data.getExtras().get("data");
+                ImageView mv = findViewById(R.id.imageViewVeiculo);
+                mv.setImageBitmap(imagem);
                 byteArrayOutputStream = new ByteArrayOutputStream();
                 imagem.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-                image = byteArrayOutputStream.toByteArray();
+                imagemBytes = byteArrayOutputStream.toByteArray();
             }
         }
     }

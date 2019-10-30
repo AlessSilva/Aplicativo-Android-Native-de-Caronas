@@ -13,15 +13,18 @@ import android.widget.TextView;
 import com.example.appcaronamobile.Model.Veiculo;
 import com.example.appcaronamobile.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VeiculosAdapter extends BaseAdapter {
     private Activity context;
     private List<Veiculo> veiculos;
+    private int[] imgs_default;
 
     public VeiculosAdapter(Activity context, List<Veiculo> veiculos) {
         this.context = context;
         this.veiculos = veiculos;
+        this.imgs_default = new int[] {R.mipmap.ic_car2, R.mipmap.ic_moto};
     }
 
     @Override
@@ -65,6 +68,16 @@ public class VeiculosAdapter extends BaseAdapter {
         // iv é a imageview muda aqui
 
         return rowView;
+    }
+
+    public int getByTipo(String tipo) {
+        if(tipo.equals("Carro")) {
+            return 1;
+        }
+        else if(tipo.equals("Moto")) {
+            return 2;
+        }
+        return 0;
     }
 
     public void remove(int position) {
