@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentActivity;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.appcaronamobile.DBMemory.CaronaDBMemory;
 import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
@@ -87,17 +88,20 @@ public class Map extends SupportMapFragment implements OnMapReadyCallback,
 
             latLng = new LatLng( c.getLatLocalEncontro(), c.getLngLocalEncontro() );
 
+            //Marker marker;
+
             if( c.getVeiculo().getTipo().equals("Carro") ){
                 mMap.addMarker(new MarkerOptions().position(latLng)
-                        .title( usuarioDAO.getUsuario( c.getId_responsavel() ).getPrimeiroNome() )
+                        .title( "Carona de: " + usuarioDAO.getUsuario( c.getId_responsavel() ).getPrimeiroNome() )
+                         .snippet(c.getHorario())
                         .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_car2)));
             }else {
                 mMap.addMarker(new MarkerOptions().position(latLng)
-                        .title( usuarioDAO.getUsuario( c.getId_responsavel() ).getPrimeiroNome() )
+                        .title( "Carona de: " + usuarioDAO.getUsuario( c.getId_responsavel() ).getPrimeiroNome() )
+                        .snippet(c.getHorario())
                         .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_moto)));
             }
         }
-
 
         mMap.setMapStyle( MapStyleOptions.loadRawResourceStyle(this.getContext(), R.raw.styler));
         getDeviceLocation();

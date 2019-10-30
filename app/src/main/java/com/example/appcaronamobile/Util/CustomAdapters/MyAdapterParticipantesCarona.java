@@ -54,6 +54,13 @@ public class MyAdapterParticipantesCarona extends RecyclerView.Adapter<MyAdapter
 
         holder.nomeParticipante.setText( "@"+holder.participante.getUsuario().getPrimeiroNome() );
 
+        if(holder.participante.isConfirmacao()){
+            holder.confirmar.setText( "Confirmada" );
+            holder.confirmar.setBackgroundColor( parent.getResources().getColor(android.R.color.holo_blue_light) );
+            holder.ignorar.setEnabled(false);
+            holder.ignorar.setBackgroundColor( parent.getResources().getColor(android.R.color.transparent) );
+        }
+
         holder.ignorar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
