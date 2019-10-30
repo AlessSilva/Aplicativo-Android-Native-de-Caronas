@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#A825CC84"
-    tools:context=".CadastroPt1Activity">
+    tools:context=".Fragments.CadastroPt1">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -205,7 +205,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        android:onClick="onClickVoltar"
                         android:text="@string/voltar"
                         android:textColor="#FF8F00" />
 
@@ -215,7 +214,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        android:onClick="onClickProximo"
                         android:text="@string/pr_ximo"
                         android:textColor="#FF8F00" />
                 </LinearLayout>

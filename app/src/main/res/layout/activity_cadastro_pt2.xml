@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#A825CC84"
-    tools:context=".CadastroPt2Activity">
+    tools:context=".Fragments.CadastroPt2">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -44,6 +44,20 @@
                     android:textColor="#FFFFFF"
                     android:textSize="25sp"
                     android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/imageViewPerfil"
+                    android:layout_width="match_parent"
+                    android:layout_height="113dp"
+                    android:layout_marginBottom="20dp"
+                    app:srcCompat="@drawable/login" />
+
+                <Button
+                    android:id="@+id/uploadImageButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:text="Upload de imagem" />
 
                 <TextView
                     android:id="@+id/textViewTitleFaculdade"
@@ -95,7 +109,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="190dp"
                     android:orientation="horizontal">
 
                     <Button
@@ -104,7 +117,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        android:onClick="onClickVoltar"
                         android:text="@string/voltar"
                         android:textColor="#FF8F00" />
 
@@ -114,7 +126,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        android:onClick="onClickFinalizar"
                         android:text="@string/finalizar"
                         android:textColor="#FF8F00" />
                 </LinearLayout>
