@@ -67,6 +67,8 @@ public class MyAdapterParticipantesCarona extends RecyclerView.Adapter<MyAdapter
 
                     listParticipantes.remove(holder.getAdapterPosition());
                     notifyItemRemoved(holder.getAdapterPosition());
+                    carona.setParticipantes(listParticipantes);
+                    carona = caronaDAO.editCarona(carona);
                     notifyItemRangeChanged(holder.getAdapterPosition(),listParticipantes.size());
 
                     Toast.makeText(mContext,"Participante ignorado",Toast.LENGTH_SHORT).show();

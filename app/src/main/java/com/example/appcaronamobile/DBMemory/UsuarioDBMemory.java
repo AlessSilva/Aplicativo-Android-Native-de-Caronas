@@ -29,7 +29,7 @@ public class UsuarioDBMemory implements UsuarioDAO {
         u2.addVeiculo( new Veiculo( "Ferrari", "Carro", "3ER-EWW1", "Lilas", null) );
 
         Usuario u3 = new Usuario( new Long(3),"Viviane", "Pacheco", "(90) 9 999921232",
-                "ale@123", "123", "Docente", "IFCE", null);
+                "vivi@123", "123", "Docente", "IFCE", null);
 
         u3.addVeiculo( new Veiculo( "Honda", "Moto", "3ER-EWQR", "Lilas", null) );
 
