@@ -3,8 +3,12 @@ package com.example.appcaronamobile;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -66,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Logar(Usuario usuario){
-
         final Intent intent = new Intent(this, TelaPrincipalActivity.class);
 
         intent.putExtra("usuario", usuario);

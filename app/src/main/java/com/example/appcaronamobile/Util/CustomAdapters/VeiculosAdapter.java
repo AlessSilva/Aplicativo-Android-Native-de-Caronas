@@ -19,10 +19,12 @@ import java.util.List;
 public class VeiculosAdapter extends BaseAdapter {
     private Activity context;
     private List<Veiculo> veiculos;
+    private int[] imgs_default;
 
     public VeiculosAdapter(Activity context, List<Veiculo> veiculos) {
         this.context = context;
         this.veiculos = veiculos;
+        this.imgs_default = new int[] {R.mipmap.ic_car2, R.mipmap.ic_moto};
     }
 
     @Override
@@ -75,9 +77,7 @@ public class VeiculosAdapter extends BaseAdapter {
         else if(tipo.equals("Moto")) {
             return 2;
         }
-        else {
-            return 0;
-        }
+        return 0;
     }
 
     public void remove(int position) {

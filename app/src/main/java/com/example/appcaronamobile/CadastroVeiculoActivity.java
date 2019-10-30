@@ -1,5 +1,6 @@
 package com.example.appcaronamobile;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -52,6 +53,7 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
     private String code;
 
     private ByteArrayOutputStream byteArrayOutputStream;
+    private byte[] imagemBytes;
 
     private Veiculo veiculo;
 
@@ -138,6 +140,20 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Button uploadImage = findViewById(R.id.uploadImageButtonVeiculo);
+        uploadImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            @TargetApi(Build.VERSION_CODES.M)
+            public void onClick(View view) {
+                if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{Manifest.permission.CAMERA}, RequestCodes.CAMERA_PERMISSION);
+                } else {
+                    Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, RequestCodes.CAMERA_REQUEST);
+                }
+            }
+        });
     }
 
     @Override
@@ -147,5 +163,31 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
             setResult(ResultCodes.CANCELAR, intent);
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == RequestCodes.CAMERA_PERMISSION) {
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, RequestCodes.CAMERA_REQUEST);
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == RequestCodes.CAMERA_REQUEST) {
+            if(resultCode == Activity.RESULT_OK) {
+                Bitmap imagem = (Bitmap) data.getExtras().get("data");
+                ImageView mv = findViewById(R.id.imageViewVeiculo);
+                mv.setImageBitmap(imagem);
+                byteArrayOutputStream = new ByteArrayOutputStream();
+                imagem.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                imagemBytes = byteArrayOutputStream.toByteArray();
+            }
+        }
     }
 }

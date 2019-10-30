@@ -15,4 +15,12 @@ public abstract class RequestCodes {
     public static final int GALLERY_REQUEST = 122;
 
     public static final int CAMERA_REQUEST = 133;
+
+    public static final int CAMERA_PERMISSION = 121;
+
+    public static final int INTERNET_PERMISSION = 123;
+
+    public static final int AFL_PERMISSION = 124;
+
+    public static final int ACL_PERMISSION = 125;
 }
