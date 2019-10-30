@@ -54,8 +54,9 @@ public class CadastroCarona2 extends Fragment {
 
     private void cancel(){
 
-        MyListener2 myListener2 = (MyListener2) getActivity();
-        myListener2.voltarFragmentoP2();
+        getActivity().finish();
+        //MyListener2 myListener2 = (MyListener2) getActivity();
+        //myListener2.voltarFragmentoP2();
 
     }
 

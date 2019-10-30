@@ -15,6 +15,7 @@ import com.example.appcaronamobile.Dao.CaronaDAO;
 import com.example.appcaronamobile.Dao.UsuarioDAO;
 import com.example.appcaronamobile.Model.Carona;
 import com.example.appcaronamobile.R;
+import com.example.appcaronamobile.Util.CustomAdapters.MyAdapterMarkerInfo;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -84,6 +85,8 @@ public class Map extends SupportMapFragment implements OnMapReadyCallback,
 
         LatLng latLng;
 
+        mMap.setInfoWindowAdapter(new MyAdapterMarkerInfo(getContext()));
+
         for(Carona c : caronaDAO.getListaCarona() ){
 
             latLng = new LatLng( c.getLatLocalEncontro(), c.getLngLocalEncontro() );
@@ -91,12 +94,16 @@ public class Map extends SupportMapFragment implements OnMapReadyCallback,
             if( c.getVeiculo().getTipo().equals("Carro") ){
                 mMap.addMarker(new MarkerOptions().position(latLng)
                         .title( "Carona de: " + usuarioDAO.getUsuario( c.getId_responsavel() ).getPrimeiroNome() )
-                         .snippet(c.getHorario())
+                         .snippet(usuarioDAO.getUsuario( c.getId_responsavel() ).getPrimeiroNome()+"<>"+
+                                 usuarioDAO.getUsuario( c.getId_responsavel() ).getTelefone()+"<>"+
+                                 c.getHorario()+"<>"+c.getDestino()+"<>"+(c.getVagas()-c.getConfirmados().size()))
                         .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_car2)));
             }else {
                 mMap.addMarker(new MarkerOptions().position(latLng)
                         .title( "Carona de: " + usuarioDAO.getUsuario( c.getId_responsavel() ).getPrimeiroNome() )
-                        .snippet(c.getHorario())
+                        .snippet(usuarioDAO.getUsuario( c.getId_responsavel() ).getPrimeiroNome()+"<>"+
+                                usuarioDAO.getUsuario( c.getId_responsavel() ).getTelefone()+"<>"+
+                                c.getHorario()+"<>"+c.getDestino()+"<>"+(c.getVagas()-c.getConfirmados().size()))
                         .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_moto)));
             }
         }

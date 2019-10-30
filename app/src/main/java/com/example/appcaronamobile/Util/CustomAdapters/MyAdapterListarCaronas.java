@@ -54,7 +54,6 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
 
         holder.carona = listCarona.get(position);
 
-        holder.vagas.setText( "Vagas: " + (holder.carona.getVagas()-holder.carona.getParticipantes().size()) );
         holder.responsavel.setText( "@"+usuarioDAO.getUsuario( holder.carona.getId_responsavel() ).getPrimeiroNome() );
         holder.horario.setText("Horário: "+holder.carona.getHorario());
         holder.destino.setText("Destino: "+holder.carona.getDestino());
@@ -63,7 +62,7 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
             @Override
             public void onClick(View view) {
 
-                if( (holder.carona.getVagas() - holder.carona.getParticipantes().size()) > 0 ){
+                if( (holder.carona.getVagas() - holder.carona.getConfirmados().size()) > 0 ){
 
                     holder.carona.addUsuario( new Participante( usuarioDAO.getLogado(), "") );
                     holder.carona = caronaDAO.editCarona(holder.carona);
@@ -112,7 +111,7 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
                 .setText( holder.carona.getVagas()+"" );
 
         ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaVagasRestantes ))
-                .setText( (holder.carona.getVagas()-holder.carona.getParticipantes().size())+"" );
+                .setText( (holder.carona.getVagas()-holder.carona.getConfirmados().size())+"" );
 
         ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaHorario ))
                 .setText( holder.carona.getHorario() );
@@ -136,7 +135,6 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
     public class CaronaViewHolder extends RecyclerView.ViewHolder{
 
         View view = null;
-        TextView vagas =  null;
         TextView horario = null;
         TextView destino = null;
         TextView responsavel = null;
@@ -153,7 +151,6 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
 
             view = itemView;
 
-            vagas = view.findViewById(R.id.CardViewCaronaVagas);
             horario = view.findViewById(R.id.CardViewCaronaHorario);
             destino = view.findViewById(R.id.CardViewCaronaDestino);
             responsavel = view.findViewById(R.id.CardViewCaronaUserName);

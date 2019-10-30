@@ -78,7 +78,7 @@ public class MyAdapterMinhasCaronas extends RecyclerView.Adapter<MyAdapterMinhas
                 .setText( carona.getVagas()+"" );
 
         ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaVagasRestantes ))
-                .setText( (carona.getVagas()-carona.getParticipantes().size())+"" );
+                .setText( (carona.getVagas()-carona.getConfirmados().size())+"" );
 
         ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaHorario ))
                 .setText( carona.getHorario() );

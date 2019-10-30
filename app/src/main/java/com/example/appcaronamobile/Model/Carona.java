@@ -155,6 +155,20 @@ public class Carona implements Serializable {
 
     }
 
+    public ArrayList<Participante> getConfirmados(){
+
+        ArrayList<Participante> confirmados = new ArrayList<Participante>();
+
+        for( Participante p : participantes ){
+            if ( p.isConfirmacao() ){
+                confirmados.add(p);
+            }
+        }
+
+        return confirmados;
+
+    }
+
     public String getData() {
         return data;
     }
