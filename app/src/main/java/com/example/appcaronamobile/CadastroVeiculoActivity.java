@@ -45,6 +45,7 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
     private Spinner tipoV;
     private EditText corV;
     private EditText placaV;
+    private ImageView mv;
 
     private String modelo;
     private String tipo;
@@ -72,6 +73,8 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
         modeloV = findViewById(R.id.editTextModeloCarro);
         corV = findViewById(R.id.editTextCorCarro);
         placaV = findViewById(R.id.editTextPlacaCarro);
+        mv = findViewById(R.id.imageViewVeiculo);
+        imagemBytes = null;
 
         placaV.addTextChangedListener(MaskEditUtil.mask(placaV, MaskEditUtil.FORMAT_PLACA));
 
@@ -111,7 +114,7 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialogInterface, int i) {
                             senhaPedida = input.getText().toString();
                             if(senhaDoUsuario.equals(senhaPedida)) {
-                                veiculo = new Veiculo(modelo, tipo, placa, cor, null);
+                                veiculo = new Veiculo(modelo, tipo, placa, cor, imagemBytes);
                                 Intent intent = new Intent();
                                 intent.putExtra("veiculo", veiculo);
                                 if(code.equals(String.valueOf(RequestCodes.ADD_VEICULO))) {
@@ -182,7 +185,6 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
         if(requestCode == RequestCodes.CAMERA_REQUEST) {
             if(resultCode == Activity.RESULT_OK) {
                 Bitmap imagem = (Bitmap) data.getExtras().get("data");
-                ImageView mv = findViewById(R.id.imageViewVeiculo);
                 mv.setImageBitmap(imagem);
                 byteArrayOutputStream = new ByteArrayOutputStream();
                 imagem.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);

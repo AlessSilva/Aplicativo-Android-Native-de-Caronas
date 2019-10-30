@@ -48,8 +48,7 @@ public class CadastroCaronaActivity extends AppCompatActivity implements MyListe
 
     }
 
-    public void proximoFragmentoP1(int vagas, Veiculo veiculo, String horario, String data, String destino, boolean ajuda ){
-
+    public void proximoFragmentoP1(int vagas, Veiculo veiculo, String horario, String data, String destino, boolean ajuda ) {
         this.vagas = vagas;
         this.horario = horario;
         this.destino = destino;
@@ -85,7 +84,6 @@ public class CadastroCaronaActivity extends AppCompatActivity implements MyListe
         setResult(ResultCodes.CAD_CARPOOL_SUCESS,intent);
 
         finish();
-
     }
 
     public void voltarFragmentoP2(){

@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.core.app.ActivityCompat;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -27,6 +28,7 @@ import com.example.appcaronamobile.Repository.MyListener;
 import com.example.appcaronamobile.Util.Codes.RequestCodes;
 import com.example.appcaronamobile.Util.CustomAdapters.Instituicoes_Adapter;
 import com.example.appcaronamobile.Util.CustomAdapters.Situacoes_Adapter;
+import com.example.appcaronamobile.Util.RoundImage.RoundImage;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

@@ -2,6 +2,8 @@ package com.example.appcaronamobile.Util.CustomAdapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -65,7 +67,17 @@ public class VeiculosAdapter extends BaseAdapter {
         tv2.setTextSize(12);
         tv2.setTextColor(Color.parseColor("#0A0A0A"));
 
-        // iv é a imageview muda aqui
+        if(veiculos.get(position).getImagem() == null) {
+            if(veiculos.get(position).getTipo().equals("Carro")) {
+                iv.setImageResource(imgs_default[0]);
+            } else if(veiculos.get(position).getTipo().equals("Moto")) {
+                iv.setImageResource(imgs_default[1]);
+            }
+        } else {
+            byte[] imagemByte = veiculos.get(position).getImagem();
+            Bitmap bm = BitmapFactory.decodeByteArray(imagemByte, 0, imagemByte.length);
+            iv.setImageBitmap(bm);
+        }
 
         return rowView;
     }
@@ -82,5 +94,9 @@ public class VeiculosAdapter extends BaseAdapter {
 
     public void remove(int position) {
         veiculos.remove(position);
+    }
+
+    public void removerImagem(int position) {
+        veiculos.get(position).setImagem(null);
     }
 }
