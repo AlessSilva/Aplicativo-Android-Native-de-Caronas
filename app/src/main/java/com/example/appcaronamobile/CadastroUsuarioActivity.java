@@ -5,12 +5,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import com.example.appcaronamobile.Fragments.CadastroPt1;
 import com.example.appcaronamobile.Fragments.CadastroPt2;
 import com.example.appcaronamobile.Repository.MyListener;
 import com.example.appcaronamobile.Util.Codes.ResultCodes;
+
+import java.io.ByteArrayOutputStream;
 
 public class CadastroUsuarioActivity extends AppCompatActivity implements MyListener {
 
@@ -62,10 +65,13 @@ public class CadastroUsuarioActivity extends AppCompatActivity implements MyList
     }
 
     @Override
-    public void finalizarFragmentoP2(String inst, String sit) {
+    public void finalizarFragmentoP2(String inst, String sit, byte[] imagem) {
 
         instituicao = inst;
         situacao = sit;
+
+//        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+//        imagem.compress(Bitmap.CompressFormat.PNG, 50, byteArrayOutputStream);
 
         Intent intent = new Intent();
 
@@ -76,6 +82,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity implements MyList
         intent.putExtra("senha", senha);
         intent.putExtra("situacao", situacao);
         intent.putExtra("instituicao", instituicao);
+        intent.putExtra("byteArray", imagem);
 
         setResult(ResultCodes.CAD_USER_SUCESS, intent);
         finish();

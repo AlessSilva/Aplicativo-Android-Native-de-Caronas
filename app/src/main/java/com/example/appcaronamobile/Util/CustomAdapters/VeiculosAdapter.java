@@ -18,12 +18,10 @@ import java.util.List;
 public class VeiculosAdapter extends BaseAdapter {
     private Activity context;
     private List<Veiculo> veiculos;
-    private Integer[] imgs;
 
     public VeiculosAdapter(Activity context, List<Veiculo> veiculos) {
         this.context = context;
         this.veiculos = veiculos;
-        this.imgs = new Integer[] {R.mipmap.ic_car2, R.mipmap.ic_moto};
     }
 
     @Override
@@ -64,11 +62,7 @@ public class VeiculosAdapter extends BaseAdapter {
         tv2.setTextSize(12);
         tv2.setTextColor(Color.parseColor("#0A0A0A"));
 
-        if(tipo.equals("Tipo: Carro")) {
-            iv.setImageResource(imgs[0]);
-        } else {
-            iv.setImageResource(imgs[1]);
-        }
+        // iv é a imageview muda aqui
 
         return rowView;
     }

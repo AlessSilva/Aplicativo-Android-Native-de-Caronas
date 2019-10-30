@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,8 @@ import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
 import com.example.appcaronamobile.Dao.UsuarioDAO;
 import com.example.appcaronamobile.Model.Usuario;
 import com.example.appcaronamobile.Util.Codes.ResultCodes;
+
+import java.io.ByteArrayOutputStream;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -85,8 +88,9 @@ public class MainActivity extends AppCompatActivity {
             String senha = data.getStringExtra("senha");
             String situacao = data.getStringExtra("situacao");
             String instituicao = data.getStringExtra("instituicao");
+            byte [] bs = data.getByteArrayExtra("byteArray");
 
-            Usuario novoUsuario = new Usuario(primeiroNome, sobrenome, telefone, email, senha, situacao, instituicao);
+            Usuario novoUsuario = new Usuario(primeiroNome, sobrenome, telefone, email, senha, situacao, instituicao, bs);
 
             usuarioDAO.addUsuario( novoUsuario );
 

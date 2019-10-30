@@ -1,5 +1,7 @@
 package com.example.appcaronamobile.Model;
 
+import android.graphics.Bitmap;
+
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
@@ -10,20 +12,23 @@ public class Veiculo implements Serializable {
     private String tipo;
     private String placa;
     private String cor;
+    private byte[] imagem;
 
-    public Veiculo( String modelo, String tipo, String placa, String cor) {
+    public Veiculo( String modelo, String tipo, String placa, String cor, byte[] imagem) {
         this.modelo = modelo;
         this.tipo = tipo;
         this.placa = placa;
         this.cor = cor;
+        this.imagem = imagem;
     }
 
-    public Veiculo(Long id, String modelo, String tipo, String placa, String cor) {
+    public Veiculo(Long id, String modelo, String tipo, String placa, String cor, byte[] imagem) {
         this.id = id;
         this.modelo = modelo;
         this.tipo = tipo;
         this.placa = placa;
         this.cor = cor;
+        this.imagem = imagem;
     }
 
     public Long getId() {
@@ -64,6 +69,14 @@ public class Veiculo implements Serializable {
 
     public void setCor(String cor) {
         this.cor = cor;
+    }
+
+    public void setImagem(byte[] imagem) {
+        this.imagem = imagem;
+    }
+
+    public byte[] getImagem() {
+        return imagem;
     }
 
     public String toString2(){ return this.modelo + " " + this.placa; }

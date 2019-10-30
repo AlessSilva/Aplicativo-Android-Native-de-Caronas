@@ -13,4 +13,6 @@ public abstract class RequestCodes {
     public static final int EDITAR_VEICULOS = 444;
 
     public static final int GALLERY_REQUEST = 122;
+
+    public static final int CAMERA_REQUEST = 133;
 }
