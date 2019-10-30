@@ -76,7 +76,6 @@ public class Map2 extends SupportMapFragment implements OnMapReadyCallback,
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setOnMapClickListener(this);
-        //mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.setMapStyle( MapStyleOptions.loadRawResourceStyle(this.getContext(), R.raw.styler));
         getDeviceLocation();
     }

@@ -85,8 +85,6 @@ public class TelaPrincipalActivity extends AppCompatActivity
         switch (item.getItemId()){
             case R.id.VerVeiculos:
 
-                Toast.makeText(this, "Seus Veículos", Toast.LENGTH_SHORT).show();
-
                 Intent intent = new Intent(this, MeusVeiculosActivity.class);
 
                 intent.putExtra("usuario", usuario);
@@ -95,7 +93,6 @@ public class TelaPrincipalActivity extends AppCompatActivity
 
                 break;
             case R.id.HistoricoCaronas:
-                Toast.makeText(this, "Histórico de Caronas", Toast.LENGTH_SHORT).show();
 
                 Intent intent2 = new Intent(this, HistoricoCaronasActivity.class);
 
@@ -104,17 +101,10 @@ public class TelaPrincipalActivity extends AppCompatActivity
                 startActivity(intent2);
 
                 break;
-            case R.id.VerAmigos:
-                Toast.makeText(this, "Ver Amigos", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.AbrirChat:
-                Toast.makeText(this, "Abrir Chat", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.Sobre:
-                Toast.makeText(this, "Sobre", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.Configuracoes:
-                Toast.makeText(this, "Configurações", Toast.LENGTH_SHORT).show();
+            case R.id.Sair:
+
+                finish();
+
                 break;
         }
 
@@ -170,7 +160,8 @@ public class TelaPrincipalActivity extends AppCompatActivity
             double lat = Double.valueOf(data.getExtras().get("lat").toString());
             double lon = Double.valueOf(data.getExtras().get("long").toString());
 
-            Veiculo v = new Veiculo( "Fusquinha anos 50", "CARRO", "placa", "amarelo" );
+            Veiculo v = (Veiculo)  data.getSerializableExtra("veiculo");
+            Toast.makeText(this, v.getTipo()+"", Toast.LENGTH_SHORT).show();
             Carona carona = new Carona( usuario.getId() , vagas, v , horario, dataa, destino, ajuda, lat, lon );
 
             CaronaDAO caronaDAO = CaronaDBMemory.getInstance();

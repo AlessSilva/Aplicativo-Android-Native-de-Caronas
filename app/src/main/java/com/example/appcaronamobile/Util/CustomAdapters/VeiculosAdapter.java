@@ -23,7 +23,7 @@ public class VeiculosAdapter extends BaseAdapter {
     public VeiculosAdapter(Activity context, List<Veiculo> veiculos) {
         this.context = context;
         this.veiculos = veiculos;
-        this.imgs = new Integer[] {R.drawable.cadcarro_icone, R.drawable.cadmoto_icone};
+        this.imgs = new Integer[] {R.mipmap.ic_car2, R.mipmap.ic_moto};
     }
 
     @Override
@@ -57,12 +57,12 @@ public class VeiculosAdapter extends BaseAdapter {
         String placa = content[3];
 
         tv.setText(modelo + "\n" + placa);
-        tv.setTextSize(20);
-        tv.setTextColor(Color.parseColor("#9E9D24"));
+        tv.setTextSize(15);
+        tv.setTextColor(Color.parseColor("#1565C0"));
 
         tv2.setText(tipo + "\n" + cor);
-        tv2.setTextSize(15);
-        tv2.setTextColor(Color.parseColor("#9E9D24"));
+        tv2.setTextSize(12);
+        tv2.setTextColor(Color.parseColor("#0A0A0A"));
 
         if(tipo.equals("Tipo: Carro")) {
             iv.setImageResource(imgs[0]);

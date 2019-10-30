@@ -24,7 +24,6 @@ import java.util.List;
 
 public class MyAdapterCaronasParticipacao extends RecyclerView.Adapter<MyAdapterCaronasParticipacao.CaronaViewHolder3> {
 
-
     private Context mContext;
     private List<Carona> listCarona;
     private ViewGroup parent;
@@ -216,6 +215,13 @@ public class MyAdapterCaronasParticipacao extends RecyclerView.Adapter<MyAdapter
                 @Override
                 public void onClick(View view) {
                     alertDialog.show();
+                }
+            });
+
+            ((Button)alertView.findViewById(R.id.buttonAlertCaronaFechar)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialog.cancel();
                 }
             });
 

@@ -66,6 +66,8 @@ public class Veiculo implements Serializable {
         this.cor = cor;
     }
 
+    public String toString2(){ return this.modelo + " " + this.placa; }
+
     @Override
     public String toString() {
         String modeloV = "Modelo: " + modelo;

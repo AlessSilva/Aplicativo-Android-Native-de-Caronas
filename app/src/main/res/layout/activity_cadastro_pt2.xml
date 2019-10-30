@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A825CC84"
+    android:background="#FF000000"
     tools:context=".Fragments.CadastroPt2">
 
     <androidx.cardview.widget.CardView
@@ -47,8 +47,9 @@
 
                 <ImageView
                     android:id="@+id/imageViewPerfil"
-                    android:layout_width="match_parent"
+                    android:layout_width="100dp"
                     android:layout_height="113dp"
+                    android:layout_gravity="center"
                     android:layout_marginBottom="20dp"
                     app:srcCompat="@drawable/login" />
 
@@ -57,7 +58,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
-                    android:text="Upload de imagem" />
+                    android:text="Upload de imagem"
+                    android:textColor="#02BDAD" />
 
                 <TextView
                     android:id="@+id/textViewTitleFaculdade"

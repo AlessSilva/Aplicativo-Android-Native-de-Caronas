@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FF000000"
     tools:context=".Fragments.CadastroCarona2">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -50,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:gravity="center"
-                android:text="Local de Encontro"
+                android:text="Local de Saída"
                 android:textColor="#F5FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold" />

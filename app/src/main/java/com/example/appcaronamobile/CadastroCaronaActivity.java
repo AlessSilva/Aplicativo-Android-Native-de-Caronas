@@ -20,6 +20,7 @@ public class CadastroCaronaActivity extends AppCompatActivity implements MyListe
     FragmentManager fragmentManager = null;
 
     private Usuario usuario;
+    private Veiculo veiculo;
     private int vagas;
     private String horario;
     private String data;
@@ -36,8 +37,13 @@ public class CadastroCaronaActivity extends AppCompatActivity implements MyListe
 
         fragmentManager = getSupportFragmentManager();
 
+        CadastroCarona1 cadastroCarona1 = new CadastroCarona1();
+        Bundle arguments = new Bundle();
+        arguments.putSerializable("usuario",usuario);
+        cadastroCarona1.setArguments(arguments);
+
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.frame, new CadastroCarona1(), "CadastroCaronaPart1");
+        transaction.add(R.id.frame, cadastroCarona1, "CadastroCaronaPart1");
         transaction.commitAllowingStateLoss();
 
     }
@@ -49,6 +55,7 @@ public class CadastroCaronaActivity extends AppCompatActivity implements MyListe
         this.destino = destino;
         this.ajuda = ajuda;
         this.data = data;
+        this.veiculo = veiculo;
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frame, new CadastroCarona2(), "CadastroCaronaPart2");
@@ -73,6 +80,7 @@ public class CadastroCaronaActivity extends AppCompatActivity implements MyListe
         intent.putExtra("ajuda",ajuda+"");
         intent.putExtra("lat",latLng.latitude+"");
         intent.putExtra("long",latLng.longitude+"");
+        intent.putExtra("veiculo",veiculo);
 
         setResult(ResultCodes.CAD_CARPOOL_SUCESS,intent);
 

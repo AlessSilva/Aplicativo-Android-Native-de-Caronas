@@ -37,7 +37,7 @@ public class MeusVeiculosActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
                 selecionado = position;
                 listView.setSelection(selecionado);
-                listView.setSelector(android.R.color.holo_blue_light);
+                listView.setSelector(android.R.color.holo_orange_light);
             }
         });
     }

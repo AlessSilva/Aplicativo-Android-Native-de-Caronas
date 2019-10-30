@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="60dp"
-    android:background="#A825CC84" >
+    android:background="#FF000000">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
         android:padding="10dp"
         app:cardBackgroundColor="#283593"
         app:cardElevation="1dp"
-        app:contentPadding="10dp" >
+        app:contentPadding="10dp">
 
         <ScrollView
             android:id="@+id/scrollView3"
@@ -27,12 +27,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical" >
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageViewPerfil2"
+                    android:layout_width="match_parent"
+                    android:layout_height="113dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    app:srcCompat="@drawable/login" />
 
                 <TextView
                     android:id="@+id/textViewTitleDadosPessoais"
@@ -54,12 +62,12 @@
 
                     <EditText
                         android:id="@+id/editTextPrimeiroNomeConta"
-                        android:hint="Primeiro Nome"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/shape_round_edittext"
+                        android:hint="Primeiro Nome"
                         android:inputType="textCapWords"
                         android:paddingLeft="20dp"
                         android:paddingTop="10dp"
@@ -78,12 +86,12 @@
 
                     <EditText
                         android:id="@+id/editTextSobrenomeConta"
-                        android:hint="Sobrenome"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/shape_round_edittext"
+                        android:hint="Sobrenome"
                         android:inputType="textCapWords"
                         android:paddingLeft="20dp"
                         android:paddingTop="10dp"
@@ -101,12 +109,12 @@
 
                     <EditText
                         android:id="@+id/editTextTelefoneConta"
-                        android:hint="(00) 0 00000000"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/shape_round_edittext"
+                        android:hint="(00) 0 00000000"
                         android:inputType="phone"
                         android:paddingLeft="20dp"
                         android:paddingTop="10dp"
@@ -124,12 +132,12 @@
 
                     <EditText
                         android:id="@+id/editTextEmailConta"
-                        android:hint="Novo Email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/shape_round_edittext"
+                        android:hint="Novo Email"
                         android:inputType="textEmailAddress"
                         android:paddingLeft="20dp"
                         android:paddingTop="10dp"
@@ -143,7 +151,7 @@
                     android:layout_margin="1dp"
                     android:background="#A0A79898"
                     app:cardBackgroundColor="#71413A3A"
-                    app:contentPadding="5dp" >
+                    app:contentPadding="5dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -170,15 +178,15 @@
                                 android:id="@+id/radioButtonUFC"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#FF8F00"
-                                android:text="UFC" />
+                                android:text="UFC"
+                                android:textColor="#FF8F00" />
 
                             <RadioButton
                                 android:id="@+id/radioButtonIFCE"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#FF8F00"
-                                android:text="IFCE" />
+                                android:text="IFCE"
+                                android:textColor="#FF8F00" />
                         </RadioGroup>
                     </LinearLayout>
 
@@ -190,7 +198,7 @@
                     android:layout_margin="1dp"
                     android:background="#A0A79898"
                     app:cardBackgroundColor="#71413A3A"
-                    app:contentPadding="5dp" >
+                    app:contentPadding="5dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -203,8 +211,8 @@
                             android:layout_width="131dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:textColor="#FF8F00"
-                            android:text="Situação" />
+                            android:text="Situação"
+                            android:textColor="#FF8F00" />
 
                         <RadioGroup
                             android:id="@+id/radioGroupSituacao"
@@ -217,22 +225,22 @@
                                 android:id="@+id/radioButtonDocente"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#FF8F00"
-                                android:text="Docente" />
+                                android:text="Docente"
+                                android:textColor="#FF8F00" />
 
                             <RadioButton
                                 android:id="@+id/radioButtonDiscente"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#FF8F00"
-                                android:text="Discente" />
+                                android:text="Discente"
+                                android:textColor="#FF8F00" />
 
                             <RadioButton
                                 android:id="@+id/radioButtonOutro"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#FF8F00"
-                                android:text="Outro" />
+                                android:text="Outro"
+                                android:textColor="#FF8F00" />
                         </RadioGroup>
                     </LinearLayout>
 
@@ -248,12 +256,12 @@
 
                     <EditText
                         android:id="@+id/editTextSenhaConta"
-                        android:hint="Nova Senha (vazio para não mudar)"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/shape_round_edittext"
+                        android:hint="Nova Senha (vazio para não mudar)"
                         android:inputType="textPassword"
                         android:paddingLeft="20dp"
                         android:paddingTop="10dp"
@@ -271,12 +279,12 @@
 
                     <EditText
                         android:id="@+id/editTextSenhaRepetidaConta"
-                        android:hint="Repita Nova Senha (vazio para não mudar)"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/shape_round_edittext"
+                        android:hint="Repita Nova Senha (vazio para não mudar)"
                         android:inputType="textPassword"
                         android:paddingLeft="20dp"
                         android:paddingTop="10dp"

@@ -1,6 +1,7 @@
 package com.example.appcaronamobile.Fragments;
 
 
+import android.app.Service;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,9 +17,13 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.appcaronamobile.Model.Usuario;
+import com.example.appcaronamobile.Model.Veiculo;
 import com.example.appcaronamobile.R;
 import com.example.appcaronamobile.Repository.MyListener2;
 import com.example.appcaronamobile.Util.Masks.MaskEditUtil;
+
+import java.util.ArrayList;
 
 
 public class CadastroCarona1 extends Fragment {
@@ -30,11 +35,12 @@ public class CadastroCarona1 extends Fragment {
     EditText horario = null;
     EditText destino = null;
     RadioButton radioButton_selec;
+    Usuario usuario = null;
 
     boolean ajuda = false;
 
     Spinner spinner_veiculos = null;
-    ArrayAdapter<CharSequence> adapter_spinner = null;
+    ArrayAdapter<String> adapter_spinner = null;
 
     Button buttonProximo = null;
     Button buttonVoltar = null;
@@ -47,8 +53,21 @@ public class CadastroCarona1 extends Fragment {
                              Bundle savedInstanceState) {
         view =  inflater.inflate(R.layout.fragment_cadastro_carona1, container, false);
 
+        Bundle arguments = getArguments();
+        usuario = (Usuario) arguments.getSerializable("usuario");
+
+        ArrayList<String> veiculos = new ArrayList<String>();
+
+        veiculos.add("Escolha um Veículo");
+        for( Veiculo v : usuario.getVeiculos() ){
+
+            veiculos.add(v.toString2());
+
+        }
+
+        adapter_spinner = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item,veiculos);
+
         spinner_veiculos = view.findViewById(R.id.spinnerVeiculosCaronaCad);
-        adapter_spinner = ArrayAdapter.createFromResource(this.getContext(),R.array.Veiculos,android.R.layout.simple_spinner_item);
         spinner_veiculos.setAdapter(adapter_spinner);
 
         vagas = view.findViewById(R.id.editTextVagasCaronaCad);
@@ -75,7 +94,7 @@ public class CadastroCarona1 extends Fragment {
                     ajuda = true;
                 }
 
-                if ( va == null || va.equals("") || ho.equals("") || da.equals("") || de.equals("") || ve.equals("") ) {
+                if ( va == null || va.equals("") || ho.equals("") || da.equals("") || de.equals("") || ve.equals("Escolha um Veículo") ) {
                     Toast.makeText(getContext(), "Preencha todos os campos", Toast.LENGTH_LONG).show();
                 }else {
                     sendData(Integer.parseInt(va),ve,ho,da,de,ajuda);
@@ -97,8 +116,9 @@ public class CadastroCarona1 extends Fragment {
 
     private void sendData( int vagas, String veiculo, String horario, String data, String destino, boolean ajuda ){
 
+        Veiculo v = usuario.getVeiculoAt(spinner_veiculos.getSelectedItemPosition()-1 );
         MyListener2 myListener2 = (MyListener2) getActivity();
-        myListener2.proximoFragmentoP1(vagas, null, horario, data, destino, ajuda);
+        myListener2.proximoFragmentoP1(vagas, v, horario, data, destino, ajuda);
 
     }
 

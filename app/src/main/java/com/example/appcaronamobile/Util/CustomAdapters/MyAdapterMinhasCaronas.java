@@ -167,6 +167,13 @@ public class MyAdapterMinhasCaronas extends RecyclerView.Adapter<MyAdapterMinhas
                 }
             });
 
+            ((Button)alertView.findViewById(R.id.buttonAlertCaronaFechar)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialog.cancel();
+                }
+            });
+
 
         }
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A825CC84"
+    android:background="#FF000000"
     tools:context=".Fragments.CadastroCarona1">
 
     <androidx.cardview.widget.CardView
@@ -28,284 +28,284 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#00090000"
-            android:orientation="vertical">
-
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="15dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/Cad"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="5"
-                    android:text=" Informações da Carona"
-                    android:textColor="#F1F7FCFF"
-                    android:textSize="24sp"
-                    app:fontFamily="sans-serif" />
-
-            </LinearLayout>
-
-            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="1dp"
-                android:background="#A0A79898"
-                app:cardBackgroundColor="#71413A3A"
-                app:contentPadding="5dp">
+                android:layout_height="wrap_content"
+                android:background="#00090000"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="15dp"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/Cad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="5"
-                        android:text="Veículo: "
-                        android:textColor="#FCF7F3F3"
-                        android:textSize="18sp"
+                        android:text=" Informações da Carona"
+                        android:textColor="#F1F7FCFF"
+                        android:textSize="24sp"
                         app:fontFamily="sans-serif" />
 
-                    <Spinner
-                        android:id="@+id/spinnerVeiculosCaronaCad"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="5" />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="1dp"
-                android:background="#A0A79898"
-                app:cardBackgroundColor="#71413A3A"
-                app:contentPadding="5dp">
-
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:background="#000277BD"
-                    android:orientation="horizontal">
+                    android:layout_height="50dp"
+                    android:layout_margin="1dp"
+                    android:background="#A0A79898"
+                    app:cardBackgroundColor="#71413A3A"
+                    app:contentPadding="5dp">
 
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Vagas:"
-                        android:textColor="#F3F7FC"
-                        android:textSize="18sp"
-                        app:fontFamily="sans-serif" />
-
-                    <EditText
-                        android:id="@+id/editTextVagasCaronaCad"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_round_edittext"
-                        android:ems="10"
-                        android:hint="Quantidade"
-                        android:inputType="number"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="5dp"
-                        android:paddingRight="20dp"
-                        android:paddingBottom="5dp"
-                        android:textColor="#090000" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="1dp"
-                android:background="#A0A79898"
-                app:cardBackgroundColor="#71413A3A"
-                app:contentPadding="5dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:background="#000277BD"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView8989"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Data:"
-                        android:textColor="#F3F7FC"
-                        android:textSize="18sp"
-                        app:fontFamily="sans-serif" />
-
-                    <EditText
-                        android:id="@+id/editTextDataCaronaCad"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_round_edittext"
-                        android:ems="10"
-                        android:hint="00:00:00"
-                        android:inputType="number"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="5dp"
-                        android:paddingRight="20dp"
-                        android:paddingBottom="5dp"
-                        android:textColor="#090000" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="1dp"
-                android:background="#A0A79898"
-                app:cardBackgroundColor="#71413A3A"
-                app:contentPadding="5dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:background="#000277BD"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView898"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Horário:"
-                        android:textColor="#F3F7FC"
-                        android:textSize="18sp"
-                        app:fontFamily="sans-serif" />
-
-                    <EditText
-                        android:id="@+id/editTextHorarioCaronaCad"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_round_edittext"
-                        android:ems="10"
-                        android:hint="00:00:00"
-                        android:inputType="number"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="5dp"
-                        android:paddingRight="20dp"
-                        android:paddingBottom="5dp"
-                        android:textColor="#090000" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_margin="1dp"
-                android:background="#A0A79898"
-                app:cardBackgroundColor="#71413A3A"
-                app:contentPadding="5dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView7"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Destino:"
-                        android:textColor="#FBFFFEFE"
-                        android:textSize="18sp" />
+                        android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/editTextDestinoCaronaCad"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/shape_round_edittext"
-                        android:ems="10"
-                        android:gravity="start|top"
-                        android:hint="Descreva aqui possíveis pontos de parada para seus passageiros."
-                        android:inputType="textMultiLine"
-                        android:lines="5"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="5dp"
-                        android:paddingRight="20dp"
-                        android:paddingBottom="5dp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="1dp"
-                android:background="#A0A79898"
-                app:cardBackgroundColor="#71413A3A"
-                app:contentPadding="5dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioGroup
-                        android:id="@+id/radioGroupAjudaCaronaCad"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="10dp">
-
-                        <RadioButton
-                            android:id="@+id/radioAjudaCaronaCad"
+                        <TextView
+                            android:id="@+id/textView5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Passageiros precisam ajudar nos custos"
-                            android:textColor="#FFFFFF" />
+                            android:layout_weight="5"
+                            android:text="Veículo: "
+                            android:textColor="#FCF7F3F3"
+                            android:textSize="18sp"
+                            app:fontFamily="sans-serif" />
 
-                    </RadioGroup>
+                        <Spinner
+                            android:id="@+id/spinnerVeiculosCaronaCad"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="1dp"
+                    android:background="#A0A79898"
+                    app:cardBackgroundColor="#71413A3A"
+                    app:contentPadding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:background="#000277BD"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Vagas:"
+                            android:textColor="#F3F7FC"
+                            android:textSize="18sp"
+                            app:fontFamily="sans-serif" />
+
+                        <EditText
+                            android:id="@+id/editTextVagasCaronaCad"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_round_edittext"
+                            android:ems="10"
+                            android:hint="Quantidade"
+                            android:inputType="number"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="20dp"
+                            android:paddingBottom="5dp"
+                            android:textColor="#090000" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:background="#A0A79898"
+                    app:cardBackgroundColor="#71413A3A"
+                    app:contentPadding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:background="#000277BD"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView8989"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Data:"
+                            android:textColor="#F3F7FC"
+                            android:textSize="18sp"
+                            app:fontFamily="sans-serif" />
+
+                        <EditText
+                            android:id="@+id/editTextDataCaronaCad"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_round_edittext"
+                            android:ems="10"
+                            android:hint="00/00/0000"
+                            android:inputType="number"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="20dp"
+                            android:paddingBottom="5dp"
+                            android:textColor="#090000" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="1dp"
+                    android:background="#A0A79898"
+                    app:cardBackgroundColor="#71413A3A"
+                    app:contentPadding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:background="#000277BD"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView898"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Horário:"
+                            android:textColor="#F3F7FC"
+                            android:textSize="18sp"
+                            app:fontFamily="sans-serif" />
+
+                        <EditText
+                            android:id="@+id/editTextHorarioCaronaCad"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_round_edittext"
+                            android:ems="10"
+                            android:hint="00:00:00"
+                            android:inputType="number"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="20dp"
+                            android:paddingBottom="5dp"
+                            android:textColor="#090000" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_margin="1dp"
+                    android:background="#A0A79898"
+                    app:cardBackgroundColor="#71413A3A"
+                    app:contentPadding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Destino:"
+                            android:textColor="#FBFFFEFE"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/editTextDestinoCaronaCad"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/shape_round_edittext"
+                            android:ems="10"
+                            android:gravity="start|top"
+                            android:hint="Descreva aqui possíveis pontos de parada para seus passageiros."
+                            android:inputType="textMultiLine"
+                            android:lines="5"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="20dp"
+                            android:paddingBottom="5dp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="1dp"
+                    android:background="#A0A79898"
+                    app:cardBackgroundColor="#71413A3A"
+                    app:contentPadding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioGroup
+                            android:id="@+id/radioGroupAjudaCaronaCad"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="10dp">
+
+                            <RadioButton
+                                android:id="@+id/radioAjudaCaronaCad"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Passageiros precisam ajudar nos custos"
+                                android:textColor="#FFFFFF" />
+
+                        </RadioGroup>
 
 
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/buttonVoltarCarona"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:text="@string/voltar"
+                        android:textColor="#FF8F00" />
+
+                    <Button
+                        android:id="@+id/buttonProximoCarona"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:text="@string/pr_ximo"
+                        android:textColor="#FF8F00" />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/buttonVoltarCarona"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:text="@string/voltar"
-                    android:textColor="#FF8F00" />
-
-                <Button
-                    android:id="@+id/buttonProximoCarona"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:text="@string/pr_ximo"
-                    android:textColor="#FF8F00" />
             </LinearLayout>
-
-        </LinearLayout>
 
         </ScrollView>
 

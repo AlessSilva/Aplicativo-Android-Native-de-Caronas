@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A825CC84" >
+    android:background="#FF000000">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         android:padding="10dp"
         app:cardBackgroundColor="#283593"
         app:cardElevation="1dp"
-        app:contentPadding="10dp" >
+        app:contentPadding="10dp">
 
         <ScrollView
             android:id="@+id/scrollView3"
@@ -26,12 +26,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textViewTitleDadosCarro"
@@ -53,12 +53,12 @@
 
                     <EditText
                         android:id="@+id/editTextModeloCarro"
-                        android:hint="Modelo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/shape_round_edittext"
+                        android:hint="Modelo"
                         android:inputType="textCapWords"
                         android:paddingLeft="20dp"
                         android:paddingTop="10dp"
@@ -97,12 +97,12 @@
 
                     <EditText
                         android:id="@+id/editTextCorCarro"
-                        android:hint="Cor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/shape_round_edittext"
+                        android:hint="Cor"
                         android:inputType="textCapWords"
                         android:paddingLeft="20dp"
                         android:paddingTop="10dp"
@@ -121,12 +121,12 @@
 
                     <EditText
                         android:id="@+id/editTextPlacaCarro"
-                        android:hint="Placa"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/shape_round_edittext"
+                        android:hint="Placa"
                         android:inputType="textCapCharacters"
                         android:paddingLeft="20dp"
                         android:paddingTop="10dp"

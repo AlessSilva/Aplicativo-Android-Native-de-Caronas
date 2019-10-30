@@ -3,14 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="60dp"
+    android:background="#FF000000"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
         android:background="#9E9D24"
         android:padding="10dp"
         app:cardBackgroundColor="#283593"
@@ -20,7 +25,7 @@
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="#6C283593"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,47 +35,63 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="#00FFFFFF"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/buttonAdicionarVeiculo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
                         android:layout_weight="4"
+                        android:background="#CCFF8F00"
                         android:onClick="onClickButtonAdicionar"
-                        android:text="Adicionar" />
+                        android:text="Adicionar"
+                        android:textColor="#0A0A0A"
+                        android:textSize="12dp" />
 
                     <Button
                         android:id="@+id/buttonRemoverVeiculo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
                         android:layout_weight="4"
+                        android:background="#CCFF8F00"
                         android:onClick="onClickButtonRemover"
-                        android:text="Remover" />
+                        android:text="Remover"
+                        android:textColor="#0A0A0A"
+                        android:textSize="12dp" />
 
                     <Button
                         android:id="@+id/buttonEditarVeiculo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
                         android:layout_weight="4"
+                        android:background="#CCFF8F00"
                         android:onClick="onClickButtonEditar"
-                        android:text="Editar" />
+                        android:text="Editar"
+                        android:textColor="#0A0A0A"
+                        android:textSize="12dp" />
 
                 </LinearLayout>
 
                 <ListView
                     android:id="@+id/listMeusVeiculos"
                     android:layout_width="match_parent"
-                    android:layout_height="412dp"
+                    android:layout_height="500dp"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true" />
+                    android:layout_alignParentTop="true"
+                    android:background="#FFFFFF" />
+
             </LinearLayout>
         </ScrollView>
     </androidx.cardview.widget.CardView>

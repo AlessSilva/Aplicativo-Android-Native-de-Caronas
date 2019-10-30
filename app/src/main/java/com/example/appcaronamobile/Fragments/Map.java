@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.location.Location;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.appcaronamobile.DBMemory.CaronaDBMemory;
 import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
@@ -24,6 +25,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -85,7 +87,7 @@ public class Map extends SupportMapFragment implements OnMapReadyCallback,
 
             latLng = new LatLng( c.getLatLocalEncontro(), c.getLngLocalEncontro() );
 
-            if( c.getVeiculo().getTipo() == "CARRO" ){
+            if( c.getVeiculo().getTipo().equals("Carro") ){
                 mMap.addMarker(new MarkerOptions().position(latLng)
                         .title( usuarioDAO.getUsuario( c.getId_responsavel() ).getPrimeiroNome() )
                         .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_car2)));
@@ -95,6 +97,7 @@ public class Map extends SupportMapFragment implements OnMapReadyCallback,
                         .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_moto)));
             }
         }
+
 
         mMap.setMapStyle( MapStyleOptions.loadRawResourceStyle(this.getContext(), R.raw.styler));
         getDeviceLocation();
@@ -114,4 +117,5 @@ public class Map extends SupportMapFragment implements OnMapReadyCallback,
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
+
 }

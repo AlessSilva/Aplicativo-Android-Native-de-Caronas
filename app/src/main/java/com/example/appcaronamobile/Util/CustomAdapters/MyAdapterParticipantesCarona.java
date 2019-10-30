@@ -73,6 +73,10 @@ public class MyAdapterParticipantesCarona extends RecyclerView.Adapter<MyAdapter
 
                 holder.participante.setConfirmacao(true);
                 carona = caronaDAO.editCarona(carona);
+                holder.confirmar.setText( "Confirmada" );
+                holder.confirmar.setBackgroundColor( parent.getResources().getColor(android.R.color.holo_blue_light) );
+                holder.ignorar.setEnabled(false);
+                holder.ignorar.setBackgroundColor( parent.getResources().getColor(android.R.color.transparent) );
                 Toast.makeText(mContext,"Participante confirmado",Toast.LENGTH_SHORT).show();
 
             }
