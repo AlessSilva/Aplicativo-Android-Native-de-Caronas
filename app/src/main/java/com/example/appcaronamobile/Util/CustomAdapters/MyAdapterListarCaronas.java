@@ -65,8 +65,6 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
 
                 if( (holder.carona.getVagas() - holder.carona.getParticipantes().size()) > 0 ){
 
-
-
                     holder.carona.addUsuario( new Participante( usuarioDAO.getLogado(), "") );
                     holder.carona = caronaDAO.editCarona(holder.carona);
 
@@ -81,7 +79,7 @@ public class MyAdapterListarCaronas extends RecyclerView.Adapter<MyAdapterListar
             }
         });
 
-        if ( holder.carona.getVeiculo().getTipo().equals("CARRO") ){
+        if ( holder.carona.getVeiculo().getTipo().equals("Carro") ){
             holder.tipoveiculo.setImageResource(R.mipmap.ic_car2);
 
             ( (ImageView) holder.alertView.findViewById( R.id.imageViewAlertCarona )).setImageResource( R.mipmap.ic_car2 );

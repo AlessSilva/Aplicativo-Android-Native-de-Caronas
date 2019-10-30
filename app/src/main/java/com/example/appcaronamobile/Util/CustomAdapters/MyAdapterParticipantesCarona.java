@@ -79,6 +79,9 @@ public class MyAdapterParticipantesCarona extends RecyclerView.Adapter<MyAdapter
             public void onClick(View view) {
 
                 holder.participante.setConfirmacao(true);
+                listParticipantes.set( holder.getAdapterPosition(), holder.participante );
+                notifyDataSetChanged();
+                carona.setParticipantes(listParticipantes);
                 carona = caronaDAO.editCarona(carona);
                 holder.confirmar.setText( "Confirmada" );
                 holder.confirmar.setBackgroundColor( parent.getResources().getColor(android.R.color.holo_blue_light) );

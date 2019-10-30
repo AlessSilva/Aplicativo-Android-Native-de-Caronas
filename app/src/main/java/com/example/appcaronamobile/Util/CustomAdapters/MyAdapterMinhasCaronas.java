@@ -96,12 +96,12 @@ public class MyAdapterMinhasCaronas extends RecyclerView.Adapter<MyAdapterMinhas
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(mContext, ParticipantesCaronaActivity.class);
-                intent.putExtra("carona", holder.carona);
-                mContext.startActivity(intent);
                 holder.carona = caronaDAO.getCarona(carona.getId());
                 listCarona.set( holder.getAdapterPosition(), holder.carona );
                 notifyDataSetChanged();
+                Intent intent = new Intent(mContext, ParticipantesCaronaActivity.class);
+                intent.putExtra("carona", holder.carona);
+                mContext.startActivity(intent);
 
             }
         });

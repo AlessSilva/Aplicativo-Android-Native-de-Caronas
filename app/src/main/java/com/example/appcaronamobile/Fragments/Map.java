@@ -88,8 +88,6 @@ public class Map extends SupportMapFragment implements OnMapReadyCallback,
 
             latLng = new LatLng( c.getLatLocalEncontro(), c.getLngLocalEncontro() );
 
-            //Marker marker;
-
             if( c.getVeiculo().getTipo().equals("Carro") ){
                 mMap.addMarker(new MarkerOptions().position(latLng)
                         .title( "Carona de: " + usuarioDAO.getUsuario( c.getId_responsavel() ).getPrimeiroNome() )
