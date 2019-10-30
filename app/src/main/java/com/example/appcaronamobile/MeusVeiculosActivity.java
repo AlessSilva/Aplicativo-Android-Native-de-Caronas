@@ -65,6 +65,7 @@ public class MeusVeiculosActivity extends AppCompatActivity {
         intent.putExtra("modelo", "");
         intent.putExtra("cor", "");
         intent.putExtra("placa", "");
+        intent.putExtra("tipo", "0");
         intent.putExtra("code", String.valueOf(RequestCodes.ADD_VEICULO));
         startActivityForResult(intent, RequestCodes.ADD_VEICULO);
     }
@@ -78,8 +79,8 @@ public class MeusVeiculosActivity extends AppCompatActivity {
             intent.putExtra("modelo", veiculo.getModelo());
             intent.putExtra("cor", veiculo.getCor());
             intent.putExtra("placa", veiculo.getPlaca());
+            intent.putExtra("tipo", String.valueOf(veiculosAdapter.getByTipo(veiculo.getTipo())));
             intent.putExtra("senha", usuario.getSenha());
-            intent.putExtra("imagem", veiculo.getImagem());
             intent.putExtra("code", String.valueOf(RequestCodes.EDITAR_VEICULOS));
             startActivityForResult(intent, RequestCodes.EDITAR_VEICULOS);
         }

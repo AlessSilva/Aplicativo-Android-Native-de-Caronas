@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.appcaronamobile.Model.Veiculo;
 import com.example.appcaronamobile.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VeiculosAdapter extends BaseAdapter {
@@ -65,6 +66,18 @@ public class VeiculosAdapter extends BaseAdapter {
         // iv é a imageview muda aqui
 
         return rowView;
+    }
+
+    public int getByTipo(String tipo) {
+        if(tipo.equals("Carro")) {
+            return 1;
+        }
+        else if(tipo.equals("Moto")) {
+            return 2;
+        }
+        else {
+            return 0;
+        }
     }
 
     public void remove(int position) {
