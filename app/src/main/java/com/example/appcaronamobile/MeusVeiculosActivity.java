@@ -81,6 +81,12 @@ public class MeusVeiculosActivity extends AppCompatActivity {
             intent.putExtra("placa", veiculo.getPlaca());
             intent.putExtra("tipo", String.valueOf(veiculosAdapter.getByTipo(veiculo.getTipo())));
             intent.putExtra("senha", usuario.getSenha());
+            if(veiculo.getImagem() == null) {
+                intent.putExtra("imagem", "n");
+            } else {
+                intent.putExtra("imagem", "s");
+                intent.putExtra("valor", veiculo.getImagem());
+            }
             intent.putExtra("code", String.valueOf(RequestCodes.EDITAR_VEICULOS));
             startActivityForResult(intent, RequestCodes.EDITAR_VEICULOS);
         }

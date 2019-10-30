@@ -95,8 +95,4 @@ public class VeiculosAdapter extends BaseAdapter {
     public void remove(int position) {
         veiculos.remove(position);
     }
-
-    public void removerImagem(int position) {
-        veiculos.get(position).setImagem(null);
-    }
 }

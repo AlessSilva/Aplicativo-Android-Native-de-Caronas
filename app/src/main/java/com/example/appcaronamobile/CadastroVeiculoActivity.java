@@ -12,6 +12,7 @@ import android.content.DialogInterface;;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
@@ -60,6 +61,8 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
 
     private SpinnerAdapter spinnerAdapter;
 
+    private int[] imgs_default = new int[] {R.mipmap.ic_car2, R.mipmap.ic_moto};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +77,7 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
         corV = findViewById(R.id.editTextCorCarro);
         placaV = findViewById(R.id.editTextPlacaCarro);
         mv = findViewById(R.id.imageViewVeiculo);
+
         imagemBytes = null;
 
         placaV.addTextChangedListener(MaskEditUtil.mask(placaV, MaskEditUtil.FORMAT_PLACA));
@@ -84,6 +88,21 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
         String modelo2 = getIntent().getStringExtra("modelo");
         String cor2 = getIntent().getStringExtra("cor");
         String tipo2 = getIntent().getStringExtra("tipo");
+
+        if(code.equals(String.valueOf(RequestCodes.EDITAR_VEICULOS))) {
+            String m = getIntent().getStringExtra("imagem");
+            if(m.equals("n")) {
+                if(tipo2.equals("Carro")) {
+                    mv.setImageResource(imgs_default[0]);
+                } else {
+                    mv.setImageResource(imgs_default[1]);
+                }
+            } else {
+                byte[] imagemByte = getIntent().getByteArrayExtra("valor");
+                Bitmap bm = BitmapFactory.decodeByteArray(imagemByte, 0, imagemByte.length);
+                mv.setImageBitmap(bm);
+            }
+        }
 
         modeloV.setText(modelo2);
         corV.setText(cor2);
