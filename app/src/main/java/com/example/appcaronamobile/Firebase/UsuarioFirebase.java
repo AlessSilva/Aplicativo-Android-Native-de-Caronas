@@ -15,7 +15,7 @@ public class UsuarioFirebase implements UsuarioDAO {
 
     private static Long idgerador = new Long(1000);
 
-    private UsuarioFirebase(){}
+    private UsuarioFirebase(){} ///rtyyrtyr
 
     public static UsuarioDAO getInstance(){
 
