@@ -43,10 +43,6 @@ public class UsuarioDBMemory implements UsuarioDAO {
     @Override
     public Usuario addUsuario(Usuario usuario) {
 
-        idgerador = new Long( idgerador.intValue()+1 );
-        usuario.setId( idgerador );
-        listaUsuario.add(usuario);
-
         return usuario;
     }
 
