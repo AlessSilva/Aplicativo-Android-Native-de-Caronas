@@ -117,7 +117,7 @@ public class Usuario implements Serializable {
         this.veiculos = veiculos;
     }
 
-    public void setImagem(byte[] imagem) {
+    public void setImagem(byte [] imagem) {
         this.imagem = imagem;
     }
 

@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.appcaronamobile.Firebase.UsuarioFirebase;
 import com.example.appcaronamobile.Util.Codes.RequestCodes;
 import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
 import com.example.appcaronamobile.Dao.UsuarioDAO;
@@ -22,10 +23,13 @@ import com.example.appcaronamobile.Model.Usuario;
 import com.example.appcaronamobile.Util.Codes.ResultCodes;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
     UsuarioDAO usuarioDAO = null;
+    UsuarioDAO usuarioDAO2 = null;
     Button buttonCadastro = null;
     Button buttonLogin = null;
 
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         usuarioDAO = UsuarioDBMemory.getInstance();
+        usuarioDAO2 = UsuarioFirebase.getInstance();
 
         intent = new Intent(this, CadastroUsuarioActivity.class);
 
@@ -96,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
             Usuario novoUsuario = new Usuario(primeiroNome, sobrenome, telefone, email, senha, situacao, instituicao, bs);
 
             usuarioDAO.addUsuario( novoUsuario );
+            usuarioDAO2.addUsuario(novoUsuario);
 
             Logar( novoUsuario );
 

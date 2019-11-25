@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 public class UsuarioFirebase implements UsuarioDAO {
 
+    ConexaoDB conexaoDB = MyConexaoDB.getInstance();
+
     private static ArrayList<Usuario> listaUsuario;
 
     private static Usuario usuario_logado;
@@ -28,7 +30,10 @@ public class UsuarioFirebase implements UsuarioDAO {
 
     @Override
     public Usuario addUsuario(Usuario usuario) {
-        return null;
+        usuario.setId(new Long(idgerador.intValue()+1));
+        idgerador++;
+        conexaoDB.getReference().child("Usuario").child(String.valueOf(usuario.getId())).setValue(usuario);
+        return usuario;
     }
 
     @Override
