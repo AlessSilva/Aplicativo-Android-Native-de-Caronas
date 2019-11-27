@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.example.appcaronamobile.Fragments.CadastroPt1;
@@ -65,7 +66,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity implements MyList
     }
 
     @Override
-    public void finalizarFragmentoP2(String inst, String sit, byte[] imagem) {
+    public void finalizarFragmentoP2(String inst, String sit, String imagem) {
 
         instituicao = inst;
         situacao = sit;
@@ -82,7 +83,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity implements MyList
         intent.putExtra("senha", senha);
         intent.putExtra("situacao", situacao);
         intent.putExtra("instituicao", instituicao);
-        intent.putExtra("byteArray", imagem);
+        intent.putExtra("imagem", imagem);
 
         setResult(ResultCodes.CAD_USER_SUCESS, intent);
         finish();

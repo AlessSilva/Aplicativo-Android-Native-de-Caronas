@@ -5,7 +5,9 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -47,6 +49,7 @@ public class CadastroPt2 extends Fragment {
     private Button uploadImage = null;
 
     private Bitmap imagem;
+    private String imagemreal = null;
 
     public CadastroPt2() {
     }
@@ -121,9 +124,7 @@ public class CadastroPt2 extends Fragment {
     private void sendData( String inst, String sit ){
 
         MyListener myListener = (MyListener)getActivity();
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        imagem.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-        myListener.finalizarFragmentoP2(inst,sit, byteArrayOutputStream.toByteArray());
+        myListener.finalizarFragmentoP2(inst,sit, imagemreal);
 
     }
 
@@ -146,11 +147,20 @@ public class CadastroPt2 extends Fragment {
             if(resultCode == Activity.RESULT_OK) {
                 Uri returnUri = data.getData();
                 try {
-                    imagem = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), returnUri);
-                } catch (IOException e) {
-                    Toast.makeText(getContext(), "Exception on gallery connection: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    String[] filePathColumn = { MediaStore.Images.Media.DATA };
+
+                    Cursor cursor = getContext().getContentResolver().query(returnUri,
+                            filePathColumn, null, null, null);
+                    cursor.moveToFirst();
+
+                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                    imagemreal = cursor.getString(columnIndex);
+
+                    cursor.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-                imageView.setImageBitmap(imagem);
+                imageView.setImageBitmap(BitmapFactory.decodeFile(imagemreal));
             }
         }
     }

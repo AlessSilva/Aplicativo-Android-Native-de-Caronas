@@ -1,6 +1,6 @@
 package com.example.appcaronamobile.Repository;
 
-import android.graphics.Bitmap;
+import android.net.Uri;
 
 public interface MyListener {
 
@@ -8,7 +8,7 @@ public interface MyListener {
 
     void voltarFragmentoP1();
 
-    void finalizarFragmentoP2(String inst, String sit, byte[] imagem);
+    void finalizarFragmentoP2(String inst, String sit, String imagem);
 
     void voltarFragmentoP2();
 }

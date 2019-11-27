@@ -8,6 +8,7 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             String senha = data.getStringExtra("senha");
             String situacao = data.getStringExtra("situacao");
             String instituicao = data.getStringExtra("instituicao");
-            byte [] bs = data.getByteArrayExtra("byteArray");
+            String bs = data.getStringExtra("imagem");
 
             Usuario novoUsuario = new Usuario(primeiroNome, sobrenome, telefone, email, senha, situacao, instituicao, bs);
 

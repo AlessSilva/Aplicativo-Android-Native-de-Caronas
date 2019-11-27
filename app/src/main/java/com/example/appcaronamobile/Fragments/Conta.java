@@ -1,12 +1,20 @@
 package com.example.appcaronamobile.Fragments;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.ParcelFileDescriptor;
+import android.provider.MediaStore;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +33,13 @@ import com.example.appcaronamobile.Model.Usuario;
 import com.example.appcaronamobile.R;
 import com.example.appcaronamobile.Util.Masks.MaskEditUtil;
 
+import java.io.File;
+import java.io.FileDescriptor;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 public class Conta extends Fragment {
 
     UsuarioDAO usuarioDAO = null;
@@ -41,7 +56,7 @@ public class Conta extends Fragment {
     private EditText senharepetidaE;
 
     private ImageView showImage;
-    private byte[] imagemByte;
+    private Uri imagemByte;
 
     private Bitmap imageBitmap;
 
@@ -72,16 +87,27 @@ public class Conta extends Fragment {
 
         usuario = (Usuario) arguments.getSerializable("usuario");
 
-        imagemByte = usuario.getImagem();
-
-        if ( imagemByte != null ){
-
-            imageBitmap = BitmapFactory.decodeByteArray(imagemByte, 0, imagemByte.length);
-
+        if(usuario.getImagem() == null) {
             showImage = view.findViewById(R.id.imageViewPerfilConta);
-            showImage.setImageBitmap(imageBitmap);
+            showImage.setImageResource(R.drawable.login);
+        } else {
+            imagemByte = Uri.parse(usuario.getImagem());
+
+            if (imagemByte != null) {
+//            try {
+////                imageBitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), imagemByte);
+////                OutputStream byteArrayOutputStream = new OutputStream();
+////                imageBitmap.compress(Bitmap.CompressFormat.JPEG,100, byteArrayOutputStream);
+//                imageBitmap = BitmapFactory.decodeFile(imagemByte);
+//            } catch (IOException e) {
+//                Log.i("IMAGE ERROR", e.toString());
+//            }
 
 
+                showImage = view.findViewById(R.id.imageViewPerfilConta);
+                showImage.setImageBitmap(BitmapFactory.decodeFile(usuario.getImagem()));
+
+            }
         }
 
         nomeE = view.findViewById(R.id.editTextPrimeiroNomeConta);
@@ -97,15 +123,15 @@ public class Conta extends Fragment {
         rginst = view.findViewById(R.id.radioGroupInstituicoes);
         rgsit = view.findViewById(R.id.radioGroupSituacao);
 
-        if(usuario.getInstituicao().equals("UFC")) {
+        if (usuario.getInstituicao().equals("UFC")) {
             instB = view.findViewById(R.id.radioButtonUFC);
         } else {
             instB = view.findViewById(R.id.radioButtonIFCE);
         }
 
-        if(usuario.getSituacao().equals("Docente")) {
+        if (usuario.getSituacao().equals("Docente")) {
             sitB = view.findViewById(R.id.radioButtonDocente);
-        } else if(usuario.getSituacao().equals("Discente")) {
+        } else if (usuario.getSituacao().equals("Discente")) {
             sitB = view.findViewById(R.id.radioButtonDiscente);
         } else {
             sitB = view.findViewById(R.id.radioButtonOutro);
@@ -134,23 +160,23 @@ public class Conta extends Fragment {
                 senha = senhaE.getText().toString();
                 senharepetida = senharepetidaE.getText().toString();
 
-                if(nome.equals("")) {
+                if (nome.equals("")) {
                     nome = usuario.getPrimeiroNome();
                 }
-                if(sobrenome.equals("")) {
+                if (sobrenome.equals("")) {
                     sobrenome = usuario.getSobrenome();
                 }
-                if(telefone.equals("")) {
+                if (telefone.equals("")) {
                     telefone = usuario.getTelefone();
                 }
-                if(email.equals("")) {
+                if (email.equals("")) {
                     email = usuario.getEmail();
                 }
 
-                if(!senha.equals(senharepetida)) {
+                if (!senha.equals(senharepetida)) {
                     Toast.makeText(view.getContext(), "Senhas estão diferentes!", Toast.LENGTH_LONG).show();
                 } else {
-                    if(senha.equals("")) {
+                    if (senha.equals("")) {
                         senha = usuario.getSenha();
                     }
 
@@ -165,7 +191,7 @@ public class Conta extends Fragment {
                         public void onClick(DialogInterface dialog, int which) {
                             senhaPedida = input.getText().toString();
 
-                            if(senhaPedida.equals(usuario.getSenha())) {
+                            if (senhaPedida.equals(usuario.getSenha())) {
                                 usuario.setPrimeiroNome(nome);
                                 usuario.setSobrenome(sobrenome);
                                 usuario.setEmail(email);
@@ -196,5 +222,24 @@ public class Conta extends Fragment {
         });
 
         return view;
+    }
+
+    public String RemoveUnwantedString(String pathUri){
+        //pathUri = "content://com.google.android.apps.photos.contentprovider/-1/2/content://media/external/video/media/5213/ORIGINAL/NONE/2106970034"
+        String[] d1 = pathUri.split("content://");
+        for (String item1:d1) {
+            if (item1.contains("media/")) {
+                String[] d2 = item1.split("/ORIGINAL/");
+                for (String item2:d2) {
+                    if (item2.contains("media/")) {
+                        pathUri = "content://" + item2;
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+        //pathUri = "content://media/external/video/media/5213"
+        return pathUri;
     }
 }

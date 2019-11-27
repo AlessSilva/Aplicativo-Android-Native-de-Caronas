@@ -6,6 +6,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import android.net.Uri;
 
 @SuppressWarnings("serial")
 public class Usuario implements Serializable {
@@ -17,12 +18,12 @@ public class Usuario implements Serializable {
     private String senha;
     private String situacao;
     private String instituicao;
-    private byte[] imagem;
+    private String imagem;
     private List<Veiculo> veiculos;
     private List<Carona> minhas_caronas;
 
     public Usuario(String primeiroNome, String sobrenome, String telefone,
-                   String email, String senha, String situacao, String instituicao, byte[] imagem) {
+                   String email, String senha, String situacao, String instituicao, String imagem) {
         this.primeiroNome = primeiroNome;
         this.sobrenome = sobrenome;
         this.telefone = telefone;
@@ -36,7 +37,7 @@ public class Usuario implements Serializable {
     }
 
     public Usuario(Long id, String primeiroNome, String sobrenome, String telefone,
-                   String email, String senha, String situacao, String instituicao, byte[] imagem) {
+                   String email, String senha, String situacao, String instituicao, String imagem) {
         this.id = id;
         this.primeiroNome = primeiroNome;
         this.sobrenome = sobrenome;
@@ -45,6 +46,7 @@ public class Usuario implements Serializable {
         this.senha = senha;
         this.situacao = situacao;
         this.instituicao = instituicao;
+        this.imagem = imagem;
         this.veiculos = new ArrayList<Veiculo>();
         this.minhas_caronas = new ArrayList<Carona>();
     }
@@ -117,11 +119,11 @@ public class Usuario implements Serializable {
         this.veiculos = veiculos;
     }
 
-    public void setImagem(byte [] imagem) {
+    public void setImagem(String imagem) {
         this.imagem = imagem;
     }
 
-    public byte[] getImagem() {
+    public String getImagem() {
         return imagem;
     }
 
