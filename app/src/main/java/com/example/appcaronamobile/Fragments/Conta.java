@@ -33,13 +33,6 @@ import com.example.appcaronamobile.Model.Usuario;
 import com.example.appcaronamobile.R;
 import com.example.appcaronamobile.Util.Masks.MaskEditUtil;
 
-import java.io.File;
-import java.io.FileDescriptor;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
 public class Conta extends Fragment {
 
     UsuarioDAO usuarioDAO = null;
@@ -56,9 +49,6 @@ public class Conta extends Fragment {
     private EditText senharepetidaE;
 
     private ImageView showImage;
-    private Uri imagemByte;
-
-    private Bitmap imageBitmap;
 
     private String inst;
     private String sit;
@@ -91,23 +81,22 @@ public class Conta extends Fragment {
             showImage = view.findViewById(R.id.imageViewPerfilConta);
             showImage.setImageResource(R.drawable.login);
         } else {
-            imagemByte = Uri.parse(usuario.getImagem());
-
-            if (imagemByte != null) {
-//            try {
-////                imageBitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), imagemByte);
-////                OutputStream byteArrayOutputStream = new OutputStream();
-////                imageBitmap.compress(Bitmap.CompressFormat.JPEG,100, byteArrayOutputStream);
-//                imageBitmap = BitmapFactory.decodeFile(imagemByte);
-//            } catch (IOException e) {
-//                Log.i("IMAGE ERROR", e.toString());
+//            if (imagemByte != null) {
+////            try {
+//////                imageBitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), imagemByte);
+//////                OutputStream byteArrayOutputStream = new OutputStream();
+//////                imageBitmap.compress(Bitmap.CompressFormat.JPEG,100, byteArrayOutputStream);
+////                imageBitmap = BitmapFactory.decodeFile(imagemByte);
+////            } catch (IOException e) {
+////                Log.i("IMAGE ERROR", e.toString());
+////            }
+//
+//
+//
+//
 //            }
-
-
-                showImage = view.findViewById(R.id.imageViewPerfilConta);
-                showImage.setImageBitmap(BitmapFactory.decodeFile(usuario.getImagem()));
-
-            }
+            showImage = view.findViewById(R.id.imageViewPerfilConta);
+            showImage.setImageBitmap(BitmapFactory.decodeFile(usuario.getImagem()));
         }
 
         nomeE = view.findViewById(R.id.editTextPrimeiroNomeConta);
