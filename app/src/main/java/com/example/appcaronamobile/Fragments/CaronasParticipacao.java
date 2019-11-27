@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.appcaronamobile.DBMemory.CaronaDBMemory;
 import com.example.appcaronamobile.Dao.CaronaDAO;
+import com.example.appcaronamobile.Firebase.CaronaFirebase;
 import com.example.appcaronamobile.Model.Carona;
 import com.example.appcaronamobile.Model.Usuario;
 import com.example.appcaronamobile.R;
@@ -45,7 +46,7 @@ public class CaronasParticipacao extends Fragment {
 
         usuario = (Usuario) getActivity().getIntent().getSerializableExtra("usuario");
 
-        caronaDAO = CaronaDBMemory.getInstance();
+        caronaDAO = CaronaFirebase.getInstance();//CaronaDBMemory.getInstance();
 
         mRecycleView = view.findViewById(R.id.recyclerPCaronas);
         GridLayoutManager gridLayoutManager = new GridLayoutManager( this.getContext(),1 );

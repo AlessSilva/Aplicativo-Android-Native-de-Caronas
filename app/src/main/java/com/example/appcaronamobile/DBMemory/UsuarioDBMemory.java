@@ -6,8 +6,8 @@ import com.example.appcaronamobile.Model.Veiculo;
 
 import java.util.ArrayList;
 
-public class UsuarioDBMemory implements UsuarioDAO {
-
+public class UsuarioDBMemory { //implements UsuarioDAO {
+/*
     private static ArrayList<Usuario> listaUsuario;
     private static Usuario usuario_logado;
     private static UsuarioDBMemory usuarioDAO;
@@ -116,5 +116,5 @@ public class UsuarioDBMemory implements UsuarioDAO {
     public Usuario getLogado(){
         return usuario_logado;
     }
-
+*/
 }

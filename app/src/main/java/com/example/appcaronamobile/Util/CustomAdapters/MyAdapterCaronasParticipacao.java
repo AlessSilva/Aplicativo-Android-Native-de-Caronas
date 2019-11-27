@@ -17,6 +17,8 @@ import com.example.appcaronamobile.DBMemory.CaronaDBMemory;
 import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
 import com.example.appcaronamobile.Dao.CaronaDAO;
 import com.example.appcaronamobile.Dao.UsuarioDAO;
+import com.example.appcaronamobile.Firebase.CaronaFirebase;
+import com.example.appcaronamobile.Firebase.UsuarioFirebase;
 import com.example.appcaronamobile.Model.Carona;
 import com.example.appcaronamobile.R;
 
@@ -36,8 +38,8 @@ public class MyAdapterCaronasParticipacao extends RecyclerView.Adapter<MyAdapter
         this.mContext = mContext;
         this.listCarona = listCarona;
 
-        usuarioDAO = UsuarioDBMemory.getInstance();
-        caronaDAO = CaronaDBMemory.getInstance();
+        usuarioDAO = UsuarioFirebase.getInstance();//UsuarioDBMemory.getInstance();
+        caronaDAO = CaronaFirebase.getInstance();//CaronaDBMemory.getInstance();
     }
 
     @NonNull

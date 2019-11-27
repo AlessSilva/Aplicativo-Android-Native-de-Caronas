@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Carona implements Serializable {
 
-    private Long id;
+    private String id;
     private int vagas;
     private Veiculo veiculo;
     private String horario;
@@ -15,10 +15,14 @@ public class Carona implements Serializable {
     private double latLocalEncontro;
     private double lngLocalEncontro;
     private boolean ajuda;
-    private Long id_responsavel;
+    private String id_responsavel;
     List<Participante> participantes;
 
-    public Carona(Long id, Long id_responsavel ,int vagas, Veiculo veiculo, String horario, String data , String destino, boolean ajuda, double latitude, double longitude) {
+    public Carona(){
+        this.participantes = new ArrayList<Participante>();
+    }
+
+    public Carona(String id, String id_responsavel ,int vagas, Veiculo veiculo, String horario, String data , String destino, boolean ajuda, double latitude, double longitude) {
         this.id = id;
         this.id_responsavel = id_responsavel;
         this.vagas = vagas;
@@ -32,7 +36,7 @@ public class Carona implements Serializable {
         this.participantes = new ArrayList<Participante>();
     }
 
-    public Carona(Long id_responsavel, int vagas, Veiculo veiculo, String horario, String data ,String destino, boolean ajuda, double latitude, double longitude) {
+    public Carona(String id_responsavel, int vagas, Veiculo veiculo, String horario, String data ,String destino, boolean ajuda, double latitude, double longitude) {
         this.id_responsavel = id_responsavel;
         this.vagas = vagas;
         this.veiculo = veiculo;
@@ -85,11 +89,11 @@ public class Carona implements Serializable {
         this.ajuda = ajuda;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -111,11 +115,11 @@ public class Carona implements Serializable {
 
     public void setParticipantes(List<Participante> participantes) { this.participantes = participantes; }
 
-    public Long getId_responsavel() {
+    public String getId_responsavel() {
         return id_responsavel;
     }
 
-    public void setId_responsavel(Long id_responsavel) {
+    public void setId_responsavel(String id_responsavel) {
         this.id_responsavel = id_responsavel;
     }
 

@@ -29,6 +29,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
 import com.example.appcaronamobile.Dao.UsuarioDAO;
+import com.example.appcaronamobile.Firebase.UsuarioFirebase;
 import com.example.appcaronamobile.Model.Usuario;
 import com.example.appcaronamobile.R;
 import com.example.appcaronamobile.Util.Masks.MaskEditUtil;
@@ -71,7 +72,7 @@ public class Conta extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_conta, container, false);
 
-        usuarioDAO = UsuarioDBMemory.getInstance();
+        usuarioDAO = UsuarioFirebase.getInstance();//UsuarioDBMemory.getInstance();
 
         Bundle arguments = getArguments();
 

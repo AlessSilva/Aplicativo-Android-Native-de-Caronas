@@ -10,6 +10,8 @@ public class Participante implements Serializable {
     private String localEncontro;
     private boolean confirmacao;
 
+    public Participante(){}
+
     public Participante(Usuario usuario,String localEncontro) {
         this.usuario = usuario;
         this.like = false;

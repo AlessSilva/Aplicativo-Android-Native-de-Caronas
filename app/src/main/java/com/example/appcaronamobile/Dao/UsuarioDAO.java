@@ -10,9 +10,9 @@ public interface UsuarioDAO {
 
     public Usuario editUsuario( Usuario usuario );
 
-    public void deleteUsuario( Long usuarioId );
+    public void deleteUsuario( String usuarioId );
 
-    public Usuario getUsuario( Long usuarioId );
+    public Usuario getUsuario( String usuarioId );
 
     public ArrayList<Usuario> getListaUsuario();
 

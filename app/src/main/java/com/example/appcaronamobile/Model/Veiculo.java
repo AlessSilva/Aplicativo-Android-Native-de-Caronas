@@ -14,6 +14,8 @@ public class Veiculo implements Serializable {
     private String cor;
     private byte[] imagem;
 
+    public Veiculo(){}
+
     public Veiculo( String modelo, String tipo, String placa, String cor, byte[] imagem) {
         this.modelo = modelo;
         this.tipo = tipo;

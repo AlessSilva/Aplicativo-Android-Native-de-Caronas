@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        usuarioDAO = UsuarioDBMemory.getInstance();
-        usuarioDAO2 = UsuarioFirebase.getInstance();
+        usuarioDAO = UsuarioFirebase.getInstance();//UsuarioDBMemory.getInstance();
+        //usuarioDAO2 = UsuarioFirebase.getInstance();
 
         intent = new Intent(this, CadastroUsuarioActivity.class);
 
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             Usuario novoUsuario = new Usuario(primeiroNome, sobrenome, telefone, email, senha, situacao, instituicao, bs);
 
             usuarioDAO.addUsuario( novoUsuario );
-            usuarioDAO2.addUsuario(novoUsuario);
+            //usuarioDAO2.addUsuario(novoUsuario);
 
             Logar( novoUsuario );
 

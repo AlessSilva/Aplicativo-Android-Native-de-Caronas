@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
 import com.example.appcaronamobile.Dao.UsuarioDAO;
+import com.example.appcaronamobile.Firebase.UsuarioFirebase;
 import com.example.appcaronamobile.Model.Usuario;
 import com.example.appcaronamobile.Model.Veiculo;
 import com.example.appcaronamobile.Util.Codes.RequestCodes;
@@ -45,7 +46,7 @@ public class MeusVeiculosActivity extends AppCompatActivity {
             }
         });
 
-        usuarioDAO = UsuarioDBMemory.getInstance();
+        usuarioDAO = UsuarioFirebase.getInstance();//UsuarioDBMemory.getInstance();
     }
 
     public void onClickButtonRemover(View view) {

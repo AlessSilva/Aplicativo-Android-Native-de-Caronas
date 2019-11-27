@@ -10,7 +10,7 @@ import android.net.Uri;
 
 @SuppressWarnings("serial")
 public class Usuario implements Serializable {
-    private Long id;
+    private String id;
     private String primeiroNome;
     private String sobrenome;
     private String telefone;
@@ -21,6 +21,11 @@ public class Usuario implements Serializable {
     private String imagem;
     private List<Veiculo> veiculos;
     private List<Carona> minhas_caronas;
+
+    public Usuario(){
+        this.veiculos = new ArrayList<Veiculo>();
+        this.minhas_caronas = new ArrayList<Carona>();
+    }
 
     public Usuario(String primeiroNome, String sobrenome, String telefone,
                    String email, String senha, String situacao, String instituicao, String imagem) {
@@ -36,7 +41,7 @@ public class Usuario implements Serializable {
         this.minhas_caronas = new ArrayList<Carona>();
     }
 
-    public Usuario(Long id, String primeiroNome, String sobrenome, String telefone,
+    public Usuario(String id, String primeiroNome, String sobrenome, String telefone,
                    String email, String senha, String situacao, String instituicao, String imagem) {
         this.id = id;
         this.primeiroNome = primeiroNome;
@@ -51,9 +56,9 @@ public class Usuario implements Serializable {
         this.minhas_caronas = new ArrayList<Carona>();
     }
 
-    public Long getId() { return id; }
+    public String getId() { return id; }
 
-    public void setId(Long id) { this.id = id; }
+    public void setId(String id) { this.id = id; }
 
     public String getPrimeiroNome() {
         return primeiroNome;

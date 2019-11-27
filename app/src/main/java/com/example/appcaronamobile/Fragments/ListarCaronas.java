@@ -15,6 +15,8 @@ import com.example.appcaronamobile.DBMemory.CaronaDBMemory;
 import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
 import com.example.appcaronamobile.Dao.CaronaDAO;
 import com.example.appcaronamobile.Dao.UsuarioDAO;
+import com.example.appcaronamobile.Firebase.CaronaFirebase;
+import com.example.appcaronamobile.Firebase.UsuarioFirebase;
 import com.example.appcaronamobile.Model.Carona;
 import com.example.appcaronamobile.Model.Participante;
 import com.example.appcaronamobile.Model.Usuario;
@@ -44,8 +46,8 @@ public class ListarCaronas extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_listar_caronas, container, false);
 
-        caronaDAO = CaronaDBMemory.getInstance();
-        usuarioDAO = UsuarioDBMemory.getInstance();
+        caronaDAO = CaronaFirebase.getInstance();//CaronaDBMemory.getInstance();
+        usuarioDAO = UsuarioFirebase.getInstance();//UsuarioDBMemory.getInstance();
 
         Bundle arguments = getArguments();
         usuario = (Usuario) arguments.getSerializable("usuario");

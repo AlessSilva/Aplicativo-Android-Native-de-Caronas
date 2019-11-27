@@ -7,9 +7,9 @@ import com.example.appcaronamobile.Model.Veiculo;
 
 import java.util.ArrayList;
 
-public class CaronaDBMemory implements CaronaDAO {
+public class CaronaDBMemory {//implements CaronaDAO {
 
-    private static ArrayList<Carona> listaCarona;
+    /*private static ArrayList<Carona> listaCarona;
     private static CaronaDBMemory caronaDAO;
     private static Long idgerador = new Long(5000);
 
@@ -136,5 +136,5 @@ public class CaronaDBMemory implements CaronaDAO {
 
         return caronaDAO;
     }
-
+*/
 }

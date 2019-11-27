@@ -22,6 +22,8 @@ import com.example.appcaronamobile.DBMemory.CaronaDBMemory;
 import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
 import com.example.appcaronamobile.Dao.CaronaDAO;
 import com.example.appcaronamobile.Dao.UsuarioDAO;
+import com.example.appcaronamobile.Firebase.CaronaFirebase;
+import com.example.appcaronamobile.Firebase.UsuarioFirebase;
 import com.example.appcaronamobile.Fragments.Conta;
 import com.example.appcaronamobile.Fragments.ListarCaronas;
 import com.example.appcaronamobile.Fragments.Map;
@@ -170,8 +172,8 @@ public class TelaPrincipalActivity extends AppCompatActivity
             Toast.makeText(this, v.getTipo()+"", Toast.LENGTH_SHORT).show();
             Carona carona = new Carona( usuario.getId() , vagas, v , horario, dataa, destino, ajuda, lat, lon );
 
-            CaronaDAO caronaDAO = CaronaDBMemory.getInstance();
-            UsuarioDAO usuarioDAO = UsuarioDBMemory.getInstance();
+            CaronaDAO caronaDAO = CaronaFirebase.getInstance();//CaronaDBMemory.getInstance();
+            UsuarioDAO usuarioDAO = UsuarioFirebase.getInstance();//UsuarioDBMemory.getInstance();
 
             usuario.addCarona( caronaDAO.addCarona(carona) );
             usuario = usuarioDAO.editUsuario(usuario);

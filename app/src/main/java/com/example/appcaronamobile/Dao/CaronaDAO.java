@@ -11,14 +11,14 @@ public interface CaronaDAO {
 
     public Carona editCarona( Carona carona );
 
-    public void deleteCarona( Long caronaId );
+    public void deleteCarona( String caronaId );
 
-    public Carona getCarona( Long caronaId );
+    public Carona getCarona( String caronaId );
 
     public ArrayList<Carona> getListaCarona();
 
-    public ArrayList<Carona> getListaCarona(Long usuario);
+    public ArrayList<Carona> getListaCarona(String usuario);
 
-    public ArrayList<Carona> getListaCaronaParticipacao(Long usuario);
+    public ArrayList<Carona> getListaCaronaParticipacao(String usuario);
 
 }
