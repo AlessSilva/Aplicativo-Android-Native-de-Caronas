@@ -212,23 +212,4 @@ public class Conta extends Fragment {
 
         return view;
     }
-
-    public String RemoveUnwantedString(String pathUri){
-        //pathUri = "content://com.google.android.apps.photos.contentprovider/-1/2/content://media/external/video/media/5213/ORIGINAL/NONE/2106970034"
-        String[] d1 = pathUri.split("content://");
-        for (String item1:d1) {
-            if (item1.contains("media/")) {
-                String[] d2 = item1.split("/ORIGINAL/");
-                for (String item2:d2) {
-                    if (item2.contains("media/")) {
-                        pathUri = "content://" + item2;
-                        break;
-                    }
-                }
-                break;
-            }
-        }
-        //pathUri = "content://media/external/video/media/5213"
-        return pathUri;
-    }
 }
