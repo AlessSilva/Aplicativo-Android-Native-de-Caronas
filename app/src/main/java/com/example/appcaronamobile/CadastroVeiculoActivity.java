@@ -19,6 +19,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Base64;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -55,7 +57,7 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
     private String code;
 
     private ByteArrayOutputStream byteArrayOutputStream;
-    private byte[] imagemBytes;
+    private String imagemBytes;
 
     private Veiculo veiculo;
 
@@ -205,10 +207,17 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
             if(resultCode == Activity.RESULT_OK) {
                 Bitmap imagem = (Bitmap) data.getExtras().get("data");
                 mv.setImageBitmap(imagem);
-                byteArrayOutputStream = new ByteArrayOutputStream();
-                imagem.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-                imagemBytes = byteArrayOutputStream.toByteArray();
+                imagemBytes = BitMapToString(imagem);
             }
         }
     }
+
+    private String BitMapToString(Bitmap bitmap){
+        ByteArrayOutputStream baos=new  ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,100, baos);
+        byte [] b=baos.toByteArray();
+        String temp= Base64.encodeToString(b, Base64.DEFAULT);
+        return temp;
+    }
+
 }

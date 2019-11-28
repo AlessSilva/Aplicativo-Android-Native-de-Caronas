@@ -12,11 +12,11 @@ public class Veiculo implements Serializable {
     private String tipo;
     private String placa;
     private String cor;
-    private byte[] imagem;
+    private String imagem;
 
     public Veiculo(){}
 
-    public Veiculo( String modelo, String tipo, String placa, String cor, byte[] imagem) {
+    public Veiculo( String modelo, String tipo, String placa, String cor, String imagem) {
         this.modelo = modelo;
         this.tipo = tipo;
         this.placa = placa;
@@ -24,7 +24,7 @@ public class Veiculo implements Serializable {
         this.imagem = imagem;
     }
 
-    public Veiculo(Long id, String modelo, String tipo, String placa, String cor, byte[] imagem) {
+    public Veiculo(Long id, String modelo, String tipo, String placa, String cor, String imagem) {
         this.id = id;
         this.modelo = modelo;
         this.tipo = tipo;
@@ -73,11 +73,11 @@ public class Veiculo implements Serializable {
         this.cor = cor;
     }
 
-    public void setImagem(byte[] imagem) {
+    public void setImagem(String imagem) {
         this.imagem = imagem;
     }
 
-    public byte[] getImagem() {
+    public String getImagem() {
         return imagem;
     }
 

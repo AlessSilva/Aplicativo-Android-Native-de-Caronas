@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,8 +75,8 @@ public class VeiculosAdapter extends BaseAdapter {
                 iv.setImageResource(imgs_default[1]);
             }
         } else {
-            byte[] imagemByte = veiculos.get(position).getImagem();
-            Bitmap bm = BitmapFactory.decodeByteArray(imagemByte, 0, imagemByte.length);
+//            byte[] imagemByte = veiculos.get(position).getImagem();
+            Bitmap bm = this.StringToBitMap(veiculos.get(position).getImagem());
             iv.setImageBitmap(bm);
         }
 
@@ -94,5 +95,16 @@ public class VeiculosAdapter extends BaseAdapter {
 
     public void remove(int position) {
         veiculos.remove(position);
+    }
+
+    private Bitmap StringToBitMap(String encodedString){
+        try{
+            byte [] encodeByte=Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap=BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        }catch(Exception e){
+            e.getMessage();
+            return null;
+        }
     }
 }
