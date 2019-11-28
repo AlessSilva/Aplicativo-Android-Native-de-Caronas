@@ -149,7 +149,7 @@ public class Carona implements Serializable {
 
         for ( Participante p : participantes  ){
 
-            if ( p.getUsuario().getId().equals( usuario.getId() ) ){
+            if ( p.getId().equals( usuario.getId() ) ){
                 return p;
             }
 

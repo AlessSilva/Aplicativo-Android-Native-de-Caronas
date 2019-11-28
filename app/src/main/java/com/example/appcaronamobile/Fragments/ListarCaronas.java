@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.appcaronamobile.DBMemory.CaronaDBMemory;
 import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
@@ -57,6 +58,8 @@ public class ListarCaronas extends Fragment {
         mRecycleView.setLayoutManager(gridLayoutManager);
 
         caronas = new ArrayList<Carona>();
+
+        Toast.makeText(view.getContext(), usuario.getId()+"", Toast.LENGTH_SHORT).show();
 
         for( Carona c : caronaDAO.getListaCarona() ){
 

@@ -19,11 +19,13 @@ public class CaronaFirebase implements CaronaDAO {
     private static CaronaFirebase caronaDAO;
     private static ConexaoDB conexaoDB = MyConexaoDB.getInstance();
 
+    public static boolean atualiza_mapa = false;
+
     private CaronaFirebase(){
 
         caronas = new ArrayList<>();
 
-        Query query = conexaoDB.getReference().child("Carona");
+        Query query = conexaoDB.getReference().child("Carona").orderByChild("data");
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -35,6 +37,8 @@ public class CaronaFirebase implements CaronaDAO {
                     caronas.add( obj.getValue(Carona.class) );
 
                 }
+
+                atualiza_mapa = true;
 
             }
 
@@ -80,7 +84,7 @@ public class CaronaFirebase implements CaronaDAO {
     public Carona getCarona(String caronaId) {
 
         for( Carona c: caronas ){
-            if(c.getId().equals(c)){
+            if(c.getId().equals(caronaId)){
                 return c;
             }
         }
@@ -99,7 +103,7 @@ public class CaronaFirebase implements CaronaDAO {
         ArrayList<Carona> caronas1 = new ArrayList<>();
         for( Carona c : caronas ){
 
-            if( c.getId().equals(usuario) ){
+            if( c.getId_responsavel().equals(usuario) ){
 
                 caronas1.add(c);
 
@@ -118,8 +122,9 @@ public class CaronaFirebase implements CaronaDAO {
 
             for(Participante p : c.getParticipantes()){
 
-                caronas1.add(c);
-                break;
+                if( p.getId().equals(usuario) ) {
+                    caronas1.add(c);
+                }
 
             }
 

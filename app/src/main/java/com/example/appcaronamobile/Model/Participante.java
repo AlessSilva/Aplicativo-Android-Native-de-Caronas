@@ -4,16 +4,23 @@ import java.io.Serializable;
 
 public class Participante implements Serializable {
 
-    private Usuario usuario;
+    private String id;
+    private String nome;
+    private String telefone;
+    private String email;
     private boolean like;
     private boolean dislike;
     private String localEncontro;
     private boolean confirmacao;
 
-    public Participante(){}
+    public Participante(){
+    }
 
     public Participante(Usuario usuario,String localEncontro) {
-        this.usuario = usuario;
+        this.id = usuario.getId();
+        this.nome = usuario.getPrimeiroNome();
+        this.telefone = usuario.getTelefone();
+        this.email = usuario.getEmail();
         this.like = false;
         this.dislike = false;
         this.localEncontro = localEncontro;
@@ -21,18 +28,45 @@ public class Participante implements Serializable {
     }
 
     public Participante(Usuario usuario, boolean like, String localEncontro, boolean confirmacao) {
-        this.usuario = usuario;
+        this.id = id;
+        this.nome = usuario.getPrimeiroNome();
+        this.telefone = usuario.getTelefone();
+        this.email = usuario.getEmail();
         this.like = like;
         this.localEncontro = localEncontro;
         this.confirmacao = confirmacao;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public String getId() {
+        return id;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public boolean isLike() {

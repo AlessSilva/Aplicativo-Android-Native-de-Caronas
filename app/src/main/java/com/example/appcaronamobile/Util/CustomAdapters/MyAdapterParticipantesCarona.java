@@ -53,7 +53,7 @@ public class MyAdapterParticipantesCarona extends RecyclerView.Adapter<MyAdapter
 
         holder.participante = listParticipantes.get(posintion);
 
-        holder.nomeParticipante.setText( "@"+holder.participante.getUsuario().getPrimeiroNome() );
+        holder.nomeParticipante.setText( "@"+holder.participante.getNome() );
 
         if(holder.participante.isConfirmacao()){
             holder.confirmar.setText( "Confirmada" );

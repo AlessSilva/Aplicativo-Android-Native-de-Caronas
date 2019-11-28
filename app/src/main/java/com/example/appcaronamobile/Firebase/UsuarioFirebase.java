@@ -12,7 +12,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.UUID;
 
-//TODO: Tudo
 public class UsuarioFirebase implements UsuarioDAO {
 
     ConexaoDB conexaoDB = MyConexaoDB.getInstance();
@@ -59,7 +58,6 @@ public class UsuarioFirebase implements UsuarioDAO {
     @Override
     public Usuario addUsuario(Usuario usuario) {
         usuario.setId(UUID.randomUUID().toString());
-        //idgerador++;
         conexaoDB.getReference().child("Usuario").child(usuario.getId()).setValue(usuario);
         return usuario;
     }

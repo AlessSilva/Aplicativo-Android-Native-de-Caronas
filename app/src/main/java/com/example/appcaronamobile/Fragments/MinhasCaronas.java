@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.appcaronamobile.DBMemory.CaronaDBMemory;
 import com.example.appcaronamobile.Dao.CaronaDAO;
@@ -19,6 +20,7 @@ import com.example.appcaronamobile.Model.Usuario;
 import com.example.appcaronamobile.R;
 import com.example.appcaronamobile.Util.CustomAdapters.MyAdapterListarCaronas;
 import com.example.appcaronamobile.Util.CustomAdapters.MyAdapterMinhasCaronas;
+import com.google.auto.value.AutoAnnotation;
 
 import java.util.List;
 
@@ -47,6 +49,7 @@ public class MinhasCaronas extends Fragment {
         mRecycleView.setLayoutManager(gridLayoutManager);
 
         caronas = caronaDAO.getListaCarona(usuario.getId());
+        Toast.makeText(view.getContext(), ""+caronas.size(), Toast.LENGTH_SHORT).show();
         MyAdapterMinhasCaronas adapterListCaronas = new MyAdapterMinhasCaronas(this.getContext(),caronas);
 
         mRecycleView.setAdapter(adapterListCaronas);

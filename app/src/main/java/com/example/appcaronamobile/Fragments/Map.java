@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Context;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
@@ -41,8 +42,29 @@ public class Map extends SupportMapFragment implements OnMapReadyCallback,
     FusedLocationProviderClient mFusedLocationClient;
     CaronaDAO caronaDAO = null;
     UsuarioDAO usuarioDAO = null;
+    LatLng userLocation = null;
+    Marker userMaker;
+    boolean flag = false;
+    DeviceLocationThread deviceLocationThread = new DeviceLocationThread();
 
-    private void getDeviceLocation(){
+    class DeviceLocationThread extends Thread{
+
+        public void run(){
+            while (true){
+                try {
+                    if(flag){
+                        markerDeviceLocation();
+                        if( userMaker!=null ) {
+                            userMaker.remove();
+                        }
+                    }
+                }catch (SecurityException ex){}
+            }
+        }
+
+    }
+
+    private void initMapLocation(){
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this.getContext());
 
@@ -59,6 +81,7 @@ public class Map extends SupportMapFragment implements OnMapReadyCallback,
 
                             LatLng ll = new LatLng( l.getLatitude(), l.getLongitude() );
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom( ll , 15f));
+                            flag = true;
 
                         }
                     }
@@ -72,12 +95,43 @@ public class Map extends SupportMapFragment implements OnMapReadyCallback,
 
     }
 
+    private void markerDeviceLocation(){
+
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this.getContext());
+
+        try {
+
+            Task location = mFusedLocationClient.getLastLocation();
+            location.addOnCompleteListener(new OnCompleteListener() {
+                @Override
+                public void onComplete(@NonNull Task task) {
+
+                    if ( task.isSuccessful() ){
+                        Location l = (Location) task.getResult();
+                        if( l != null ){
+
+                            LatLng ll = new LatLng( l.getLatitude(), l.getLongitude() );
+                            userLocation = ll;
+                            userMaker = mMap.addMarker( new MarkerOptions().position(userLocation));
+
+                        }
+                    }
+
+                }
+            });
+
+        }catch ( SecurityException ex ){
+
+        }
+
+    }
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getMapAsync(this);
     }
-
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -111,7 +165,11 @@ public class Map extends SupportMapFragment implements OnMapReadyCallback,
         }
 
         mMap.setMapStyle( MapStyleOptions.loadRawResourceStyle(this.getContext(), R.raw.styler));
-        getDeviceLocation();
+
+        initMapLocation();
+        /*DeviceLocationThread deviceLocationThread = new DeviceLocationThread();
+        deviceLocationThread.start();
+        *///
     }
 
     @Override
@@ -129,4 +187,17 @@ public class Map extends SupportMapFragment implements OnMapReadyCallback,
 
     }
 
+    public void stopThread(){
+        if(deviceLocationThread !=null){
+            deviceLocationThread.interrupt();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        stopThread();
+        Toast.makeText(this.getContext(), "Aiii", Toast.LENGTH_SHORT).show();
+
+    }
 }
