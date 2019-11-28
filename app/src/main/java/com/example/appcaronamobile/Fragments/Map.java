@@ -44,25 +44,8 @@ public class Map extends SupportMapFragment implements OnMapReadyCallback,
     UsuarioDAO usuarioDAO = null;
     LatLng userLocation = null;
     Marker userMaker;
-    boolean flag = false;
-    DeviceLocationThread deviceLocationThread = new DeviceLocationThread();
-
-    class DeviceLocationThread extends Thread{
-
-        public void run(){
-            while (true){
-                try {
-                    if(flag){
-                        markerDeviceLocation();
-                        if( userMaker!=null ) {
-                            userMaker.remove();
-                        }
-                    }
-                }catch (SecurityException ex){}
-            }
-        }
-
-    }
+    boolean flag_inicia = false;
+    boolean flag_stop = false;
 
     private void initMapLocation(){
 
@@ -81,7 +64,7 @@ public class Map extends SupportMapFragment implements OnMapReadyCallback,
 
                             LatLng ll = new LatLng( l.getLatitude(), l.getLongitude() );
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom( ll , 15f));
-                            flag = true;
+                            flag_inicia = true;
 
                         }
                     }
@@ -96,6 +79,10 @@ public class Map extends SupportMapFragment implements OnMapReadyCallback,
     }
 
     private void markerDeviceLocation(){
+
+        if( flag_stop ){
+            return;
+        }
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this.getContext());
 
@@ -167,9 +154,6 @@ public class Map extends SupportMapFragment implements OnMapReadyCallback,
         mMap.setMapStyle( MapStyleOptions.loadRawResourceStyle(this.getContext(), R.raw.styler));
 
         initMapLocation();
-        /*DeviceLocationThread deviceLocationThread = new DeviceLocationThread();
-        deviceLocationThread.start();
-        *///
     }
 
     @Override
@@ -187,17 +171,4 @@ public class Map extends SupportMapFragment implements OnMapReadyCallback,
 
     }
 
-    public void stopThread(){
-        if(deviceLocationThread !=null){
-            deviceLocationThread.interrupt();
-        }
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        stopThread();
-        Toast.makeText(this.getContext(), "Aiii", Toast.LENGTH_SHORT).show();
-
-    }
 }
