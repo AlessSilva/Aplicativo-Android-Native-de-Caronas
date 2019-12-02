@@ -76,8 +76,9 @@ public class VeiculosAdapter extends BaseAdapter {
             }
         } else {
 //            byte[] imagemByte = veiculos.get(position).getImagem();
-            Bitmap bm = this.StringToBitMap(veiculos.get(position).getImagem());
-            iv.setImageBitmap(bm);
+//            Bitmap bm = this.StringToBitMap(veiculos.get(position).getImagem());
+//            iv.setImageBitmap(bm);
+            iv.setImageBitmap(BitmapFactory.decodeFile(veiculos.get(position).getImagem()));
         }
 
         return rowView;
