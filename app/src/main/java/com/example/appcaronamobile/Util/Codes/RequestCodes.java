@@ -23,4 +23,6 @@ public abstract class RequestCodes {
     public static final int AFL_PERMISSION = 124;
 
     public static final int ACL_PERMISSION = 125;
+
+    public static final int EDITAR_CONTA = 301;
 }

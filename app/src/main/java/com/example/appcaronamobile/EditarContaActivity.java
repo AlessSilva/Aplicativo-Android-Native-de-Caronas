@@ -1,4 +1,8 @@
-package com.example.appcaronamobile.Fragments;
+package com.example.appcaronamobile;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
 
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
@@ -15,6 +19,7 @@ import android.provider.MediaStore;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,9 +37,10 @@ import com.example.appcaronamobile.Dao.UsuarioDAO;
 import com.example.appcaronamobile.Firebase.UsuarioFirebase;
 import com.example.appcaronamobile.Model.Usuario;
 import com.example.appcaronamobile.R;
+import com.example.appcaronamobile.Util.Codes.ResultCodes;
 import com.example.appcaronamobile.Util.Masks.MaskEditUtil;
 
-public class Conta extends Fragment {
+public class EditarContaActivity extends AppCompatActivity {
 
     UsuarioDAO usuarioDAO = null;
 
@@ -68,18 +74,16 @@ public class Conta extends Fragment {
     private RadioButton sitB;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_conta, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_editar_conta);
 
         usuarioDAO = UsuarioFirebase.getInstance();//UsuarioDBMemory.getInstance();
 
-        Bundle arguments = getArguments();
-
-        usuario = (Usuario) arguments.getSerializable("usuario");
+        usuario = (Usuario) getIntent().getSerializableExtra("usuario");
 
         if(usuario.getImagem() == null) {
-            showImage = view.findViewById(R.id.imageViewPerfilConta);
+            showImage = findViewById(R.id.imageViewPerfilConta);
             showImage.setImageResource(R.drawable.login);
         } else {
 //            if (imagemByte != null) {
@@ -96,35 +100,35 @@ public class Conta extends Fragment {
 //
 //
 //            }
-            showImage = view.findViewById(R.id.imageViewPerfilConta);
+            showImage = findViewById(R.id.imageViewPerfilConta);
             showImage.setImageBitmap(BitmapFactory.decodeFile(usuario.getImagem()));
         }
 
-        nomeE = view.findViewById(R.id.editTextPrimeiroNomeConta);
-        sobrenomeE = view.findViewById(R.id.editTextSobrenomeConta);
-        telefoneE = view.findViewById(R.id.editTextTelefoneConta);
+        nomeE = findViewById(R.id.editTextPrimeiroNomeConta);
+        sobrenomeE = findViewById(R.id.editTextSobrenomeConta);
+        telefoneE = findViewById(R.id.editTextTelefoneConta);
 
         telefoneE.addTextChangedListener(MaskEditUtil.mask(telefoneE, MaskEditUtil.FORMAT_PHONE));
 
-        emailE = view.findViewById(R.id.editTextEmailConta);
-        senhaE = view.findViewById(R.id.editTextSenhaConta);
-        senharepetidaE = view.findViewById(R.id.editTextSenhaRepetidaConta);
+        emailE = findViewById(R.id.editTextEmailConta);
+        senhaE = findViewById(R.id.editTextSenhaConta);
+        senharepetidaE = findViewById(R.id.editTextSenhaRepetidaConta);
 
-        rginst = view.findViewById(R.id.radioGroupInstituicoes);
-        rgsit = view.findViewById(R.id.radioGroupSituacao);
+        rginst = findViewById(R.id.radioGroupInstituicoes);
+        rgsit = findViewById(R.id.radioGroupSituacao);
 
         if (usuario.getInstituicao().equals("UFC")) {
-            instB = view.findViewById(R.id.radioButtonUFC);
+            instB = findViewById(R.id.radioButtonUFC);
         } else {
-            instB = view.findViewById(R.id.radioButtonIFCE);
+            instB = findViewById(R.id.radioButtonIFCE);
         }
 
         if (usuario.getSituacao().equals("Docente")) {
-            sitB = view.findViewById(R.id.radioButtonDocente);
+            sitB = findViewById(R.id.radioButtonDocente);
         } else if (usuario.getSituacao().equals("Discente")) {
-            sitB = view.findViewById(R.id.radioButtonDiscente);
+            sitB = findViewById(R.id.radioButtonDiscente);
         } else {
-            sitB = view.findViewById(R.id.radioButtonOutro);
+            sitB = findViewById(R.id.radioButtonOutro);
         }
 
         nomeE.setText(usuario.getPrimeiroNome());
@@ -135,13 +139,13 @@ public class Conta extends Fragment {
         instB.setChecked(true);
         sitB.setChecked(true);
 
-        Button finalizar = view.findViewById(R.id.buttonSalvarAlteracoesConta);
+        Button finalizar = findViewById(R.id.buttonSalvarAlteracoesConta);
 
         finalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                inst = ((RadioButton) getView().findViewById(rginst.getCheckedRadioButtonId())).getText().toString();
-                sit = ((RadioButton) getView().findViewById(rgsit.getCheckedRadioButtonId())).getText().toString();
+                inst = ((RadioButton) findViewById(rginst.getCheckedRadioButtonId())).getText().toString();
+                sit = ((RadioButton) findViewById(rgsit.getCheckedRadioButtonId())).getText().toString();
 
                 nome = nomeE.getText().toString();
                 sobrenome = sobrenomeE.getText().toString();
@@ -170,9 +174,9 @@ public class Conta extends Fragment {
                         senha = usuario.getSenha();
                     }
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                     builder.setTitle("Digite sua antiga senha");
-                    input = new EditText(getContext());
+                    input = new EditText(view.getContext());
                     input.setTransformationMethod(new PasswordTransformationMethod());
                     builder.setView(input);
 
@@ -192,9 +196,9 @@ public class Conta extends Fragment {
 
                                 usuarioDAO.editUsuario(usuario);
 
-                                Toast.makeText(getContext(), "Alterações Salvas", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplication(), "Alterações Salvas", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getContext(), "Senha incorreta", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplication(), "Senha incorreta", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -210,7 +214,15 @@ public class Conta extends Fragment {
                 }
             }
         });
+    }
 
-        return view;
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK) {
+            Intent intent = new Intent();
+            intent.putExtra("usuario", usuario);
+            setResult(ResultCodes.MINHA_CONTA, intent);
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

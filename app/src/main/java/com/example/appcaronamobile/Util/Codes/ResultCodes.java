@@ -15,4 +15,6 @@ public abstract class ResultCodes {
     public static final int EDITAR_VEICULO = 555;
 
     public static final int CANCELAR = 333;
+
+    public static final int MINHA_CONTA = 302;
 }

@@ -22,13 +22,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.appcaronamobile.DBMemory.CaronaDBMemory;
-import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
 import com.example.appcaronamobile.Dao.CaronaDAO;
 import com.example.appcaronamobile.Dao.UsuarioDAO;
 import com.example.appcaronamobile.Firebase.CaronaFirebase;
 import com.example.appcaronamobile.Firebase.UsuarioFirebase;
-import com.example.appcaronamobile.Fragments.Conta;
 import com.example.appcaronamobile.Fragments.ListarCaronas;
 import com.example.appcaronamobile.Fragments.Map;
 import com.example.appcaronamobile.Model.Carona;
@@ -103,9 +100,16 @@ public class TelaPrincipalActivity extends AppCompatActivity
 
                 intent.putExtra("usuario", usuario);
 
-                startActivityForResult(intent, 666);
+                startActivityForResult(intent, RequestCodes.MEUS_VEICULOS);
 
                 break;
+
+            case R.id.Conta:
+                Intent intent3 = new Intent(this, EditarContaActivity.class);
+                intent3.putExtra("usuario", usuario);
+                startActivityForResult(intent3, RequestCodes.EDITAR_CONTA);
+                break;
+
             case R.id.HistoricoCaronas:
 
                 Intent intent2 = new Intent(this, HistoricoCaronasActivity.class);
@@ -128,17 +132,17 @@ public class TelaPrincipalActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.navigation_conta: {
-                getSupportActionBar().setTitle("Conta");
-                Conta conta = new Conta();
-                Bundle arguments = new Bundle();
-                arguments.putSerializable("usuario", usuario);
-                conta.setArguments(arguments);
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.containerPrincipal, conta,"ContaContainer");
-                transaction.commitAllowingStateLoss();
-                break;
-            }
+//            case R.id.navigation_conta: {
+//                getSupportActionBar().setTitle("Conta");
+//                Conta conta = new Conta();
+//                Bundle arguments = new Bundle();
+//                arguments.putSerializable("usuario", usuario);
+//                conta.setArguments(arguments);
+//                FragmentTransaction transaction = fragmentManager.beginTransaction();
+//                transaction.replace(R.id.containerPrincipal, conta,"ContaContainer");
+//                transaction.commitAllowingStateLoss();
+//                break;
+//            }
             case R.id.navigation_mapa: {
                 getSupportActionBar().setTitle("Mapa");
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -194,6 +198,10 @@ public class TelaPrincipalActivity extends AppCompatActivity
             usuario = (Usuario) data.getSerializableExtra("usuario");
         }
 
+        if(requestCode == RequestCodes.EDITAR_CONTA && resultCode == ResultCodes.MINHA_CONTA) {
+            usuario = (Usuario) data.getSerializableExtra("usuario");
+        }
+
         super.onActivityResult(requestCode, resultCode, data);
     }
 
@@ -207,7 +215,7 @@ public class TelaPrincipalActivity extends AppCompatActivity
         }
     }
 
-    private void statusCheck() {
+    protected void statusCheck() {
         final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
@@ -216,7 +224,7 @@ public class TelaPrincipalActivity extends AppCompatActivity
         }
     }
 
-    private void buildAlertMessageNoGps() {
+    protected void buildAlertMessageNoGps() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Seu GPS parece estar desligado, deseja ativar?")
                 .setCancelable(false)
