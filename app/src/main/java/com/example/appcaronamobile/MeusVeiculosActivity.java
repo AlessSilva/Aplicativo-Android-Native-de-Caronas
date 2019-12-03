@@ -1,10 +1,14 @@
 package com.example.appcaronamobile;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -47,6 +51,26 @@ public class MeusVeiculosActivity extends AppCompatActivity {
         });
 
         usuarioDAO = UsuarioFirebase.getInstance();//UsuarioDBMemory.getInstance();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_home_only, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.HomeReferenceOnly:
+                Intent intent = new Intent();
+                intent.putExtra("usuario", usuario);
+                setResult(ResultCodes.MEUS_VEICULOS, intent);
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void onClickButtonRemover(View view) {

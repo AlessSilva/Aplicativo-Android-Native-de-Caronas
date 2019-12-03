@@ -93,7 +93,12 @@ public class TelaPrincipalActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
+            case R.id.HomeReference:
+                // REFRESH PAGE
+                finish();
+                startActivity(getIntent());
+                break;
             case R.id.VerVeiculos:
 
                 Intent intent = new Intent(this, MeusVeiculosActivity.class);

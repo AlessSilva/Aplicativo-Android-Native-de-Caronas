@@ -2,6 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item android:id="@+id/HomeReference"
+        android:title="Home"
+        app:showAsAction="always"
+        android:icon="@mipmap/ic_launcher_round_home">
+    </item>
+
     <item android:id="@+id/VerVeiculos"
         android:title="Meus Veículos"
         app:showAsAction="always"
@@ -11,7 +17,7 @@
     <item android:id="@+id/HistoricoCaronas"
         android:title="Histórico de Caronas"
         app:showAsAction="always"
-        android:icon="@mipmap/ic_launcher_round_user_round">
+        android:icon="@mipmap/ic_launcher_round_carona">
     </item>
 
     <item android:id="@+id/Conta"
