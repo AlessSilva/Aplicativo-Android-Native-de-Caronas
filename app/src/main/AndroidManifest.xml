@@ -28,7 +28,7 @@
         <activity android:name=".ParticipantesCaronaActivity" />
         <activity
             android:name=".HistoricoCaronasActivity"
-            android:label="@string/title_activity_historico_caronas"
+            android:label="Histórico de Caronas"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MeusVeiculosActivity"

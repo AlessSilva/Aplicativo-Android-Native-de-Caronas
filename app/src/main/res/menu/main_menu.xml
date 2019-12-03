@@ -8,14 +8,14 @@
         android:icon="@mipmap/garagem2">
     </item>
 
-    <item android:id="@+id/Conta"
-        android:title="Conta"
+    <item android:id="@+id/HistoricoCaronas"
+        android:title="Histórico de Caronas"
         app:showAsAction="always"
         android:icon="@mipmap/ic_launcher_round_user_round">
     </item>
 
-    <item android:id="@+id/HistoricoCaronas"
-        android:title="Histórico de Caronas"
+    <item android:id="@+id/Conta"
+        android:title="Conta"
         app:showAsAction="never"></item>
 
     <item android:id="@+id/Sobre"
