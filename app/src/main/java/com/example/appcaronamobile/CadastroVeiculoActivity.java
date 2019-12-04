@@ -102,9 +102,8 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
                     mv.setImageResource(imgs_default[1]);
                 }
             } else {
-                byte[] imagemByte = getIntent().getByteArrayExtra("valor");
-                Bitmap bm = BitmapFactory.decodeByteArray(imagemByte, 0, imagemByte.length);
-                mv.setImageBitmap(bm);
+                String imagemByte = getIntent().getStringExtra("valor");
+                mv.setImageBitmap(BitmapFactory.decodeFile(imagemByte));
             }
         }
 
