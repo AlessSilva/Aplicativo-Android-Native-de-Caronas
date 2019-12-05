@@ -100,7 +100,8 @@ public class Map2 extends SupportMapFragment implements OnMapReadyCallback,
 
         this.latLng = latLng;
         sendLatLgt();
-        marker.remove();
+
+        if(marker!=null){marker.remove();}
         marker = mMap.addMarker(new MarkerOptions().position(latLng).title("Local de Encontro"));
 
     }

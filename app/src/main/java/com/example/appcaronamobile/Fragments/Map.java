@@ -44,8 +44,6 @@ public class Map extends SupportMapFragment implements OnMapReadyCallback,
     UsuarioDAO usuarioDAO = null;
     LatLng userLocation = null;
     Marker userMaker;
-    boolean flag_inicia = false;
-    boolean flag_stop = false;
 
     private void initMapLocation(){
 
@@ -64,7 +62,6 @@ public class Map extends SupportMapFragment implements OnMapReadyCallback,
 
                             LatLng ll = new LatLng( l.getLatitude(), l.getLongitude() );
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom( ll , 15f));
-                            flag_inicia = true;
 
                         }
                     }
@@ -79,10 +76,6 @@ public class Map extends SupportMapFragment implements OnMapReadyCallback,
     }
 
     private void markerDeviceLocation(){
-
-        if( flag_stop ){
-            return;
-        }
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this.getContext());
 

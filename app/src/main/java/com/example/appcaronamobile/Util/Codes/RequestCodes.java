@@ -6,6 +6,8 @@ public abstract class RequestCodes {
 
     public static final int CAD_CARPOOL = 323;
 
+    public static final int EDIT_CARPOOL = 232;
+
     public static final int MEUS_VEICULOS = 666;
 
     public static final int ADD_VEICULO = 111;

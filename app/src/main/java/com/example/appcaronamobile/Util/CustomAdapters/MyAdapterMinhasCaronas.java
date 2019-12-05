@@ -1,5 +1,6 @@
 package com.example.appcaronamobile.Util.CustomAdapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appcaronamobile.CadastroCaronaActivity;
 import com.example.appcaronamobile.DBMemory.CaronaDBMemory;
 import com.example.appcaronamobile.DBMemory.UsuarioDBMemory;
 import com.example.appcaronamobile.Dao.CaronaDAO;
@@ -22,6 +24,7 @@ import com.example.appcaronamobile.Firebase.UsuarioFirebase;
 import com.example.appcaronamobile.Model.Carona;
 import com.example.appcaronamobile.ParticipantesCaronaActivity;
 import com.example.appcaronamobile.R;
+import com.example.appcaronamobile.Util.Codes.RequestCodes;
 
 import java.util.List;
 
@@ -29,14 +32,16 @@ public class MyAdapterMinhasCaronas extends RecyclerView.Adapter<MyAdapterMinhas
 
 
     private Context mContext;
+    private Activity activity;
     private List<Carona> listCarona;
     private ViewGroup parent;
 
     UsuarioDAO usuarioDAO = null;
     CaronaDAO caronaDAO = null;
 
-    public MyAdapterMinhasCaronas( Context mContext, List<Carona> listCarona  ){
+    public MyAdapterMinhasCaronas(Activity activity, Context mContext, List<Carona> listCarona  ){
 
+        this.activity = activity;
         this.mContext = mContext;
         this.listCarona = listCarona;
 
@@ -94,6 +99,27 @@ public class MyAdapterMinhasCaronas extends RecyclerView.Adapter<MyAdapterMinhas
         ( (TextView) holder.alertView.findViewById( R.id.textViewAlertCaronaVeiculoPlaca ))
                 .setText( carona.getVeiculo().getPlaca() );
 
+        ( (Button) holder.alertExcluir.findViewById( R.id.buttonExcluir )).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listCarona.remove(holder.getAdapterPosition());
+                notifyItemRemoved(holder.getAdapterPosition());
+                caronaDAO.deleteCarona(holder.carona.getId());
+                notifyItemRangeChanged(holder.getAdapterPosition(),listCarona.size());
+                holder.alertDialogExcluir.cancel();
+            }
+        });
+
+        holder.editar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, CadastroCaronaActivity.class);
+                intent.putExtra("usuario", usuarioDAO.getLogado());
+                intent.putExtra("carona", holder.carona);
+                activity.startActivityForResult(intent, RequestCodes.EDIT_CARPOOL);
+            }
+        });
+
         holder.participantes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,8 +154,14 @@ public class MyAdapterMinhasCaronas extends RecyclerView.Adapter<MyAdapterMinhas
 
         View alertView = null;
         AlertDialog alertDialog = null;
+
+        View alertExcluir = null;
+        AlertDialog alertDialogExcluir = null;
+
         Button detalhes = null;
         Button participantes = null;
+        Button editar = null;
+        Button excluir = null;
 
         public CaronaViewHolder2(@NonNull View itemView) {
             super(itemView);
@@ -147,14 +179,30 @@ public class MyAdapterMinhasCaronas extends RecyclerView.Adapter<MyAdapterMinhas
             builder.setView( alertView );
             alertDialog = builder.create();
 
+            alertExcluir = LayoutInflater.from(parent.getContext()).inflate(R.layout.alert_confirmacao_delete, parent,false);
+            AlertDialog.Builder builder2 = new AlertDialog.Builder(mContext);
+            builder2.setTitle("Excluir Carona");
+            builder2.setView( alertExcluir );
+            alertDialogExcluir = builder2.create();
+
             detalhes = view.findViewById( R.id.CardViewMCInfo );
 
             participantes = view.findViewById( R.id.cardViewMCParticipantes );
-            //Toast.makeText(parent.getContext(), detalhes+"", Toast.LENGTH_SHORT).show();
+
+            editar = view.findViewById( R.id.CardViewMCEdit );
+            excluir = view.findViewById( R.id.cardViewMCDelete );
+
             detalhes.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     alertDialog.show();
+                }
+            });
+
+            excluir.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialogExcluir.show();
                 }
             });
 
@@ -176,6 +224,12 @@ public class MyAdapterMinhasCaronas extends RecyclerView.Adapter<MyAdapterMinhas
                 }
             });
 
+            ((Button)alertExcluir.findViewById(R.id.buttonCancelar)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialogExcluir.cancel();
+                }
+            });
 
         }
 

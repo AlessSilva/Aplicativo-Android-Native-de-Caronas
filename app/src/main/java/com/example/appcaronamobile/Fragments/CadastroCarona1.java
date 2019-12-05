@@ -17,6 +17,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.appcaronamobile.Model.Carona;
 import com.example.appcaronamobile.Model.Usuario;
 import com.example.appcaronamobile.Model.Veiculo;
 import com.example.appcaronamobile.R;
@@ -45,6 +46,8 @@ public class CadastroCarona1 extends Fragment {
     Button buttonProximo = null;
     Button buttonVoltar = null;
 
+    Carona carona = null;
+
     public CadastroCarona1() {
     }
 
@@ -55,6 +58,8 @@ public class CadastroCarona1 extends Fragment {
 
         Bundle arguments = getArguments();
         usuario = (Usuario) arguments.getSerializable("usuario");
+
+        carona = (Carona) arguments.getSerializable("carona");
 
         ArrayList<String> veiculos = new ArrayList<String>();
 
@@ -76,6 +81,15 @@ public class CadastroCarona1 extends Fragment {
         data = view.findViewById(R.id.editTextDataCaronaCad);
         data.addTextChangedListener(MaskEditUtil.mask(data, MaskEditUtil.FORMAT_DATA));
         destino = view.findViewById(R.id.editTextDestinoCaronaCad);
+
+        if( carona!=null ){
+
+            vagas.setText( carona.getVagas()+"" );
+            horario.setText( carona.getHorario()+"" );
+            data.setText( carona.getData()+"" );
+            destino.setText( carona.getDestino()+"" );
+
+        }
 
         radioButton_selec = view.findViewById( R.id.radioAjudaCaronaCad );
 

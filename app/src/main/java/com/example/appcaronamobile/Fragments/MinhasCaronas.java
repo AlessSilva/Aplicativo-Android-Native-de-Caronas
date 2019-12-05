@@ -56,7 +56,7 @@ public class MinhasCaronas extends Fragment {
 
         caronas = caronaDAO.getListaCarona(usuario.getId());
         Toast.makeText(view.getContext(), ""+caronas.size(), Toast.LENGTH_SHORT).show();
-        MyAdapterMinhasCaronas adapterListCaronas = new MyAdapterMinhasCaronas(this.getContext(),caronas);
+        MyAdapterMinhasCaronas adapterListCaronas = new MyAdapterMinhasCaronas(this.getActivity(),this.getContext(),caronas);
 
         mRecycleView.setAdapter(adapterListCaronas);
 

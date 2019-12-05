@@ -150,6 +150,25 @@ public class Usuario implements Serializable {
 
     public void addCarona( Carona carona ){ this.minhas_caronas.add(carona); }
 
+    public boolean removeCarona( Carona carona ){
+
+        int indice = -1;
+
+        for(int i = 0; i < minhas_caronas.size(); i++ ){
+            if( minhas_caronas.get(i).getId().equals(carona.getId()) ){
+                indice = i;
+                break;
+            }
+        }
+        if( indice != -1 ){
+            this.minhas_caronas.remove(indice);
+            return true;
+        }
+
+        return false;
+
+    }
+
     @Override
     public String toString() {
         return id + "," +

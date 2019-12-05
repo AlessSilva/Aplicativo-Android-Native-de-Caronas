@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import com.example.appcaronamobile.Fragments.CadastroCarona1;
 import com.example.appcaronamobile.Fragments.CadastroCarona2;
+import com.example.appcaronamobile.Model.Carona;
 import com.example.appcaronamobile.Model.Usuario;
 import com.example.appcaronamobile.Model.Veiculo;
 import com.example.appcaronamobile.Repository.MyListener2;
@@ -21,6 +22,7 @@ public class CadastroCaronaActivity extends AppCompatActivity implements MyListe
 
     private Usuario usuario;
     private Veiculo veiculo;
+    private Carona carona;
     private int vagas;
     private String horario;
     private String data;
@@ -35,11 +37,16 @@ public class CadastroCaronaActivity extends AppCompatActivity implements MyListe
 
         usuario = (Usuario) getIntent().getSerializableExtra("usuario");
 
+        carona = (Carona) getIntent().getSerializableExtra("carona");
+
         fragmentManager = getSupportFragmentManager();
 
         CadastroCarona1 cadastroCarona1 = new CadastroCarona1();
         Bundle arguments = new Bundle();
         arguments.putSerializable("usuario",usuario);
+        if( carona!= null ){
+            arguments.putSerializable("carona",carona);
+        }
         cadastroCarona1.setArguments(arguments);
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -81,8 +88,12 @@ public class CadastroCaronaActivity extends AppCompatActivity implements MyListe
         intent.putExtra("long",latLng.longitude+"");
         intent.putExtra("veiculo",veiculo);
 
-        setResult(ResultCodes.CAD_CARPOOL_SUCESS,intent);
-
+        if( carona != null ){
+            intent.putExtra("id",carona.getId());
+            setResult(ResultCodes.EDIT_CARPÒOL_SUCESS,intent);
+        }else {
+            setResult(ResultCodes.CAD_CARPOOL_SUCESS, intent);
+        }
         finish();
     }
 

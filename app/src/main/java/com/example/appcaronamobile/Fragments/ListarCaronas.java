@@ -32,7 +32,7 @@ public class ListarCaronas extends Fragment {
     View view = null;
     List<Carona> caronas;
 
-    UsuarioDAO usuarioDAO  =null;
+    UsuarioDAO usuarioDAO  = null;
     CaronaDAO caronaDAO = null;
 
     Usuario usuario = null;
