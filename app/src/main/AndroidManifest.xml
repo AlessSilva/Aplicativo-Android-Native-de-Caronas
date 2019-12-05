@@ -24,7 +24,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditarContaActivity"></activity>
+        <activity android:name=".SobreActivity" android:label="Sobre"></activity>
+        <activity android:name=".EditarContaActivity" />
         <activity android:name=".ParticipantesCaronaActivity" />
         <activity
             android:name=".HistoricoCaronasActivity"
