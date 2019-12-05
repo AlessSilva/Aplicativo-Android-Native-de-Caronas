@@ -124,6 +124,10 @@ public class TelaPrincipalActivity extends AppCompatActivity
                 startActivity(intent2);
 
                 break;
+            case R.id.Sobre:
+                Intent intent4 = new Intent(this, SobreActivity.class);
+                startActivity(intent4);
+                break;
             case R.id.Sair:
 
                 finish();
